@@ -64,10 +64,33 @@ module.exports = {
       colors: {
         sky: colors.sky,
         gray: colors.blueGray,
+        "light-blue": colors.lightBlue,
+        cyan: colors.cyan,
+        amber: colors.amber,
+        rose: colors.rose,
       },
       height: {
         100: "32rem",
         108: "36rem",
+      },
+      animation: {
+        blob: "blob 7s infinite",
+      },
+      keyframes: {
+        blob: {
+          "0%": {
+            transform: "translate(0px, 0px) scale(1)",
+          },
+          "33%": {
+            transform: "translate(30px, -50px) scale(1.1)",
+          },
+          "66%": {
+            transform: "translate(-20px, 20px) scale(0.9)",
+          },
+          "100%": {
+            transform: "translate(0px, 0px) scale(1)",
+          },
+        },
       },
     },
   },

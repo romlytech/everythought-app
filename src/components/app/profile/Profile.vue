@@ -78,11 +78,12 @@
 <script>
 import { supabase } from "../../../supabase";
 import { store } from "../../../store";
-import { onMounted, watch, ref } from "vue";
+import { onMounted, ref } from "vue";
 import AvatarUploader from "../profile/AvatarUploader.vue";
 import { notify } from "notiwind";
 import InfoCard from "../InfoCard.vue";
 import { CheckIcon } from "@heroicons/vue/solid";
+import { useRouter } from "vue-router";
 
 export default {
   components: {
@@ -94,6 +95,7 @@ export default {
     const loading = ref(true);
     const username = ref("");
     const avatar_url = ref("");
+    const router = useRouter();
 
     async function getProfile() {
       try {
@@ -153,6 +155,7 @@ export default {
             text: "Your profile was updated.",
           });
         }
+        router.push("/home");
         if (error) throw error;
       } catch (error) {
         notify(

@@ -44,12 +44,21 @@ export const routes = [
       },
     ],
   },
-
+  {
+    path: "/thoughts",
+    name: "new_thought",
+    meta: {
+      title: "Today's Thought",
+      requiresAuth: true,
+      requiresProfile: true,
+    },
+    component: () => import("./components/app/thoughts/TodaysThought.vue"),
+  },
   {
     path: "/",
     name: "app",
     redirect: { name: "dashboard" },
-    component: () => import("./views/Admin.vue"),
+    component: () => import("./views/LoggedIn.vue"),
     children: [
       {
         path: "/home",
@@ -59,13 +68,13 @@ export const routes = [
           requiresAuth: true,
           requiresProfile: true,
         },
-        component: () => import("./components/admin/Home.vue"),
+        component: () => import("./components/app/Home.vue"),
       },
       {
         path: "/profile",
         name: "profile",
         meta: { title: "My Profile", requiresAuth: true },
-        component: () => import("./components/admin/profile/Profile.vue"),
+        component: () => import("./components/app/profile/Profile.vue"),
       },
     ],
   },
