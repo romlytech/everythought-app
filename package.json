@@ -10,7 +10,7 @@
   "dependencies": {
     "@sendgrid/mail": "^7.4.6",
     "@supabase/supabase-js": "^1.22.5",
-    "dayjs": "^1.10.6",
+    "dayjs": "^1.10.7",
     "dotenv": "^10.0.0",
     "notiwind": "^1.2.2",
     "vue": "^3.2.6",
