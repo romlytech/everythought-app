@@ -24,7 +24,7 @@
     "@tailwindcss/line-clamp": "^0.2.1",
     "@tailwindcss/typography": "^0.4.1",
     "@types/tailwindcss": "^2.2.1",
-    "@vitejs/plugin-vue": "^1.6.0",
+    "@vitejs/plugin-vue": "^1.9.2",
     "@vue/compiler-sfc": "^3.2.6",
     "autoprefixer": "^10.3.4",
     "netlify-cli": "^2.37.0",
