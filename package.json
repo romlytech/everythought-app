@@ -31,6 +31,6 @@
     "tailwindcss": "^2.2.8",
     "vite": "^2.5.1",
     "vite-plugin-fonts": "^0.2.2",
-    "vite-plugin-pwa": "^0.11.2"
+    "vite-plugin-pwa": "^0.11.3"
   }
 }
