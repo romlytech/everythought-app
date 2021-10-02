@@ -1,12 +1,14 @@
 <template>
   <div
     class="
+      fixed
       flex
       items-center
       justify-center
       text-gray-200
       bg-gray-700
       h-screen
+      w-screen
       p-4
       overflow-hidden
     "
@@ -63,7 +65,6 @@
       <div class="fixed top-1 left-0.5">
         <router-link
           to="/home"
-          type="button"
           class="
             ml-1
             flex
