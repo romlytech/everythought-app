@@ -31,7 +31,7 @@
           </li>
         </ul>
         <div>
-          <p class="pt-4 mt-autofont-light text-xs text-gray-600">
+          <p class="pt-4 text-xs text-gray-600">
             &copy; 2021
             <a
               href="https://romly.tech/"

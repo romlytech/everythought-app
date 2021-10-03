@@ -60,11 +60,11 @@ module.exports = {
     extend: {
       fontFamily: {
         sans: ["Rubik", ...defaultTheme.fontFamily.sans],
+        serif: ["Lora", ...defaultTheme.fontFamily.serif],
       },
       colors: {
         sky: colors.sky,
         gray: colors.blueGray,
-        "light-blue": colors.lightBlue,
         cyan: colors.cyan,
         amber: colors.amber,
         rose: colors.rose,

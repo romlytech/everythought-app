@@ -9,11 +9,12 @@
         text-gray-900
         sm:text-4xl
         sm:leading-10
+        font-serif
       "
     >
       Finish setting your profile.
       <br />
-      <span class="text-gray-500 text-xl"> You're almost ready!</span>
+      <span class="text-gray-500 text-xl font-sans"> You're almost ready!</span>
     </h2>
     <div class="flex mt-8">
       <div class="inline-flex gap-4">

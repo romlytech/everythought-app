@@ -18,7 +18,7 @@ export default defineConfig({
     }),
     ViteFonts({
       google: {
-        families: ["Rubik"],
+        families: ["Rubik", "Lora"],
       },
     }),
   ],

@@ -18,7 +18,7 @@
           <!-- menus -->
           <div>
             <div class="ml-4 flex items-center md:ml-6">
-              <!-- Notifcations dropdown -->
+              <!-- Notifications dropdown -->
               <Menu as="div" class="ml-3 relative">
                 <div>
                   <MenuButton

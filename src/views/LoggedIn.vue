@@ -19,7 +19,7 @@
     <!-- Footer -->
     <footer>
       <div class="mx-auto px-4 mb-14">
-        <div class="text-xs text-gray-500 font-light text-center">
+        <div class="text-xs text-gray-500 text-center">
           <span class="block sm:inline"
             >&copy; 2021
             <a
