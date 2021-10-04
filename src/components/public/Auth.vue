@@ -74,7 +74,7 @@
       </div>
     </div>
     <div v-if="store.user && !alert_msg" class="p-10 text-center space-y-4">
-      <h2 class="text-2xl font-semibold text-white">Hello 👋</h2>
+      <h2 class="text-2xl font-serif text-white">Hello 👋</h2>
       <p class="text-white">You are logged in.</p>
       <router-link
         to="/home"
@@ -83,10 +83,9 @@
           items-center
           justify-center
           px-5
-          py-3
+          py-2.5
           mt-6
           text-base
-          font-bold
           leading-6
           text-white
           transition

@@ -4,6 +4,7 @@ import LoginLanding from "./components/public/LoginLanding.vue";
 export const routes = [
   {
     path: "/login",
+    alias: ["/signup", "/sign-up", "/register"],
     name: "login",
     component: () => import("./components/public/Login.vue"),
     meta: { title: "Login Page" },
