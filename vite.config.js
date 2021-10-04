@@ -18,7 +18,16 @@ export default defineConfig({
     }),
     ViteFonts({
       google: {
-        families: ["Rubik", "Lora"],
+        families: [
+          {
+            name: "Rubik",
+            styles: "ital,wght@0,300;0,400;0,500;0,600;0,700;1,400",
+          },
+          {
+            name: "Lora",
+            styles: "ital,wght@0,300;0,400;0,500;0,600;0,700;1,400",
+          },
+        ],
       },
     }),
   ],

@@ -19,7 +19,9 @@ const router = createRouter({
 
 router.beforeEach(async (to, from, next) => {
   store.user = supabase.auth.user();
-  if (to.meta.requiresAuth && !store.user) next({ path: "/login" });
+  if (to.meta.requiresAuth && !store.user) {
+    return next({ path: "/login" });
+  }
   if (to.path == "/" && store.user) next({ path: "/home" });
   next();
 });

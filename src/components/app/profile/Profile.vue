@@ -2,7 +2,7 @@
   <div class="max-w-2xl mx-auto pb-6 sm:px-6 lg:px-8">
     <div class="bg-white sm:rounded-lg shadow px-4 py-6">
       <InfoCard
-        v-if="!store.profile.username"
+        v-if="!store.profile.first_name"
         class="mb-6"
         title="Profile Required"
         msg="You must complete your profile before you can participate in our community."
@@ -14,7 +14,7 @@
         <div class="col-span-1 lg:col-span-2">
           <h2 class="text-lg mt-1 text-gray-700 font-semibold">My Profile</h2>
           <!-- <p class="text-sm mt-1 text-gray-500">
-            Your username, avatar and home airport are shared with other pilots
+            Your first_name, avatar and home airport are shared with other pilots
             in the Local Chats you choose to participate in.
           </p> -->
         </div>
@@ -24,15 +24,17 @@
           @upload="updateProfile"
         />
         <div>
-          <label for="username" class="block text-sm font-medium text-gray-700"
-            >Username</label
+          <label
+            for="first_name"
+            class="block text-sm font-medium text-gray-700"
+            >First name</label
           >
           <input
-            id="username"
+            id="first_name"
             type="text"
-            class="aog-input"
+            class="etp-input"
             maxlength="15"
-            v-model="username"
+            v-model="first_name"
             required
           />
         </div>
@@ -43,7 +45,7 @@
           <input
             id="email"
             type="text"
-            class="aog-input"
+            class="etp-input"
             :value="store.user.email"
             disabled
           />
@@ -93,7 +95,7 @@ export default {
   },
   setup() {
     const loading = ref(true);
-    const username = ref("");
+    const first_name = ref("");
     const avatar_url = ref("");
     const router = useRouter();
 
@@ -111,7 +113,7 @@ export default {
         if (error && status !== 406) throw error;
 
         if (data) {
-          username.value = data.username;
+          first_name.value = data.first_name;
           avatar_url.value = data.avatar_url;
         }
       } catch (error) {
@@ -137,7 +139,7 @@ export default {
 
         const updates = {
           id: store.user.id,
-          username: username.value,
+          first_name: first_name.value,
           avatar_url: avatar_url.value,
           updated_at: new Date(),
         };
@@ -179,7 +181,7 @@ export default {
     return {
       store,
       loading,
-      username,
+      first_name,
       avatar_url,
 
       updateProfile,

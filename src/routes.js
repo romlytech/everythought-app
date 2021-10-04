@@ -3,6 +3,12 @@ import LoginLanding from "./components/public/LoginLanding.vue";
 
 export const routes = [
   {
+    path: "/login",
+    name: "login",
+    component: () => import("./components/public/Login.vue"),
+    meta: { title: "Login Page" },
+  },
+  {
     path: "/",
     name: "index",
     component: Public,
@@ -10,8 +16,7 @@ export const routes = [
     children: [
       {
         path: "/",
-        name: "login",
-        alias: "/login",
+        name: "landing",
         meta: { title: "Home" },
         component: LoginLanding,
       },
@@ -58,7 +63,7 @@ export const routes = [
     path: "/",
     name: "app",
     redirect: { name: "dashboard" },
-    component: () => import("./views/LoggedIn.vue"),
+    component: () => import("./views/Authorized.vue"),
     children: [
       {
         path: "/home",

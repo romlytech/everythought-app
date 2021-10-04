@@ -3,11 +3,8 @@
     <nav class="justify-center pb-12" aria-label="Footer">
       <div class="text-center">
         <div>
-          <router-link
-            to="/"
-            class="text-xl md:text-4xl font-bold text-sky-600"
-          >
-            Every<span class="text-gray-700">Thought</span
+          <router-link to="/" class="text-xl md:text-4xl text-sky-600">
+            Every<span class="text-gray-700 font-serif font-bold">Thought</span
             ><span class="text-gray-600 text-sm md:text-xl">.app</span>
           </router-link>
         </div>

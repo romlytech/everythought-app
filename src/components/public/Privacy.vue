@@ -57,7 +57,7 @@
         </p>
         <p>
           Personal Information Provided by You. We collect names; phone numbers;
-          email addresses; usernames; contact preferences; contact or
+          email addresses; first_names; contact preferences; contact or
           authentication data; and other similar information.
         </p>
         <p>

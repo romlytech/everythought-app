@@ -101,7 +101,16 @@
   </div>
 </template>
 <script>
+import { supabase } from "./supabase";
+import { store } from "./store";
 export default {
+  setup() {
+    store.user = supabase.auth.user();
+    supabase.auth.onAuthStateChange((_, session) => {
+      store.user = session.user;
+    });
+    return { store };
+  },
   methods: {
     setViewHeight: function () {
       let vh = window.innerHeight * 0.01;

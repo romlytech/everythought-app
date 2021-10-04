@@ -1,29 +1,48 @@
 <template>
-  <section class="max-w-md text-left z-50 space-y-4">
-    <h1 class="text-4xl font-serif">Welcome, {{ store.profile.username }}.</h1>
-    <transition name="fade" appear>
-      <blockquote class="text-base border-l-2 border-gray-400 pl-2">
-        Take a moment to relax. Allow yourself to get comfortable.
-      </blockquote>
+  <section class="w-full max-w-md text-left h-36 z-50 space-y-4 px-0">
+    <h1 class="text-4xl font-serif">
+      Welcome, {{ store.profile.first_name }}.
+    </h1>
+    <p class="text-gray-300">
+      Take a moment to relax. Allow yourself to get comfortable.
+    </p>
+    <transition name="slowerfade" appear>
+      <button
+        v-show="showButton"
+        @click="updateStep(2)"
+        class="float-right mt-8 font-medium hover:text-white"
+      >
+        I'm ready <span class="animate-pulse">&rarr;</span>
+      </button>
     </transition>
-    <button @click="updateStep(2)" class="float-right mt-8">
-      I'm ready <span class="animate-pulse">&rarr;</span>
-    </button>
   </section>
 </template>
 <script>
+import { ref } from "vue";
 import { store } from "../../../store";
+import { updateThought } from "../../../supabase";
+
 export default {
   props: {
     name: String,
   },
   setup() {
+    const showButton = ref(false);
+
     function updateStep(step) {
-      store.current_step = step;
+      store.todaysThought.step = step;
+      updateThought();
     }
+
+    setInterval(() => {
+      showButton.value = true;
+    }, 4321);
+
     return {
-      store,
+      showButton,
+
       updateStep,
+      store,
     };
   },
 };

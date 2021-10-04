@@ -1,0 +1,68 @@
+<template>
+  <div class="fixed top-0 w-full z-50">
+    <div class="fixed top-1 left-0.5">
+      <router-link
+        to="/home"
+        class="
+          ml-1
+          flex
+          items-center
+          justify-center
+          h-8
+          w-8
+          rounded-full
+          focus:outline-none
+          focus:ring-2 focus:ring-inset focus:ring-white
+        "
+      >
+        <span class="sr-only">Close and go home</span>
+        <XIcon
+          class="h-5 w-5 text-gray-300 hover:text-white"
+          aria-hidden="true"
+        />
+      </router-link>
+    </div>
+    <nav class="flex items-center justify-center p-4" aria-label="Progress">
+      <ol role="list" class="flex items-center space-x-5">
+        <li
+          v-for="step in steps"
+          :key="step.id"
+          :class="[
+            store.todaysThought.step >= step.id ? 'bg-gray-300' : 'bg-gray-500',
+            'block w-2.5 h-1.5 rounded-full',
+          ]"
+          @click="movetoStep(step.id)"
+        >
+          <span class="sr-only">Step {{ step.id }}. {{ step.title }}.</span>
+        </li>
+      </ol>
+    </nav>
+  </div>
+</template>
+<script>
+import { XIcon } from "@heroicons/vue/solid";
+import { store } from "../../../store";
+
+const steps = [
+  { id: 1, title: "Welcome" },
+  { id: 2, title: "Reading prompt" },
+  { id: 3, title: "Prayer request" },
+  { id: 4, title: "Pray for another person" },
+];
+
+export default {
+  components: { XIcon },
+  setup() {
+    const movetoStep = (step) => {
+      if (store.todaysThought.step >= step) {
+        store.todaysThought.step = step;
+      }
+    };
+    return {
+      store,
+      steps,
+      movetoStep,
+    };
+  },
+};
+</script>

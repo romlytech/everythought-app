@@ -3,7 +3,7 @@
 @import "tailwindcss/utilities";
 
 @layer components {
-  .aog-input {
+  .etp-input {
     @apply mt-2 appearance-none block w-full px-3 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-gray-500 focus:border-gray-500 sm:text-sm;
   }
 }
@@ -15,6 +15,26 @@
 
 .fade-enter-from,
 .fade-leave-to {
+  opacity: 0;
+}
+
+.slowfade-enter-active,
+.slowfade-leave-active {
+  transition: opacity 1.5s ease;
+}
+
+.slowfade-enter-from,
+.slowfade-leave-to {
+  opacity: 0;
+}
+
+.slowerfade-enter-active,
+.slowerfade-leave-active {
+  transition: opacity 3s ease;
+}
+
+.slowerfade-enter-from,
+.slowerfade-leave-to {
   opacity: 0;
 }
 

@@ -6,11 +6,9 @@
         <div class="flex items-center justify-between h-16 px-4 sm:px-0">
           <div class="flex items-center">
             <div class="flex-shrink-0">
-              <router-link
-                to="/"
-                class="text-lg md:text-2xl font-bold text-sky-600"
-              >
-                Every<span class="text-gray-300">Thought</span
+              <router-link to="/" class="text-lg md:text-2xl text-sky-600">
+                Every<span class="text-gray-300 font-serif font-bold"
+                  >Thought</span
                 ><span class="text-gray-400 text-base">.app</span>
               </router-link>
             </div>
@@ -76,7 +74,6 @@
                           items-center
                           text-sm text-gray-700
                           hover:text-gray-900
-                          font-semibold
                         "
                       >
                         {{ message.text
@@ -159,20 +156,14 @@
                   >
                     <div class="p-4 pb-3 border-b mb-2">
                       <div
-                        class="
-                          text-base
-                          font-medium
-                          leading-none
-                          text-gray-800
-                          break-all
-                        "
+                        class="text-base leading-none text-gray-800 break-all"
                       >
-                        Hello, @{{ store.profile.username }}!
+                        Hello, {{ store.profile.first_name }}!
                       </div>
                       <div
                         class="
                           text-sm
-                          font-medium
+                          font-light
                           leading-6
                           text-gray-500
                           break-all
@@ -191,7 +182,6 @@
                           items-center
                           text-sm text-gray-700
                           hover:text-gray-900
-                          font-semibold
                         "
                         >{{ item.title }}</router-link
                       >
@@ -206,7 +196,6 @@
                           items-center
                           text-sm text-gray-700
                           hover:text-gray-900
-                          font-semibold
                         "
                       >
                         Sign Out
@@ -312,7 +301,6 @@ export default {
         console.log(error.message);
       } finally {
         store.user = {};
-        router.push("/");
         router.go();
       }
     }
