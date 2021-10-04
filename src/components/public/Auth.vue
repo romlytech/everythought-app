@@ -16,7 +16,7 @@
       class="pt-6 px-4 sm:px-10 text-center"
     >
       <p class="text-xl font-serif font-medium text-white leading-10">
-        Sign up / Log in
+        Sign up <span class="text-gray-400 text-sm px-1.5">or</span> Log in
       </p>
       <div>
         <p class="text-sm text-gray-200 leading-7">
