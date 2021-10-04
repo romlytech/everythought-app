@@ -22,7 +22,9 @@
     <!-- Top nav -->
     <ThoughtNav />
     <!-- WIP: show errors -->
-    <pre v-if="store.error">{{ store.error }}</pre>
+    <pre v-if="store.error" class="z-10 m-2 w-full overflow-scroll">{{
+      store.error
+    }}</pre>
     <transition name="slowfade" mode="out-in" appear>
       <StepOne v-if="store.todaysThought.step == 1" />
       <div class="z-50" v-else-if="store.todaysThought.step == 2">
@@ -73,8 +75,3 @@ export default {
   },
 };
 </script>
-<style>
-.overflow-x-hidden {
-  overflow-y: hidden !important;
-}
-</style>

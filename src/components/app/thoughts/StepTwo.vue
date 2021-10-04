@@ -16,25 +16,28 @@
         >{{ prompt.question }}
       </RadioGroupLabel>
       <div class="pt-4"></div>
-      <RadioGroupOption
-        v-for="response in responses"
-        :key="response.title"
-        v-slot="{ active, checked }"
-        :value="response.bool"
-      >
-        <button
-          type="button"
-          :class="[
-            'inline-flex justify-center w-full rounded-md border border-transparent px-4 py-2 font-medium text-sm md:text-base',
-            response.bool
-              ? 'text-sky-900 bg-sky-200 hover:bg-sky-300'
-              : 'text-rose-900 bg-rose-200 hover:bg-rose-300',
-            active || checked ? 'ring-4 ring-white' : '',
-          ]"
+      <transition-group name="fade" appear>
+        <RadioGroupOption
+          v-show="showAgreement"
+          v-for="response in responses"
+          :key="response.title"
+          v-slot="{ active, checked }"
+          :value="response.bool"
         >
-          {{ response.title }}
-        </button>
-      </RadioGroupOption>
+          <button
+            type="button"
+            :class="[
+              'inline-flex justify-center w-full rounded-md border border-transparent px-4 py-2 font-medium text-sm md:text-base',
+              response.bool
+                ? 'text-sky-900 bg-sky-200 hover:bg-sky-300'
+                : 'text-rose-900 bg-rose-200 hover:bg-rose-300',
+              active || checked ? 'ring-4 ring-white' : '',
+            ]"
+          >
+            {{ response.title }}
+          </button>
+        </RadioGroupOption>
+      </transition-group>
     </RadioGroup>
   </section>
 </template>
@@ -60,6 +63,7 @@ export default {
   async setup() {
     const prompt = ref([]);
     const agreement_response = ref(store.todaysThought.agreement || null);
+    const showAgreement = ref(false);
 
     function updateStep(step) {
       store.todaysThought.step = step;
@@ -90,8 +94,13 @@ export default {
       store.error = error;
     }
 
+    setInterval(() => {
+      showAgreement.value = true;
+    }, 3210);
+
     return {
       agreement_response,
+      showAgreement,
       updateStep,
 
       store,

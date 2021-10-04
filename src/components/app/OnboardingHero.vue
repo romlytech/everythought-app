@@ -17,7 +17,7 @@
           : "Welcome, friend. Let's complete your profile"
       }}.
       <br />
-      <span class="text-gray-500 text-xl font-sans font-light">
+      <span class="text-gray-500 text-xl font-sans font-normal">
         Are you ready to dive into your thoughts today?</span
       >
     </h2>

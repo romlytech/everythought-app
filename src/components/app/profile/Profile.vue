@@ -157,7 +157,7 @@ export default {
             text: "Your profile was updated.",
           });
         }
-        router.push("/home");
+        router.push("/dashboard");
         if (error) throw error;
       } catch (error) {
         notify(

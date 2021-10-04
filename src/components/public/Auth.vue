@@ -66,7 +66,8 @@
                 focus:outline-none
                 focus:ring-2 focus:ring-offset-2 focus:ring-sky-500
               "
-              :value="loading ? 'Loading' : 'Continue &rarr;'"
+              :class="loading ? 'animate-pulse' : ''"
+              :value="loading ? 'Loading...' : 'Continue &rarr;'"
               :disabled="loading"
             />
           </div>
@@ -74,61 +75,94 @@
       </div>
     </div>
     <div v-if="store.user && !alert_msg" class="p-10 text-center space-y-4">
-      <h2 class="text-2xl font-serif text-white">Hello 👋</h2>
-      <p class="text-white">You are logged in.</p>
-      <router-link
-        to="/home"
-        class="
-          inline-flex
-          items-center
-          justify-center
-          px-5
-          py-2.5
-          mt-6
-          text-base
-          leading-6
-          text-white
-          transition
-          duration-150
-          ease-in-out
-          bg-sky-600
-          border border-transparent
-          rounded-md
-          hover:bg-sky-500
-          focus:outline-none
-        "
-        >Go to App &rarr;</router-link
-      >
+      <h2 class="text-xl font-serif text-white">
+        {{ loading ? "Signing out of your account..." : "You are logged in as"
+        }}<br />
+        <span class="text-gray-300">{{ store.user.email }}</span>
+      </h2>
+      <div class="flex-inline space-x-2">
+        <button
+          @click="signOut()"
+          class="
+            inline-flex
+            items-center
+            justify-center
+            px-5
+            py-2.5
+            text-base
+            leading-6
+            transition
+            duration-150
+            ease-in-out
+            bg-gray-200
+            text-gray-800
+            border border-transparent
+            rounded-md
+            hover:bg-gray-300
+            focus:outline-none
+          "
+          :class="loading ? 'animate-pulse' : ''"
+        >
+          {{ loading ? "Goodbye..." : "Sign out" }}
+        </button>
+        <router-link
+          to="/dashboard"
+          class="
+            inline-flex
+            items-center
+            justify-center
+            px-5
+            py-2.5
+            text-base
+            leading-6
+            text-white
+            transition
+            duration-150
+            ease-in-out
+            bg-sky-600
+            border border-transparent
+            rounded-md
+            hover:bg-sky-500
+            focus:outline-none
+          "
+          >Go to App &rarr;</router-link
+        >
+      </div>
     </div>
-    <div v-if="alert_msg" class="p-10 text-center space-y-6">
-      <p class="text-white">
-        {{ alert_msg }}
-      </p>
-      <button
-        @click="this.$router.go()"
-        class="
-          inline-flex
-          items-center
-          px-3
-          py-2
-          border border-transparent
-          text-sm
-          leading-4
-          font-medium
-          rounded-md
-          focus:outline-none
-          focus:ring-2 focus:ring-offset-2 focus:ring-white
-        "
-        :class="
-          error_flag
-            ? 'text-red-700 bg-red-100 hover:bg-red-200'
-            : 'text-sky-700 bg-sky-100 hover:bg-sky-200'
-        "
-      >
-        {{ error_flag ? "Try again" : "Refresh" }} &olarr;
-      </button>
-    </div>
-    <div v-if="!store.user" class="px-4 py-6 bg-gray-700 sm:px-10">
+    <transition name="fade" appear>
+      <div v-if="alert_msg" class="p-10 text-center space-y-6">
+        <p class="text-white">
+          {{ alert_msg }}
+        </p>
+        <button
+          @click="this.$router.go()"
+          class="
+            inline-flex
+            items-center
+            px-3
+            py-2
+            border border-transparent
+            text-sm
+            leading-4
+            font-medium
+            rounded-md
+            focus:outline-none
+            focus:ring-2 focus:ring-offset-2 focus:ring-white
+          "
+          :class="
+            error_flag
+              ? 'text-red-700 bg-red-100 hover:bg-red-200'
+              : 'text-sky-700 bg-sky-100 hover:bg-sky-200'
+          "
+        >
+          {{ error_flag ? "Try again" : "Refresh" }} &olarr;
+        </button>
+      </div>
+    </transition>
+    <div
+      v-if="!store.user && !alert_msg"
+      class="px-4 py-6 bg-gray-700 sm:px-10"
+    >
       <p class="text-xs font-light leading-5 text-center text-gray-300">
         By signing up, you agree to our
         <router-link
@@ -149,12 +183,14 @@
 
 <script>
 import { ref } from "vue";
+import { useRouter } from "vue-router";
 import { supabase } from "../../supabase";
 import { notify } from "notiwind";
 import { store } from "../../store";
 
 export default {
   setup() {
+    const router = useRouter();
     const loading = ref(false);
     const alert_msg = ref("");
     const error_flag = ref(false);
@@ -184,9 +220,24 @@ export default {
       }
     };
 
+    // Sign Out
+    async function signOut() {
+      loading.value = true;
+      try {
+        let { error } = await supabase.auth.signOut();
+        if (error) throw error;
+      } catch (error) {
+        console.log(error);
+      } finally {
+        store.user = {};
+        router.go();
+      }
+    }
+
     return {
       store,
       loading,
+      signOut,
       email,
       emailLogin,
       alert_msg,

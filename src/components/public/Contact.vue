@@ -2,7 +2,7 @@
   <div class="relative py-16 bg-white overflow-hidden">
     <Dots />
     <div class="relative px-4 sm:px-6 lg:px-8">
-      <LegalHeader />
+      <PublicHeader />
       <div class="mt-12 max-w-prose mx-auto">
         <div
           class="
@@ -18,7 +18,16 @@
             md:mb-0
           "
         >
-          <h1 class="text-2xl font-bold tracking-tight text-white sm:text-4xl">
+          <h1
+            class="
+              text-2xl
+              font-semibold
+              tracking-wide
+              font-serif
+              text-white
+              sm:text-4xl
+            "
+          >
             Contact Us
           </h1>
           <p class="text-lg tracking-tight text-gray-300 mb-6">
@@ -34,9 +43,7 @@
             <input type="hidden" name="form-name" value="contact-me" />
             <input type="hidden" name="bot-field" />
             <div>
-              <label
-                for="first_name"
-                class="block text-sm font-semibold text-gray-300"
+              <label for="first_name" class="block text-sm text-gray-300"
                 >First name</label
               >
               <div class="mt-1">
@@ -65,9 +72,7 @@
               </div>
             </div>
             <div>
-              <label
-                for="last_name"
-                class="block text-sm font-semibold text-gray-300"
+              <label for="last_name" class="block text-sm text-gray-300"
                 >Last name</label
               >
               <div class="mt-1">
@@ -95,9 +100,7 @@
               </div>
             </div>
             <div class="sm:col-span-2">
-              <label
-                for="email"
-                class="block text-sm font-semibold text-gray-300"
+              <label for="email" class="block text-sm text-gray-300"
                 >Email</label
               >
               <div class="mt-1">
@@ -126,9 +129,7 @@
               </div>
             </div>
             <div class="sm:col-span-2">
-              <label
-                for="message"
-                class="block text-sm font-semibold text-gray-300"
+              <label for="message" class="block text-sm text-gray-300"
                 >Message</label
               >
               <div class="mt-1">
@@ -167,9 +168,7 @@
                   border border-transparent
                   rounded-md
                   shadow-sm
-                  text-base
-                  font-medium
-                  text-white
+                  text-base text-white
                   bg-sky-700
                   hover:bg-sky-800
                   focus:outline-none
@@ -187,14 +186,14 @@
 </template>
 <script>
 import Dots from "./Dots.vue";
-import LegalHeader from "../nav/LegalHeader.vue";
+import PublicHeader from "../nav/PublicHeader.vue";
 
 import { store } from "../../store";
 
 export default {
   components: {
     Dots,
-    LegalHeader,
+    PublicHeader,
   },
   setup() {
     return { store };

@@ -27,18 +27,23 @@ export async function initThought() {
 
     // check if thought already exists today
     let { data: thought, error } = await supabase
-      .rpc("todays_thought", {
-        profile: store.user.id,
-      })
-      .single();
+      .from("thoughts")
+      .select()
+      .eq("date", new Date().toLocaleString().split(",")[0])
+      .order("id", { ascending: false })
+      .limit(1);
 
-    if (thought.id) {
-      store.todaysThought = thought;
+    if (thought.length) {
+      store.todaysThought = thought[0];
     } else {
       // insert new thought if none
       let { data, error } = await supabase
         .from("thoughts")
-        .insert({ profile_id: store.user.id, step: 1 })
+        .insert({
+          profile_id: store.user.id,
+          step: 1,
+          date: new Date().toLocaleString().split(",")[0],
+        })
         .single();
       if (data) {
         store.todaysThought = data;
@@ -67,6 +72,7 @@ export async function initThought() {
     if (error) throw error;
   } catch (error) {
     store.error = error;
+    console.log(error);
   } finally {
     store.loading = false;
   }

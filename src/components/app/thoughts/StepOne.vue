@@ -6,7 +6,7 @@
     <p class="text-gray-300">
       Take a moment to relax. Allow yourself to get comfortable.
     </p>
-    <transition name="slowerfade" appear>
+    <transition name="fade" appear>
       <button
         v-show="showButton"
         @click="updateStep(2)"

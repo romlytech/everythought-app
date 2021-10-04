@@ -10,6 +10,12 @@ export const routes = [
     meta: { title: "Login Page" },
   },
   {
+    path: "/:path(.*)",
+    name: "404",
+    meta: { title: "404 - Not Found" },
+    component: () => import("./components/public/NotFound.vue"),
+  },
+  {
     path: "/",
     name: "index",
     component: Public,
@@ -42,12 +48,6 @@ export const routes = [
         meta: { title: "Contact Us" },
         component: () => import("./components/public/Contact.vue"),
       },
-      {
-        path: "/:path(.*)",
-        name: "404",
-        meta: { title: "404 - Not Found" },
-        component: () => import("./components/public/NotFound.vue"),
-      },
     ],
   },
   {
@@ -67,8 +67,8 @@ export const routes = [
     component: () => import("./views/Authorized.vue"),
     children: [
       {
-        path: "/home",
-        name: "home",
+        path: "/dashboard",
+        name: "dashboard",
         meta: {
           title: "Home",
           requiresAuth: true,

@@ -9,7 +9,7 @@
       tomorrow to discover more about your emotions.
     </p>
     <router-link
-      to="/home"
+      to="/dashboard"
       class="float-right mt-8 font-medium hover:text-white"
     >
       Return to home <span class="animate-pulse">&rarr;</span>

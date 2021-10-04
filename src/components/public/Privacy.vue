@@ -2,7 +2,7 @@
   <div class="relative py-16 bg-white overflow-hidden">
     <Dots />
     <div class="relative px-4 sm:px-6 lg:px-8">
-      <LegalHeader subtitle="Legal Stuff" />
+      <PublicHeader subtitle="Legal Stuff" :showTitle="true" />
       <div class="mt-6 prose prose-sky text-gray-500 mx-auto">
         <p>Last updated July 1, 2021</p>
         <p>
@@ -405,8 +405,8 @@
         <p>
           If you are a resident in Switzerland, the contact details for the data
           protection authorities are available here:
-          <a href="https://www.edoeb.admin.ch/edoeb/en/home.html"
-            >https://www.edoeb.admin.ch/edoeb/en/home.html</a
+          <a href="https://www.edoeb.admin.ch/edoeb/en/dashboard.html"
+            >https://www.edoeb.admin.ch/edoeb/en/dashboard.html</a
           >.
         </p>
         <p>
@@ -534,12 +534,12 @@
 </template>
 <script>
 import Dots from "./Dots.vue";
-import LegalHeader from "../nav/LegalHeader.vue";
+import PublicHeader from "../nav/PublicHeader.vue";
 
 export default {
   components: {
     Dots,
-    LegalHeader,
+    PublicHeader,
   },
 };
 </script>

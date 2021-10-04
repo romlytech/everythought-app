@@ -6,8 +6,9 @@
         ><span class="text-gray-600 text-sm">.app</span>
       </router-link>
     </div>
-    <h1 v-if="subtitle" class="mt-12">
+    <h1 v-if="showTitle" class="mt-12">
       <span
+        v-if="subtitle"
         class="block text-sm text-center text-sky-600 tracking-wide uppercase"
         >{{ subtitle }}</span
       >
@@ -17,8 +18,7 @@
           block
           text-3xl text-center
           leading-8
-          font-extrabold
-          tracking-tight
+          font-semibold
           text-gray-900
           sm:text-4xl
           font-serif
@@ -32,6 +32,7 @@
 export default {
   props: {
     subtitle: String,
+    showTitle: Boolean,
   },
 };
 </script>

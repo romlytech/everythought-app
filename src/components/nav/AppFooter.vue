@@ -1,20 +1,27 @@
 <template>
-  <footer>
-    <div class="mx-auto px-4 mb-14">
-      <div class="text-xs text-gray-500 text-center">
-        <span class="block sm:inline"
-          >&copy; 2021
-          <a
-            href="https://romly.tech/"
-            rel="noopener"
-            target="_blank"
-            aria-label="EveryThought"
-            class="hover:text-primary-500"
-            >EveryThought</a
-          >.</span
-        >
-        <span class="block sm:inline pl-1">All rights reserved.</span>
-      </div>
-    </div>
+  <footer
+    class="
+      max-w-2xl
+      mx-auto
+      px-4
+      md:px-6
+      lg:px-8
+      flex
+      justify-between
+      text-xs text-gray-500
+    "
+  >
+    <p>&copy; 2021 EveryThought</p>
+    <nav class="space-x-2 font-medium inline-flex">
+      <router-link
+        to="/privacy-policy"
+        class="text-gray-600 hover:text-gray-800"
+      >
+        Privacy
+      </router-link>
+      <router-link to="/terms-of-use" class="text-gray-600 hover:text-gray-800">
+        Terms
+      </router-link>
+    </nav>
   </footer>
 </template>

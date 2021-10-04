@@ -1,7 +1,7 @@
 <template>
   <div>
     <AppNav />
-    <main class="md:mt-16">
+    <main class="sm:mt-16">
       <!-- Router Child -->
       <router-view class="h-full" v-slot="{ Component }">
         <transition name="fade" mode="out-in">

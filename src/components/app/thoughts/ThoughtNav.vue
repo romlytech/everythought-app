@@ -2,7 +2,7 @@
   <div class="fixed top-0 w-full z-50">
     <div class="fixed top-1 left-0.5">
       <router-link
-        to="/home"
+        to="/dashboard"
         class="
           ml-1
           flex
@@ -29,7 +29,7 @@
           :key="step.id"
           :class="[
             store.todaysThought.step >= step.id ? 'bg-gray-300' : 'bg-gray-500',
-            'block w-2.5 h-1.5 rounded-full',
+            'block w-3 h-1 rounded-full',
           ]"
           @click="movetoStep(step.id)"
         >

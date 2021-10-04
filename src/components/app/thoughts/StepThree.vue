@@ -9,14 +9,14 @@
       <span class="font-medium text-gray-300">{{ store.emotion.name }}</span
       >.
     </p>
-    <transition name="slowerfade" appear>
-      <blockquote v-show="showDescription" class="text-2xl font-serif">
-        {{ store.emotion.description }}
-      </blockquote>
-    </transition>
+
+    <blockquote class="text-2xl font-serif">
+      {{ store.emotion.description }}
+    </blockquote>
+
     <transition name="fade" appear>
       <div
-        v-show="showMisconception"
+        v-show="showMisconception && store.emotion.misconception"
         class="space-y-2"
         :class="crossout ? '-rotate-2 transition-all duration-500 ease-in' : ''"
       >
@@ -29,11 +29,12 @@
       </div>
     </transition>
     <transition name="fade" appear>
-      <div v-show="crossout">
+      <div v-show="crossout" class="pt-11">
         <label
           for="response"
           class="tracking-wider uppercase text-sm text-gray-400"
-          >Where do you feel {{ store.emotion.name }} in your life?</label
+          >Where do you feel {{ store.emotion.name }} in your
+          {{ store.prompt.category }}?</label
         >
         <textarea
           id="response"
@@ -42,6 +43,7 @@
           class="
             py-3
             px-4
+            mt-1
             block
             w-full
             shadow-sm
@@ -84,7 +86,6 @@ import { supabase, updateThought } from "../../../supabase";
 
 export default {
   async setup() {
-    const showDescription = ref(false);
     const showMisconception = ref(false);
     const crossout = ref(false);
     const response = ref(store.todaysThought.response);
@@ -107,7 +108,6 @@ export default {
       if (prompt.id) {
         store.prompt = prompt;
       }
-      console.log(prompt);
 
       if (prompt.emotions.name) {
         store.emotion = prompt.emotions;
@@ -117,19 +117,14 @@ export default {
     }
 
     setInterval(() => {
-      showDescription.value = true;
-    }, 3210);
-
-    setInterval(() => {
       showMisconception.value = true;
-    }, 7777);
+    }, 4321);
 
     setInterval(() => {
       crossout.value = true;
-    }, 10000);
+    }, 7777);
 
     return {
-      showDescription,
       showMisconception,
       crossout,
       response,
