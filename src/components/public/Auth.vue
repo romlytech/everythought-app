@@ -121,12 +121,12 @@
           focus:ring-2 focus:ring-offset-2 focus:ring-white
         "
         :class="
-          error
+          error_flag
             ? 'text-red-700 bg-red-100 hover:bg-red-200'
             : 'text-sky-700 bg-sky-100 hover:bg-sky-200'
         "
       >
-        {{ error ? "Try again" : "Refresh" }} &olarr;
+        {{ error_flag ? "Try again" : "Refresh" }} &olarr;
       </button>
     </div>
     <div v-if="!store.user" class="px-4 py-6 bg-gray-700 sm:px-10">
@@ -158,32 +158,8 @@ export default {
   setup() {
     const loading = ref(false);
     const alert_msg = ref("");
-    const error = ref(false);
+    const error_flag = ref(false);
     const email = ref("");
-
-    const socialLogin = async (provider) => {
-      try {
-        loading.value = true;
-        const { error } = await supabase.auth.signIn({ provider: provider });
-        if (error) throw error;
-        if (!error) {
-          alert_msg.value = "Checking with your social provider...";
-        }
-      } catch (error) {
-        error.value = true;
-        alert_msg.value = error.error_description || error.message;
-        notify(
-          {
-            group: "toast",
-            type: "error",
-            title: "Error",
-          },
-          6000
-        );
-      } finally {
-        loading.value = false;
-      }
-    };
 
     const emailLogin = async () => {
       try {
@@ -194,6 +170,7 @@ export default {
           alert_msg.value = "Check your email for the login link!";
         }
       } catch (error) {
+        error_flag.value = true;
         alert_msg.value = error.error_description || error.message;
         notify(
           {
@@ -213,9 +190,8 @@ export default {
       loading,
       email,
       emailLogin,
-      socialLogin,
       alert_msg,
-      error,
+      error_flag,
     };
   },
 };
