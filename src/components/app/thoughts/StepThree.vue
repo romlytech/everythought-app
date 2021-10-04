@@ -76,6 +76,15 @@
         Continue <span class="animate-pulse">&rarr;</span>
       </button>
     </transition>
+    <transition name="fade" appear>
+      <button
+        v-show="crossout"
+        @click="updateStep(2)"
+        class="mt-8 font-medium hover:text-white"
+      >
+        <span class="animate-pulse">&larr;</span> Go back
+      </button>
+    </transition>
   </section>
 </template>
 <script>

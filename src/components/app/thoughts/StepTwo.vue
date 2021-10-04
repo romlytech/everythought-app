@@ -39,6 +39,15 @@
         </RadioGroupOption>
       </transition-group>
     </RadioGroup>
+    <transition name="slowerfade" appear>
+      <button
+        v-show="showAgreement"
+        @click="updateStep(1)"
+        class="mt-8 font-medium hover:text-white"
+      >
+        <span class="animate-pulse">&larr;</span> Go back
+      </button>
+    </transition>
   </section>
 </template>
 <script>

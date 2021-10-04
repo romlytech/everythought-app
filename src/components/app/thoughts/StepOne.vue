@@ -36,7 +36,7 @@ export default {
 
     setInterval(() => {
       showButton.value = true;
-    }, 4321);
+    }, 2000);
 
     return {
       showButton,

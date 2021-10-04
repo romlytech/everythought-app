@@ -220,6 +220,11 @@ import { Menu, MenuButton, MenuItem, MenuItems } from "@headlessui/vue";
 
 import { MenuIcon, XIcon, LogoutIcon, BellIcon } from "@heroicons/vue/outline";
 
+const navigation = [
+  // { title: "Home", name: "home" },
+  { title: "Edit Profile", name: "profile" },
+];
+
 const notifications = [
   { date: "1/1/21", text: "Here's a notification test.", author: "romlytech" },
   { date: "3/1/21", text: "Here's another test.", author: "emily" },
@@ -303,6 +308,7 @@ export default {
 
     return {
       store,
+      navigation,
       notifications,
 
       getProfile,

@@ -14,39 +14,21 @@
       {{
         store.profile.first_name
           ? "Welcome back, " + store.profile.first_name
-          : "Welcome, friend. Let's complete your profile"
-      }}.
+          : "Welcome, friend."
+      }}
       <br />
       <span class="text-gray-500 text-xl font-sans font-normal">
-        Are you ready to dive into your thoughts today?</span
+        {{
+          store.profile.first_name
+            ? "Are you ready to dive into your thoughts today?"
+            : "Before we get started, let's complete your profile."
+        }}</span
       >
     </h2>
     <div class="flex mt-8">
       <div class="inline-flex gap-4">
-        <!-- <router-link
-          to="/profile"
-          class="
-            inline-flex
-            items-center
-            justify-center
-            px-5
-            py-3
-            text-base
-            leading-6
-            text-gray-700
-            transition
-            duration-150
-            ease-in-out
-            bg-gray-200
-            border border-transparent
-            rounded-md
-            hover:bg-gray-300
-            focus:outline-none
-          "
-          >Edit Profile</router-link
-        > -->
         <router-link
-          to="/thoughts"
+          :to="store.profile.first_name ? '/thoughts' : '/profile'"
           class="
             inline-flex
             items-center
@@ -66,7 +48,10 @@
             hover:bg-sky-500
             focus:outline-none
           "
-          >Today's Thought &rarr;</router-link
+          >{{
+            store.profile.first_name ? "Today's Thought" : "Edit Profile"
+          }}
+          &rarr;</router-link
         >
       </div>
     </div>

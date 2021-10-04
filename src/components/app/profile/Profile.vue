@@ -5,7 +5,7 @@
         v-if="!store.profile.first_name"
         class="mb-6"
         title="Profile Required"
-        msg="You must complete your profile before you can participate in our community."
+        msg="Let's get to know you by name. Your profile will not be shared with anyone, it's just to create a better experience for you within the app."
       />
       <form
         class="space-y-6 grid grid-cols-1 lg:grid-cols-2 gap-x-4"
@@ -13,10 +13,10 @@
       >
         <div class="col-span-1 lg:col-span-2">
           <h2 class="text-lg mt-1 text-gray-700 font-semibold">My Profile</h2>
-          <!-- <p class="text-sm mt-1 text-gray-500">
-            Your first_name, avatar and home airport are shared with other pilots
-            in the Local Chats you choose to participate in.
-          </p> -->
+          <p class="text-sm mt-1 text-gray-500">
+            We take privacy seriously. This information will not be used
+            anywhere outside of this app.
+          </p>
         </div>
         <AvatarUploader
           class="col-span-1 lg:col-span-2"
@@ -27,7 +27,7 @@
           <label
             for="first_name"
             class="block text-sm font-medium text-gray-700"
-            >First name</label
+            >First Name</label
           >
           <input
             id="first_name"
@@ -50,7 +50,6 @@
             disabled
           />
         </div>
-
         <div class="col-span-1 lg:col-span-2">
           <input
             type="submit"
