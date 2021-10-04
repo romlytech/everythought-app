@@ -1,5 +1,5 @@
 import Public from "./views/Public.vue";
-import LoginLanding from "./components/public/LoginLanding.vue";
+import IndexLanding from "./components/public/IndexLanding.vue";
 
 export const routes = [
   {
@@ -25,7 +25,7 @@ export const routes = [
         path: "/",
         name: "landing",
         meta: { title: "Home" },
-        component: LoginLanding,
+        component: IndexLanding,
       },
       {
         path: "/terms-of-use",
