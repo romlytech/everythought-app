@@ -20,7 +20,7 @@
           hover:bg-gray-100
         "
       >
-        <p class="prose-md font-medium text-gray-700 font-serif">
+        <p class="font-medium text-gray-700 font-serif whitespace-pre-wrap">
           {{ thought.response }}
         </p>
         <p
@@ -35,12 +35,15 @@
             w-full
           "
         >
-          <time class="hidden md:block" :datetime="thought.date">{{
+          <time class="hidden md:inline-flex" :datetime="thought.date">{{
             longDate(thought.date)
           }}</time>
-          <time class="md:hidden" :datetime="thought.date">{{
-            shortDate(thought.date)
-          }}</time>
+          <time
+            style="margin-left: 0"
+            class="md:hidden"
+            :datetime="thought.date"
+            >{{ shortDate(thought.date) }}</time
+          >
           <span
             class="
               inline-flex
