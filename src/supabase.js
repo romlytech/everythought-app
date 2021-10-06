@@ -83,7 +83,7 @@ export async function csvThoughts() {
       const anchor = document.createElement("a");
       anchor.href = "data:text/csv;charset=utf-8," + encodeURIComponent(csv);
       anchor.target = "_blank";
-      anchor.download = `EveryThought_export_${new Date().toLocaleString()}.csv`;
+      anchor.download = `EveryThought_export_${new Date().toLocaleDateString()}.csv`;
       anchor.click();
     }
     if (error) throw error;
