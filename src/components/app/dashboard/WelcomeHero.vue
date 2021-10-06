@@ -22,7 +22,7 @@
     <div class="flex px-5 sm:px-8">
       <div class="inline-flex gap-4">
         <router-link
-          :to="store.profile.first_name ? '/thoughts' : '/profile'"
+          :to="store.profile.first_name ? '/thoughts/new' : '/profile'"
           class="
             inline-flex
             items-center
@@ -67,7 +67,7 @@
         <span class="text-gray-700 font-medium">{{ store.thoughtCount }}</span>
       </div>
       <div class="px-5 py-3 text-sm text-gray-600 text-center">
-        Thinking since<br />
+        User since<br />
         <span class="text-gray-700 font-medium">{{ user_since }}</span>
       </div>
     </div>

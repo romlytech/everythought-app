@@ -69,6 +69,12 @@
     <p v-else class="text-gray-600 font-serif">
       You haven't journaled any of your thoughts yet.
     </p>
+    <p
+      v-if="store.thoughts && store.oldThoughts"
+      class="text-gray-500 font-serif pt-4 flex-grow text-center text-xs"
+    >
+      Currently, you can only view Thoughts from the past thirty days.
+    </p>
   </section>
 </template>
 <script>

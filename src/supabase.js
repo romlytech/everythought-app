@@ -12,25 +12,48 @@ export async function fetchThoughts() {
     store.error = null;
     store.user = supabase.auth.user();
 
-    let {
-      data: thoughts,
-      error,
-      count,
-    } = await supabase
+    let { count: thoughtCount, error } = await supabase
       .from("thoughts")
-      .select(`date, agreement, response, prompts(id,emotion(name))`, {
+      .select("id", {
         count: "exact",
       })
-      .gte("step", 5)
-      .order("updated_at", { ascending: false })
-      .limit(10);
+      .gte("step", 5);
 
-    if (count) {
-      store.thoughts = thoughts;
-      store.thoughtCount = count.toLocaleString();
-      console.log(thoughts);
+    if (thoughtCount) {
+      store.thoughtCount = thoughtCount.toLocaleString();
+      let { data: thoughts, error } = await supabase
+        .from("thoughts")
+        .select(`date, agreement, response, prompts(id,emotion(name))`)
+        .gte("step", 5)
+        .filter(
+          "date",
+          "gte",
+          new Date(new Date().setDate(new Date().getDate() - 30)).toUTCString()
+        )
+        .order("updated_at", { ascending: false });
+
+      if (thoughts) {
+        store.thoughts = thoughts;
+        let { count: oldThoughts, error } = await supabase
+          .from("thoughts")
+          .select("id", {
+            count: "exact",
+          })
+          .gte("step", 5)
+          .filter(
+            "date",
+            "lte",
+            new Date(
+              new Date().setDate(new Date().getDate() - 30)
+            ).toUTCString()
+          );
+        if (oldThoughts) {
+          store.oldThoughts = true;
+        }
+        if (error) throw error;
+      }
+      if (error) throw error;
     }
-
     if (error) throw error;
   } catch (error) {
     store.error = error;

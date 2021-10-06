@@ -44,7 +44,8 @@ export const routes = [
     ],
   },
   {
-    path: "/thoughts",
+    path: "/thoughts/new",
+    alias: "/thoughts",
     name: "new_thought",
     meta: {
       title: "Today's Thought",
