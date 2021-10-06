@@ -1,6 +1,8 @@
 <template>
   <div class="max-w-2xl mx-auto pb-6 sm:px-6 lg:px-8">
-    <h1 class="text-lg leading-6 font-medium text-gray-900 mb-2">
+    <h1
+      class="text-lg leading-6 hidden sm:block font-medium text-gray-900 mb-2"
+    >
       Account Settings
     </h1>
     <div class="bg-white sm:rounded-lg shadow p-4 space-y-11">
