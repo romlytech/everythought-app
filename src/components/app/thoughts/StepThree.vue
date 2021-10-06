@@ -1,5 +1,5 @@
 <template>
-  <section class="w-full max-w-md text-left h-64 z-50 space-y-4 px-0">
+  <section class="w-full max-w-md text-left z-50 space-y-4 px-0">
     <p class="tracking-wider uppercase text-sm text-gray-400">
       {{
         store.todaysThought.agreement
@@ -20,10 +20,10 @@
         class="space-y-2"
         :class="crossout ? '-rotate-2 transition-all duration-500 ease-in' : ''"
       >
-        <p class="tracking-wider italic text-sm text-rose-400">
+        <p class="tracking-wider uppercase text-sm text-red-500">
           Common misconception:
         </p>
-        <p class="italic text-sm" :class="crossout ? 'line-through' : ''">
+        <p class="italic text-sm" :class="crossout ? 'text-gray-400' : ''">
           {{ store.emotion.misconception }}
         </p>
       </div>
