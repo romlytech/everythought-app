@@ -3,7 +3,7 @@ import Public from "./views/Public.vue";
 export const routes = [
   {
     path: "/",
-    alias: ["/login", "/signup", "/sign-up", "/register"],
+    alias: ["/login", "/signup", "/sign-up", "/register", "/auth"],
     name: "login",
     component: () => import("./components/public/Login.vue"),
     meta: { title: "Login Page" },
@@ -71,10 +71,11 @@ export const routes = [
         component: () => import("./components/app/dashboard/Dashboard.vue"),
       },
       {
-        path: "/profile",
-        name: "profile",
-        meta: { title: "My Profile", requiresAuth: true },
-        component: () => import("./components/app/profile/Profile.vue"),
+        path: "/account",
+        alias: ["/profile", "/settings"],
+        name: "account",
+        meta: { title: "Account Settings", requiresAuth: true },
+        component: () => import("./components/app/settings/Settings.vue"),
       },
     ],
   },

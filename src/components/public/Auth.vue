@@ -134,7 +134,7 @@
     </div>
     <transition name="fade" appear>
       <div v-if="store.alert_msg" class="p-10 text-center space-y-6">
-        <p class="text-white">
+        <p class="text-white whitespace-pre-wrap">
           {{ store.alert_msg }}
         </p>
         <button

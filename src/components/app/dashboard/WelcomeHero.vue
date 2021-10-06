@@ -22,7 +22,7 @@
     <div class="flex px-5 sm:px-8">
       <div class="inline-flex gap-4">
         <router-link
-          :to="store.profile.first_name ? '/thoughts/new' : '/profile'"
+          :to="store.profile.first_name ? '/thoughts/new' : '/account'"
           class="
             inline-flex
             items-center

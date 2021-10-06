@@ -63,6 +63,37 @@ export async function fetchThoughts() {
   }
 }
 
+export async function csvThoughts() {
+  try {
+    store.loading = true;
+    store.error = null;
+    store.user = supabase.auth.user();
+
+    let { data: csv, error } = await supabase
+      .from("thoughts")
+      .select(`updated_at, response`)
+      .gte("step", 5)
+      .order("updated_at", { ascending: false })
+      .csv();
+
+    if (csv) {
+      store.loading = false;
+      console.log(csv);
+
+      const anchor = document.createElement("a");
+      anchor.href = "data:text/csv;charset=utf-8," + encodeURIComponent(csv);
+      anchor.target = "_blank";
+      anchor.download = `EveryThought_export_${new Date().toLocaleString()}.csv`;
+      anchor.click();
+    }
+    if (error) throw error;
+  } catch (error) {
+    store.error = error;
+    store.loading = false;
+    console.log(error);
+  }
+}
+
 export async function initThought() {
   try {
     store.loading = true;

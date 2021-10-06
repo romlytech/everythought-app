@@ -1,9 +1,9 @@
 <template>
   <section class="w-full max-w-md text-left h-64 z-50 space-y-4 px-0">
     <label for="response" class="tracking-wider uppercase text-gray-400"
-      >Where do you feel
-      <span class="font-medium text-gray-300">{{ store.emotion.name }}</span> in
-      your life?</label
+      >Describe
+      <span class="font-medium text-gray-300">{{ store.emotion.name }}</span> as
+      it relates to your life:</label
     >
 
     <textarea
@@ -33,12 +33,13 @@
       class="text-xs mt-1"
       :class="response.length >= 320 ? 'text-rose-400' : 'text-amber-400'"
     >
-      Try to keep your response brief.
+      Try to keep your response brief. {{ 320 - response.length }} characters
+      remaining.
     </p>
 
     <transition name="fade" appear>
       <button
-        v-show="response"
+        v-show="response.length != placeholder.length"
         @click="updateStep(5)"
         class="float-right -mt-4 font-medium hover:text-white"
       >
@@ -65,7 +66,10 @@ import { updateThought } from "../../../supabase";
 export default {
   setup() {
     const back = ref(false);
-    const response = ref(store.todaysThought.response);
+    const placeholder = `I feel ${store.emotion.name || "this emotion"} in my ${
+      store.prompt.category || "life"
+    } when `;
+    const response = ref(placeholder);
 
     function updateStep(step) {
       store.todaysThought.step = step;
@@ -79,6 +83,7 @@ export default {
 
     return {
       back,
+      placeholder,
       response,
       updateStep,
 

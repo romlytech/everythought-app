@@ -232,7 +232,7 @@
 <script>
 import { supabase } from "../../supabase";
 import { store } from "../../store";
-import { onMounted } from "vue";
+import { onMounted, watch } from "vue";
 import { useRouter } from "vue-router";
 import { notify } from "notiwind";
 
@@ -246,10 +246,7 @@ import {
   CheckCircleIcon,
 } from "@heroicons/vue/outline";
 
-const navigation = [
-  // { title: "Home", name: "home" },
-  { title: "Edit Profile", name: "profile" },
-];
+const navigation = [{ title: "Account Settings", name: "account" }];
 
 const notifications = [];
 
@@ -292,7 +289,7 @@ export default {
           6000
         );
       } finally {
-        if (store.profile.avatar_url) {
+        if (store.profile.avatar_name) {
           downloadImage();
         }
       }
@@ -303,7 +300,7 @@ export default {
       try {
         const { data, error } = await supabase.storage
           .from("avatars")
-          .download(store.profile.avatar_url);
+          .download(`${store.user.id}/${store.profile.avatar_name}`);
         if (error) throw error;
         store.avatar_src = URL.createObjectURL(data);
       } catch (error) {

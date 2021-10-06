@@ -37,24 +37,36 @@ import { supabase } from "../../../supabase";
 
 export default {
   props: {
-    avatar_url: String,
+    avatar_name: String,
   },
   setup(props) {
     const src = ref("");
 
-    async function downloadImage() {
-      if (props.avatar_url) {
-        try {
-          const { data, error } = await supabase.storage
-            .from("avatars")
-            .download(props.avatar_url);
-          if (error) throw error;
-          src.value = URL.createObjectURL(data);
-        } catch (error) {
-          console.error("Error downloading image: ", error.message);
-        }
+    // async function downloadImage() {
+    //   if (props.avatar_name) {
+    //     try {
+    //       const { data, error } = await supabase.storage
+    //         .from("avatars")
+    //         .download(props.avatar_name);
+    //       if (error) throw error;
+    //       src.value = URL.createObjectURL(data);
+    //     } catch (error) {
+    //       console.error("Error downloading image: ", error.message);
+    //     }
+    //   }
+    // }
+
+    const downloadImage = async () => {
+      try {
+        const { data, error } = await supabase.storage
+          .from("avatars")
+          .download(`${store.profile.id}/${props.avatar_name}`);
+        if (error) throw error;
+        src.value = URL.createObjectURL(data);
+      } catch (error) {
+        console.error("Error downloading image: ", error.message);
       }
-    }
+    };
 
     onMounted(() => {
       downloadImage();

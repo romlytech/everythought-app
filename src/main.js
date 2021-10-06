@@ -23,6 +23,10 @@ router.beforeEach(async (to, from, next) => {
     store.alert_msg = "Sorry, there was a problem. Please try again.";
     store.error = true;
     return next({ path: "/" });
+  } else if (to.hash.includes("message")) {
+    store.alert_msg = to.hash.split("#message=")[1].replaceAll("+", " ");
+    store.error = false;
+    return next({ path: "/register" });
   } else if (to.meta.requiresAuth && !store.user) {
     return next({ path: "/login" });
   } else if (to.path == "/" && store.user) {

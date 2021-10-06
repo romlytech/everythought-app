@@ -65,6 +65,7 @@
 <script>
 import { ref, toRefs, watch } from "vue";
 import { supabase } from "../../../supabase";
+import { store } from "../../../store";
 import { notify } from "notiwind";
 
 export default {
@@ -83,7 +84,7 @@ export default {
       try {
         const { data, error } = await supabase.storage
           .from("avatars")
-          .download(path.value);
+          .download(`${store.user.id}/${path.value}`);
         if (error) throw error;
         src.value = URL.createObjectURL(data);
       } catch (error) {
@@ -100,16 +101,24 @@ export default {
         }
 
         const file = files.value[0];
+
+        if (file.size > 5242880) {
+          throw new Error(`The maximum file size limit is 5 MB.`);
+        }
+
         const fileExt = file.name.split(".").pop();
-        const fileName = `${Math.random()}.${fileExt}`;
-        const filePath = `${fileName}`;
+        const fileName = `avatar.${fileExt}`;
+        const filePath = `${store.user.id}/${fileName}`;
 
         let { error: uploadError } = await supabase.storage
           .from("avatars")
-          .upload(filePath, file);
+          .upload(filePath, file, {
+            cacheControl: "3600",
+            upsert: true,
+          });
 
         if (uploadError) throw uploadError;
-        emit("update:path", filePath);
+        emit("update:path", fileName);
         emit("upload");
       } catch (error) {
         notify(
@@ -132,6 +141,7 @@ export default {
 
     return {
       path,
+      store,
       size,
       uploading,
       src,
