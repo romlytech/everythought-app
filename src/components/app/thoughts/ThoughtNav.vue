@@ -33,7 +33,7 @@
           ]"
           @click="movetoStep(step.id)"
         >
-          <span class="sr-only">Step {{ step.id }}. {{ step.title }}.</span>
+          <span class="sr-only">Step {{ step.id }}</span>
         </li>
       </ol>
     </nav>
@@ -41,14 +41,9 @@
 </template>
 <script>
 import { XIcon } from "@heroicons/vue/solid";
-import { store } from "../../../store";
+import { store } from "@/store";
 
-const steps = [
-  { id: 1, title: "Welcome" },
-  { id: 2, title: "Reading prompt" },
-  { id: 3, title: "Prayer request" },
-  { id: 4, title: "Pray for another person" },
-];
+const steps = [{ id: 1 }, { id: 2 }, { id: 3 }, { id: 4 }, { id: 5 }];
 
 export default {
   components: { XIcon },

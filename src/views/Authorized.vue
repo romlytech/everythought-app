@@ -1,5 +1,6 @@
 <template>
-  <div>
+  <div class="mb-8">
+    <!-- Header -->
     <AppNav />
     <main class="sm:mt-16">
       <!-- Router Child -->

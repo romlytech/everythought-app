@@ -1,10 +1,9 @@
 import Public from "./views/Public.vue";
-import IndexLanding from "./components/public/IndexLanding.vue";
 
 export const routes = [
   {
-    path: "/login",
-    alias: ["/signup", "/sign-up", "/register"],
+    path: "/",
+    alias: ["/login", "/signup", "/sign-up", "/register"],
     name: "login",
     component: () => import("./components/public/Login.vue"),
     meta: { title: "Login Page" },
@@ -21,12 +20,6 @@ export const routes = [
     component: Public,
     meta: { title: "Landing Page" },
     children: [
-      {
-        path: "/",
-        name: "landing",
-        meta: { title: "Home" },
-        component: IndexLanding,
-      },
       {
         path: "/terms-of-use",
         alias: "/terms",
@@ -74,7 +67,7 @@ export const routes = [
           requiresAuth: true,
           requiresProfile: true,
         },
-        component: () => import("./components/app/Home.vue"),
+        component: () => import("./components/app/dashboard/Dashboard.vue"),
       },
       {
         path: "/profile",

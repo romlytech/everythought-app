@@ -6,6 +6,40 @@ const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY;
 
 export const supabase = createClient(supabaseUrl, supabaseAnonKey);
 
+export async function fetchThoughts() {
+  try {
+    store.loading = true;
+    store.error = null;
+    store.user = supabase.auth.user();
+
+    let {
+      data: thoughts,
+      error,
+      count,
+    } = await supabase
+      .from("thoughts")
+      .select(`date, agreement, response, prompts(id,emotion(name))`, {
+        count: "exact",
+      })
+      .gte("step", 5)
+      .order("updated_at", { ascending: false })
+      .limit(10);
+
+    if (count) {
+      store.thoughts = thoughts;
+      store.thoughtCount = count.toLocaleString();
+      console.log(thoughts);
+    }
+
+    if (error) throw error;
+  } catch (error) {
+    store.error = error;
+    console.log(error);
+  } finally {
+    store.loading = false;
+  }
+}
+
 export async function initThought() {
   try {
     store.loading = true;
@@ -30,23 +64,30 @@ export async function initThought() {
       .from("thoughts")
       .select()
       .eq("date", new Date().toLocaleString().split(",")[0])
+      .lte("step", 4)
       .order("id", { ascending: false })
       .limit(1);
 
     if (thought.length) {
       store.todaysThought = thought[0];
     } else {
-      // insert new thought if none
-      let { data, error } = await supabase
-        .from("thoughts")
-        .insert({
-          profile_id: store.user.id,
-          step: 1,
-          date: new Date().toLocaleString().split(",")[0],
-        })
-        .single();
-      if (data) {
-        store.todaysThought = data;
+      // create a new thought if none
+      let { data: prompt, error } = await supabase.rpc("get_random_prompt");
+      if (prompt) {
+        // insert new thought
+        let { data: thought, error } = await supabase
+          .from("thoughts")
+          .insert({
+            profile_id: store.user.id,
+            prompt_id: prompt.id,
+            step: 1,
+            date: new Date().toLocaleString().split(",")[0],
+          })
+          .single();
+        if (thought) {
+          store.todaysThought = thought;
+        }
+        if (error) throw error;
       }
       if (error) throw error;
     }

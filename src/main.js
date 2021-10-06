@@ -19,7 +19,11 @@ const router = createRouter({
 
 router.beforeEach(async (to, from, next) => {
   store.user = supabase.auth.user();
-  if (to.meta.requiresAuth && !store.user) {
+  if (to.hash.includes("error_code")) {
+    store.alert_msg = "Sorry, it looks like there was a problem.";
+    store.error = true;
+    return next({ path: "/" });
+  } else if (to.meta.requiresAuth && !store.user) {
     return next({ path: "/login" });
   } else if (to.path == "/" && store.user) {
     return next({ path: "/dashboard" });

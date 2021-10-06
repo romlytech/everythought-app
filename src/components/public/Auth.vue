@@ -12,7 +12,7 @@
     "
   >
     <div
-      v-if="!store.user && !alert_msg"
+      v-if="!store.user && !store.alert_msg"
       class="pt-6 px-4 sm:px-10 text-center"
     >
       <p class="text-xl font-serif font-medium text-white leading-10">
@@ -74,7 +74,10 @@
         </form>
       </div>
     </div>
-    <div v-if="store.user && !alert_msg" class="p-10 text-center space-y-4">
+    <div
+      v-if="store.user && !store.alert_msg"
+      class="p-10 text-center space-y-4"
+    >
       <h2 class="text-xl font-serif text-white">
         {{ loading ? "Signing out of your account..." : "You are logged in as"
         }}<br />
@@ -130,9 +133,9 @@
       </div>
     </div>
     <transition name="fade" appear>
-      <div v-if="alert_msg" class="p-10 text-center space-y-6">
+      <div v-if="store.alert_msg" class="p-10 text-center space-y-6">
         <p class="text-white">
-          {{ alert_msg }}
+          {{ store.alert_msg }}
         </p>
         <button
           @click="this.$router.go()"
@@ -150,17 +153,17 @@
             focus:ring-2 focus:ring-offset-2 focus:ring-white
           "
           :class="
-            error_flag
+            store.error
               ? 'text-red-700 bg-red-100 hover:bg-red-200'
               : 'text-sky-700 bg-sky-100 hover:bg-sky-200'
           "
         >
-          {{ error_flag ? "Try again" : "Refresh" }} &olarr;
+          {{ store.error ? "Try again" : "Refresh" }} &olarr;
         </button>
       </div>
     </transition>
     <div
-      v-if="!store.user && !alert_msg"
+      v-if="!store.user && !store.alert_msg"
       class="px-4 py-6 bg-gray-700 sm:px-10"
     >
       <p class="text-xs font-light leading-5 text-center text-gray-300">
@@ -185,15 +188,12 @@
 import { ref } from "vue";
 import { useRouter } from "vue-router";
 import { supabase } from "../../supabase";
-import { notify } from "notiwind";
 import { store } from "../../store";
 
 export default {
   setup() {
     const router = useRouter();
     const loading = ref(false);
-    const alert_msg = ref("");
-    const error_flag = ref(false);
     const email = ref("");
 
     const emailLogin = async () => {
@@ -202,19 +202,11 @@ export default {
         const { error } = await supabase.auth.signIn({ email: email.value });
         if (error) throw error;
         if (!error) {
-          alert_msg.value = "Check your email for the login link!";
+          store.alert_msg = "Check your email for the login link!";
         }
       } catch (error) {
-        error_flag.value = true;
-        alert_msg.value = error.error_description || error.message;
-        notify(
-          {
-            group: "toast",
-            type: "error",
-            title: "Error",
-          },
-          6000
-        );
+        store.error = true;
+        store.alert_msg = error.error_description || error.message;
       } finally {
         loading.value = false;
       }
@@ -230,6 +222,7 @@ export default {
         console.log(error);
       } finally {
         store.user = {};
+        router.push("/");
         router.go();
       }
     }
@@ -240,8 +233,6 @@ export default {
       signOut,
       email,
       emailLogin,
-      alert_msg,
-      error_flag,
     };
   },
 };

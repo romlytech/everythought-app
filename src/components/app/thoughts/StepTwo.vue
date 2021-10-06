@@ -3,7 +3,7 @@
     <p class="tracking-wider uppercase text-sm text-gray-400 mb-4">
       Today, we're talking about
       <span class="font-medium text-gray-300">{{
-        prompt.category ? prompt.category : "your emotions"
+        store.prompt.category ? store.prompt.category : "your emotions"
       }}</span
       >.
     </p>
@@ -13,7 +13,7 @@
       @click="updateStep(3)"
     >
       <RadioGroupLabel class="text-3xl md:text-4xl font-serif"
-        >{{ prompt.question }}
+        >{{ store.prompt.question }}
       </RadioGroupLabel>
       <div class="pt-4"></div>
       <transition-group name="fade" appear>
@@ -43,7 +43,7 @@
       <button
         v-show="showAgreement"
         @click="updateStep(1)"
-        class="mt-8 font-medium hover:text-white"
+        class="mt-8 font-medium text-gray-300 text-sm hover:text-white"
       >
         <span class="animate-pulse">&larr;</span> Go back
       </button>
@@ -56,7 +56,7 @@ import { ref } from "vue";
 import { RadioGroup, RadioGroupLabel, RadioGroupOption } from "@headlessui/vue";
 
 import { store } from "../../../store";
-import { supabase, updateThought } from "../../../supabase";
+import { updateThought } from "../../../supabase";
 
 const responses = [
   { title: "Yeah, I agree with that.", bool: true },
@@ -69,38 +69,14 @@ export default {
     RadioGroupLabel,
     RadioGroupOption,
   },
-  async setup() {
-    const prompt = ref([]);
+  setup() {
     const agreement_response = ref(store.todaysThought.agreement || null);
     const showAgreement = ref(false);
 
     function updateStep(step) {
       store.todaysThought.step = step;
       store.todaysThought.agreement = agreement_response.value;
-      store.todaysThought.prompt_id = prompt.value.id;
       updateThought();
-    }
-
-    try {
-      if (!store.todaysThought.prompt_id) {
-        let { data, error } = await supabase.rpc("get_random_prompt");
-        if (error) throw error;
-        if (data) {
-          prompt.value = data;
-        }
-      } else {
-        let { data, error } = await supabase
-          .from("prompts")
-          .select()
-          .eq("id", store.todaysThought.prompt_id)
-          .single();
-        if (error) throw error;
-        if (data) {
-          prompt.value = data;
-        }
-      }
-    } catch (error) {
-      store.error = error;
     }
 
     setInterval(() => {
@@ -113,7 +89,6 @@ export default {
       updateStep,
 
       store,
-      prompt,
       responses,
     };
   },

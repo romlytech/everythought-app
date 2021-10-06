@@ -42,6 +42,7 @@
         </transition>
       </div>
       <StepFour v-else-if="store.todaysThought.step == 4" />
+      <StepFive v-else-if="store.todaysThought.step == 5" />
     </transition>
   </div>
 </template>
@@ -52,6 +53,7 @@ import StepOne from "./StepOne.vue";
 import StepTwo from "./StepTwo.vue";
 import StepThree from "./StepThree.vue";
 import StepFour from "./StepFour.vue";
+import StepFive from "./StepFive.vue";
 
 import { store } from "../../../store";
 
@@ -65,6 +67,7 @@ export default {
     StepTwo,
     StepThree,
     StepFour,
+    StepFive,
   },
   setup() {
     initThought();

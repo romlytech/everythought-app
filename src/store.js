@@ -9,4 +9,7 @@ export const store = reactive({
   todaysThought: {},
   prompt: {},
   emotion: {},
+  thoughts: {},
+  thoughtCount: 0,
+  alert_msg: null,
 });

@@ -4,8 +4,7 @@
       <div class="text-center">
         <div>
           <router-link to="/" class="text-xl md:text-4xl text-sky-600">
-            Every<span class="text-gray-700 font-serif font-bold">Thought</span
-            ><span class="text-gray-600 text-sm md:text-xl">.app</span>
+            Every<span class="text-gray-700 font-serif font-bold">Thought</span>
           </router-link>
         </div>
         <ul class="mt-4 space-x-4 inline-flex">
@@ -29,15 +28,7 @@
         </ul>
         <div>
           <p class="pt-4 text-xs text-gray-600">
-            &copy; 2021
-            <a
-              href="https://romly.tech/"
-              rel="noopener"
-              target="_blank"
-              aria-label="EveryThought"
-              class="hover:text-primary-500"
-              >EveryThought</a
-            >. All rights reserved.
+            &copy; 2021 EveryThought. All rights reserved.
           </p>
         </div>
       </div>

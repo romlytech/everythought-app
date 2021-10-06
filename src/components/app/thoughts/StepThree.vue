@@ -29,61 +29,17 @@
       </div>
     </transition>
     <transition name="fade" appear>
-      <div v-show="crossout" class="pt-11">
-        <label
-          for="response"
-          class="tracking-wider uppercase text-sm text-gray-400"
-          >Where do you feel {{ store.emotion.name }} in your
-          {{ store.prompt.category }}?</label
+      <nav class="pt-11 justify-between w-full inline-flex" v-show="crossout">
+        <button
+          @click="updateStep(2)"
+          class="font-medium text-gray-300 text-sm hover:text-white"
         >
-        <textarea
-          id="response"
-          v-model="response"
-          type="textarea"
-          class="
-            py-3
-            px-4
-            mt-1
-            block
-            w-full
-            shadow-sm
-            border border-transparent
-            focus:border-sky-600
-            focus:outline-none
-            focus:ring-sky-500
-            bg-gray-700
-            text-gray-200
-            rounded-md
-          "
-          rows="4"
-          maxlength="320"
-        />
-        <p
-          v-if="response && response.length >= 260"
-          class="text-xs mt-1"
-          :class="response.length >= 320 ? 'text-rose-400' : 'text-amber-400'"
-        >
-          Try to keep your response brief.
-        </p>
-      </div>
-    </transition>
-    <transition name="fade" appear>
-      <button
-        v-show="crossout && response"
-        @click="updateStep(4)"
-        class="float-right -mt-4 font-medium hover:text-white"
-      >
-        Continue <span class="animate-pulse">&rarr;</span>
-      </button>
-    </transition>
-    <transition name="fade" appear>
-      <button
-        v-show="crossout"
-        @click="updateStep(2)"
-        class="mt-8 font-medium hover:text-white"
-      >
-        <span class="animate-pulse">&larr;</span> Go back
-      </button>
+          <span class="animate-pulse">&larr;</span> Go back
+        </button>
+        <button @click="updateStep(4)" class="font-medium hover:text-white">
+          Continue <span class="animate-pulse">&rarr;</span>
+        </button>
+      </nav>
     </transition>
   </section>
 </template>
@@ -91,38 +47,16 @@
 import { ref } from "vue";
 
 import { store } from "../../../store";
-import { supabase, updateThought } from "../../../supabase";
+import { updateThought } from "../../../supabase";
 
 export default {
-  async setup() {
+  setup() {
     const showMisconception = ref(false);
     const crossout = ref(false);
-    const response = ref(store.todaysThought.response);
 
     function updateStep(step) {
       store.todaysThought.step = step;
-      store.todaysThought.response = response.value;
       updateThought();
-    }
-
-    try {
-      let { data: prompt, error } = await supabase
-        .from("prompts")
-        .select(`*,emotions(*)`)
-        .eq("id", store.todaysThought.prompt_id)
-        .single();
-
-      if (error) throw error;
-
-      if (prompt.id) {
-        store.prompt = prompt;
-      }
-
-      if (prompt.emotions.name) {
-        store.emotion = prompt.emotions;
-      }
-    } catch (error) {
-      store.error = error;
     }
 
     setInterval(() => {
@@ -136,7 +70,6 @@ export default {
     return {
       showMisconception,
       crossout,
-      response,
       updateStep,
 
       store,

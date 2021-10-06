@@ -1,5 +1,5 @@
 <template>
-  <div class="bg-gray-800">
+  <header class="bg-gray-800">
     <!-- Main Nav -->
     <nav
       class="
@@ -18,8 +18,9 @@
       <div class="flex items-center">
         <div class="flex-shrink-0">
           <router-link to="/" class="text-lg md:text-2xl text-sky-600">
-            Every<span class="text-gray-300 font-serif font-bold">Thought</span
-            ><span class="text-gray-400 text-base">.app</span>
+            Every<span class="text-gray-300 font-serif font-medium"
+              >Thought</span
+            >
           </router-link>
         </div>
       </div>
@@ -63,7 +64,8 @@
                   absolute
                   right-0
                   mt-2
-                  w-72
+                  w-56
+                  md:w-96
                   rounded-md
                   shadow-lg
                   py-1
@@ -86,6 +88,19 @@
                     {{ message.text
                     }}<span class="text-sm">{{ message.author }}</span>
                   </button>
+                </MenuItem>
+                <MenuItem v-if="!notifications.length">
+                  <p
+                    class="
+                      p-4
+                      text-sm text-gray-700
+                      hover:text-gray-900
+                      inline-flex
+                    "
+                  >
+                    <CheckCircleIcon class="h-5 w-5 mr-2 text-green-500" />
+                    You don't have any notifications.
+                  </p>
                 </MenuItem>
               </MenuItems>
             </transition>
@@ -207,7 +222,7 @@
         </div>
       </div>
     </nav>
-  </div>
+  </header>
 </template>
 <script>
 import { supabase } from "../../supabase";
@@ -218,19 +233,20 @@ import { notify } from "notiwind";
 
 import { Menu, MenuButton, MenuItem, MenuItems } from "@headlessui/vue";
 
-import { MenuIcon, XIcon, LogoutIcon, BellIcon } from "@heroicons/vue/outline";
+import {
+  MenuIcon,
+  XIcon,
+  LogoutIcon,
+  BellIcon,
+  CheckCircleIcon,
+} from "@heroicons/vue/outline";
 
 const navigation = [
   // { title: "Home", name: "home" },
   { title: "Edit Profile", name: "profile" },
 ];
 
-const notifications = [
-  { date: "1/1/21", text: "Here's a notification test.", author: "romlytech" },
-  { date: "3/1/21", text: "Here's another test.", author: "emily" },
-  { date: "4/3/21", text: "Testing test.", author: "another" },
-  { date: "6/3/21", text: "For you, a test.", author: "stella" },
-];
+const notifications = [];
 
 export default {
   components: {
@@ -242,6 +258,7 @@ export default {
     BellIcon,
     MenuIcon,
     XIcon,
+    CheckCircleIcon,
   },
   setup() {
     const router = useRouter();

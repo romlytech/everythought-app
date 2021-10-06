@@ -2,8 +2,7 @@
   <header class="text-lg max-w-prose mx-auto">
     <div class="text-center w-full mx-auto mb-6">
       <router-link to="/" class="text-2xl text-sky-600">
-        Every<span class="text-gray-700 font-serif font-bold">Thought</span
-        ><span class="text-gray-600 text-sm">.app</span>
+        Every<span class="text-gray-700 font-serif font-bold">Thought</span>
       </router-link>
     </div>
     <h1 v-if="showTitle" class="mt-12">

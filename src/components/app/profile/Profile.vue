@@ -83,14 +83,12 @@ import { onMounted, ref } from "vue";
 import AvatarUploader from "../profile/AvatarUploader.vue";
 import { notify } from "notiwind";
 import InfoCard from "../InfoCard.vue";
-import { CheckIcon } from "@heroicons/vue/solid";
 import { useRouter } from "vue-router";
 
 export default {
   components: {
     AvatarUploader,
     InfoCard,
-    CheckIcon,
   },
   setup() {
     const loading = ref(true);
