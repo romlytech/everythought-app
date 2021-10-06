@@ -109,7 +109,7 @@
                   name="email"
                   type="email"
                   autocomplete="email"
-                  :value="store.profile.email"
+                  :value="store.user.email"
                   class="
                     py-3
                     px-4
