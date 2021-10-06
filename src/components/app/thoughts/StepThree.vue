@@ -10,7 +10,7 @@
       >.
     </p>
 
-    <blockquote class="text-2xl font-serif">
+    <blockquote class="text-2xl pb-8 font-serif whitespace-pre-wrap">
       {{ store.emotion.description }}
     </blockquote>
 
@@ -29,7 +29,7 @@
       </div>
     </transition>
     <transition name="fade" appear>
-      <nav class="pt-11 justify-between w-full inline-flex" v-show="crossout">
+      <nav class="pt-4 justify-between w-full inline-flex" v-show="crossout">
         <button
           @click="updateStep(2)"
           class="font-medium text-gray-300 text-sm hover:text-white"

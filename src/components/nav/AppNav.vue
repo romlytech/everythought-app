@@ -178,7 +178,12 @@
               >
                 <div class="p-4 pb-3 border-b mb-2">
                   <div class="text-base leading-none text-gray-800 break-all">
-                    Hello, {{ store.profile.first_name }}!
+                    Hello,
+                    {{
+                      store.profile.first_name
+                        ? store.profile.first_name
+                        : "friend"
+                    }}!
                   </div>
                   <div
                     class="text-sm font-light leading-6 text-gray-500 break-all"

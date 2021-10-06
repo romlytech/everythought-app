@@ -1,7 +1,7 @@
 <template>
   <div class="max-w-2xl mx-auto pb-6 sm:px-6 lg:px-8 space-y-11">
     <WelcomeHero />
-    <ThoughtCards />
+    <ThoughtCards v-if="store.profile.first_name" />
   </div>
 </template>
 <script>
