@@ -140,6 +140,7 @@
         >
           Delete account
         </button>
+
         <form v-if="confirmDelete" @submit.prevent="deleteUser" class="mt-4">
           <label
             for="confirmEmail"
@@ -184,7 +185,7 @@
             type="button"
             v-if="confirmDelete"
             @click="confirmDelete = false"
-            class="text-xs text-gray-600 font-medium hover:text-green-600"
+            class="text-gray-600 my-1 text-sm font-medium hover:text-green-600"
           >
             Cancel
           </button>
