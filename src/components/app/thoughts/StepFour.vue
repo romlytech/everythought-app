@@ -1,5 +1,5 @@
 <template>
-  <section class="w-full max-w-md text-left h-64 z-50 space-y-4 px-0">
+  <section class="w-full max-w-md text-left z-50 space-y-4 px-0">
     <label for="response" class="tracking-wider uppercase text-gray-400"
       >Describe
       <span class="font-medium text-gray-300">{{ store.emotion.name }}</span> as
@@ -36,53 +36,38 @@
       Try to keep your response brief. {{ 320 - response.length }} characters
       remaining.
     </p>
-
-    <transition name="fade" appear>
-      <button
-        v-show="response.length != placeholder.length"
-        @click="updateStep(5)"
-        class="float-right -mt-4 font-medium hover:text-white"
-      >
-        Continue <span class="animate-pulse">&rarr;</span>
-      </button>
-    </transition>
-    <transition name="fade" appear>
-      <button
-        v-show="back"
-        @click="updateStep(3)"
-        class="mt-8 font-medium text-sm hover:text-white"
-      >
-        <span class="animate-pulse">&larr;</span> Go back
-      </button>
-    </transition>
   </section>
 </template>
 <script>
-import { ref } from "vue";
+import { ref, watch } from "vue";
 
-import { store } from "../../../store";
-import { updateThought } from "../../../supabase";
+import { store } from "@/store";
+import { updateStep } from "@/supabase";
 
 export default {
   setup() {
-    const back = ref(false);
-    const placeholder = `I feel ${store.emotion.name || "this emotion"} in my ${
-      store.prompt.category || "life"
-    } when `;
-    const response = ref(placeholder);
+    store.showStepnav = false;
+    store.showContinue = false;
 
-    function updateStep(step) {
-      store.todaysThought.step = step;
-      store.todaysThought.response = response.value;
-      updateThought();
-    }
+    const placeholder = `I feel ${
+      store.emotion.action
+        ? store.emotion.action
+        : store.emotion.name || "this emotion"
+    } in my ${store.prompt.category || "life"} when `;
+    const response = ref(store.todaysThought.response || placeholder);
+
+    watch(response, () => {
+      if (response.value.length != placeholder.length) {
+        store.showContinue = true;
+        store.todaysThought.response = response.value;
+      }
+    });
 
     setInterval(() => {
-      back.value = true;
-    }, 3210);
+      store.showStepnav = true;
+    }, 1500);
 
     return {
-      back,
       placeholder,
       response,
       updateStep,

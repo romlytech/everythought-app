@@ -98,6 +98,9 @@ export async function initThought() {
   try {
     store.loading = true;
     store.error = null;
+    store.showStepnav = false;
+    store.showContinue = true;
+    store.todaysThought = {};
     store.user = supabase.auth.user();
 
     // fetch profile if not already in store
@@ -173,10 +176,17 @@ export async function initThought() {
   }
 }
 
+export async function updateStep(step) {
+  store.showStepnav = false;
+  store.todaysThought.step = step;
+  updateThought();
+}
+
 export async function updateThought() {
   try {
     store.loading = true;
     store.error = null;
+    store.showStepnav = false;
 
     // upsert new thought if none
     let { data: thought, error } = await supabase

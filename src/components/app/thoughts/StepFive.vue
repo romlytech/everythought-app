@@ -17,19 +17,16 @@
   </section>
 </template>
 <script>
-import { ref } from "vue";
-import { store } from "../../../store";
+import { store } from "@/store";
 
 export default {
   props: {
     name: String,
   },
   setup() {
-    const showButton = ref(false);
-
+    store.showStepnav = false;
+    store.showContinue = true;
     return {
-      showButton,
-
       store,
     };
   },

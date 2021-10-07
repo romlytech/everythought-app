@@ -31,7 +31,7 @@
             store.todaysThought.step >= step.id ? 'bg-gray-300' : 'bg-gray-500',
             'block w-3 h-1 rounded-full',
           ]"
-          @click="movetoStep(step.id)"
+          @click="updateStep(step.id)"
         >
           <span class="sr-only">Step {{ step.id }}</span>
         </li>
@@ -42,21 +42,17 @@
 <script>
 import { XIcon } from "@heroicons/vue/solid";
 import { store } from "@/store";
+import { updateStep } from "@/supabase";
 
 const steps = [{ id: 1 }, { id: 2 }, { id: 3 }, { id: 4 }, { id: 5 }];
 
 export default {
   components: { XIcon },
   setup() {
-    const movetoStep = (step) => {
-      if (store.todaysThought.step >= step) {
-        store.todaysThought.step = step;
-      }
-    };
     return {
       store,
       steps,
-      movetoStep,
+      updateStep,
     };
   },
 };

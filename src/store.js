@@ -13,4 +13,6 @@ export const store = reactive({
   thoughtCount: 0,
   oldThoughts: false,
   alert_msg: null,
+  showStepnav: false,
+  showContinue: true,
 });

@@ -18,7 +18,7 @@
       <div class="pt-4"></div>
       <transition-group name="fade" appear>
         <RadioGroupOption
-          v-show="showAgreement"
+          v-show="store.showStepnav"
           v-for="response in responses"
           :key="response.title"
           v-slot="{ active, checked }"
@@ -39,15 +39,6 @@
         </RadioGroupOption>
       </transition-group>
     </RadioGroup>
-    <transition name="slowerfade" appear>
-      <button
-        v-show="showAgreement"
-        @click="updateStep(1)"
-        class="mt-8 font-medium text-gray-300 text-sm hover:text-white"
-      >
-        <span class="animate-pulse">&larr;</span> Go back
-      </button>
-    </transition>
   </section>
 </template>
 <script>
@@ -59,7 +50,7 @@ import { store } from "../../../store";
 import { updateThought } from "../../../supabase";
 
 const responses = [
-  { title: "Yeah, I agree with that.", bool: true },
+  { title: "Yes, I agree.", bool: true },
   { title: "No, I don't feel that way.", bool: false },
 ];
 
@@ -70,22 +61,24 @@ export default {
     RadioGroupOption,
   },
   setup() {
+    store.showStepnav = false;
+    store.showContinue = true;
+
     const agreement_response = ref(store.todaysThought.agreement || null);
-    const showAgreement = ref(false);
 
     function updateStep(step) {
+      store.showStepnav = false;
       store.todaysThought.step = step;
       store.todaysThought.agreement = agreement_response.value;
       updateThought();
     }
 
     setInterval(() => {
-      showAgreement.value = true;
-    }, 3210);
+      store.showStepnav = true;
+    }, 3000);
 
     return {
       agreement_response,
-      showAgreement,
       updateStep,
 
       store,

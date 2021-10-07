@@ -1,5 +1,5 @@
 <template>
-  <section class="w-full max-w-md text-left z-50 space-y-4 px-0">
+  <section class="w-full max-w-md text-left z-50 space-y-2 px-0">
     <p class="tracking-wider uppercase text-sm text-gray-400">
       {{
         store.todaysThought.agreement
@@ -10,68 +10,60 @@
       >.
     </p>
 
-    <blockquote class="text-2xl pb-8 font-serif whitespace-pre-wrap">
+    <blockquote class="text-2xl pb-6 font-serif whitespace-pre-wrap">
       {{ store.emotion.description }}
     </blockquote>
 
-    <transition name="fade" appear>
+    <transition name="slowerfade" appear>
       <div
         v-show="showMisconception && store.emotion.misconception"
-        class="space-y-2"
-        :class="crossout ? '-rotate-2 transition-all duration-500 ease-in' : ''"
+        class="space-y-1 pb-6"
+        :class="
+          showTruth ? '-rotate-2 transition-all duration-500 ease-in' : ''
+        "
       >
-        <p class="tracking-wider uppercase text-sm text-red-500">
+        <p class="tracking-wider uppercase text-sm text-red-400">
           Common misconception:
         </p>
-        <p class="italic text-sm" :class="crossout ? 'text-gray-400' : ''">
+        <p class="italic text-sm" :class="showTruth ? 'text-gray-400' : ''">
           {{ store.emotion.misconception }}
         </p>
       </div>
     </transition>
-    <transition name="fade" appear>
-      <nav class="pt-4 justify-between w-full inline-flex" v-show="crossout">
-        <button
-          @click="updateStep(2)"
-          class="font-medium text-gray-300 text-sm hover:text-white"
-        >
-          <span class="animate-pulse">&larr;</span> Go back
-        </button>
-        <button @click="updateStep(4)" class="font-medium hover:text-white">
-          Continue <span class="animate-pulse">&rarr;</span>
-        </button>
-      </nav>
+    <transition name="slowerfade" appear>
+      <div v-show="showTruth && store.emotion.truth" class="pb-6 text-right">
+        <p class="tracking-wider uppercase text-sm text-green-500">Truth:</p>
+        <p class="whitespace-pre-wrap">
+          {{ store.emotion.truth }}
+        </p>
+      </div>
     </transition>
   </section>
 </template>
 <script>
 import { ref } from "vue";
-
-import { store } from "../../../store";
-import { updateThought } from "../../../supabase";
+import { store } from "@/store";
 
 export default {
   setup() {
-    const showMisconception = ref(false);
-    const crossout = ref(false);
+    store.showStepnav = false;
+    store.showContinue = true;
 
-    function updateStep(step) {
-      store.todaysThought.step = step;
-      updateThought();
-    }
+    const showMisconception = ref(false);
+    const showTruth = ref(false);
 
     setInterval(() => {
       showMisconception.value = true;
-    }, 4321);
+    }, 3000);
 
     setInterval(() => {
-      crossout.value = true;
-    }, 7777);
+      showTruth.value = true;
+      store.showStepnav = true;
+    }, 6000);
 
     return {
       showMisconception,
-      crossout,
-      updateStep,
-
+      showTruth,
       store,
     };
   },
