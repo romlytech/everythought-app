@@ -4,6 +4,7 @@
       bg-gradient-to-b
       from-gray-700
       to-gray-800
+      dark:to-gray-700
       sm:max-w-md
       sm:w-full
       sm:mx-auto
@@ -96,6 +97,7 @@
             leading-6
             transition
             duration-150
+            font-medium
             ease-in-out
             bg-gray-200
             text-gray-800
@@ -120,6 +122,7 @@
             leading-6
             text-white
             transition
+            font-medium
             duration-150
             ease-in-out
             bg-sky-600

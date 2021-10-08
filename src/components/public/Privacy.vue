@@ -1,9 +1,11 @@
 <template>
-  <div class="relative py-16 bg-white overflow-hidden">
+  <div class="relative py-16 bg-white dark:bg-gray-900 overflow-hidden">
     <Dots />
     <div class="relative px-4 sm:px-6 lg:px-8">
       <PublicHeader subtitle="Legal Stuff" :showTitle="true" />
-      <div class="mt-6 prose prose-sky text-gray-500 mx-auto">
+      <div
+        class="mt-6 dark:text-gray-300 prose prose-sky text-gray-500 mx-auto"
+      >
         <p>Last updated July 1, 2021</p>
         <p>
           Thank you for choosing to be part of our community at Romly Holdings,

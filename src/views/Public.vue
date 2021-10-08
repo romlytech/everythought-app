@@ -4,7 +4,7 @@
     <AuthorizedBanner v-if="store.user" />
     <div>
       <!-- Main Content -->
-      <main class="shadow-md bg-white">
+      <main class="shadow-md bg-white dark:bg-gray-900">
         <!-- Router Child -->
         <router-view v-slot="{ Component }">
           <transition name="fade" mode="out-in">

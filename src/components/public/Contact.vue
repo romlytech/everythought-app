@@ -1,5 +1,5 @@
 <template>
-  <div class="relative py-16 bg-white overflow-hidden">
+  <div class="relative py-16 bg-white dark:bg-gray-900 overflow-hidden">
     <Dots />
     <div class="relative px-4 sm:px-6 lg:px-8">
       <PublicHeader />

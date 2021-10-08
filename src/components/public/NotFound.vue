@@ -25,6 +25,7 @@
         duration-150
         ease-in-out
         bg-gray-600
+        font-medium
         border border-transparent
         rounded-xl
         hover:bg-gray-500
