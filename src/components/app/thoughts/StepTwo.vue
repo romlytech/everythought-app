@@ -1,11 +1,7 @@
 <template>
-  <section class="w-full max-w-md text-left z-50 space-y-4 px-0">
+  <section class="w-full z-50 space-y-4">
     <p class="tracking-wider uppercase text-sm text-gray-400 mb-4">
-      Today, we're talking about
-      <span class="font-medium text-gray-300">{{
-        store.prompt.category ? store.prompt.category : "your emotions"
-      }}</span
-      >.
+      Ask yourself this question:
     </p>
     <RadioGroup
       v-model="agreement_response"
@@ -46,13 +42,8 @@ import { ref } from "vue";
 
 import { RadioGroup, RadioGroupLabel, RadioGroupOption } from "@headlessui/vue";
 
-import { store } from "../../../store";
-import { updateThought } from "../../../supabase";
-
-const responses = [
-  { title: "Yes, I agree.", bool: true },
-  { title: "No, I don't feel that way.", bool: false },
-];
+import { store } from "@/store";
+import { updateThought } from "@/supabase";
 
 export default {
   components: {
@@ -61,6 +52,16 @@ export default {
     RadioGroupOption,
   },
   setup() {
+    const responses = [
+      {
+        title: store.prompt.yes ? store.prompt.yes : "Yes, I agree with that.",
+        bool: true,
+      },
+      {
+        title: store.prompt.no ? store.prompt.no : "No, I don't feel that way.",
+        bool: false,
+      },
+    ];
     store.showStepnav = false;
     store.showContinue = true;
 

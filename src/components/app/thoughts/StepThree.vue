@@ -1,5 +1,5 @@
 <template>
-  <section class="w-full max-w-md text-left z-50 space-y-2 px-0">
+  <section class="w-full z-50 space-y-4">
     <p class="tracking-wider uppercase text-sm text-gray-400">
       {{
         store.todaysThought.agreement
@@ -10,7 +10,7 @@
       >.
     </p>
 
-    <blockquote class="text-2xl pb-6 font-serif whitespace-pre-wrap">
+    <blockquote class="text-xl sm:text-2xl pb-8 font-serif whitespace-pre-wrap">
       {{ store.emotion.description }}
     </blockquote>
 
@@ -47,7 +47,7 @@ import { store } from "@/store";
 export default {
   setup() {
     store.showStepnav = false;
-    store.showContinue = true;
+    store.showContinue = false;
 
     const showMisconception = ref(false);
     const showTruth = ref(false);
@@ -59,6 +59,7 @@ export default {
     setInterval(() => {
       showTruth.value = true;
       store.showStepnav = true;
+      store.showContinue = true;
     }, 6000);
 
     return {

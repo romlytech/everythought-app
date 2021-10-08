@@ -12,7 +12,8 @@
       w-full
       h-full
       max-h-screen max-w-screen
-      p-4
+      p-3
+      pt-11
       overflow-hidden
       overscroll-none
     "
@@ -22,7 +23,7 @@
     <!-- Top nav -->
     <ThoughtNav />
     <!-- WIP: show errors -->
-    <main class="grid items-center">
+    <main class="grid items-center w-screen max-w-md">
       <pre v-if="store.error" class="z-10 m-2 w-full overflow-scroll">{{
         store.error
       }}</pre>
@@ -51,7 +52,7 @@
         <StepFour v-else-if="store.todaysThought.step == 4 && !store.loading" />
         <StepFive v-else-if="store.todaysThought.step == 5 && !store.loading" />
       </transition>
-      <div class="h-12">
+      <div class="h-12 z-50 w-full max-w-md">
         <transition name="slowfade" mode="out-in" appear>
           <StepNav
             v-if="

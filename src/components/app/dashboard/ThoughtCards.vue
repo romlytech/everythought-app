@@ -1,5 +1,5 @@
 <template>
-  <section class="px-5 sm:px-0 pb-8">
+  <section class="px-3 sm:px-0 pb-8">
     <h2 class="text-lg leading-6 font-medium text-gray-900 mb-2">
       Recent thoughts
     </h2>

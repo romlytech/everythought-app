@@ -1,33 +1,34 @@
 <template>
-  <section class="w-full max-w-md text-left z-50 space-y-4 px-0">
-    <label for="response" class="tracking-wider uppercase text-gray-400"
-      >Describe
-      <span class="font-medium text-gray-300">{{ store.emotion.name }}</span> as
-      it relates to your life:</label
-    >
-
-    <textarea
-      id="response"
-      v-model="response"
-      type="textarea"
-      class="
-        py-3
-        px-4
-        mt-1
-        block
-        w-full
-        shadow-sm
-        border border-transparent
-        focus:border-sky-600
-        focus:outline-none
-        focus:ring-sky-500
-        bg-gray-700
-        text-gray-200
-        rounded-md
-      "
-      rows="4"
-      maxlength="320"
-    />
+  <section class="w-full z-50 space-y-4">
+    <div>
+      <label for="response" class="tracking-wider uppercase text-gray-400"
+        >Describe when you feel
+        <span class="font-medium text-gray-300">{{ store.emotion.name }}</span
+        >:</label
+      >
+      <textarea
+        id="response"
+        v-model="response"
+        type="textarea"
+        class="
+          py-3
+          px-4
+          mt-1
+          block
+          w-full
+          shadow-sm
+          border border-transparent
+          focus:border-sky-600
+          focus:outline-none
+          focus:ring-sky-500
+          bg-gray-700
+          text-gray-200
+          rounded-md
+        "
+        rows="4"
+        maxlength="320"
+      ></textarea>
+    </div>
     <p
       v-if="response && response.length >= 260"
       class="text-xs mt-1"
@@ -53,11 +54,11 @@ export default {
       store.emotion.action
         ? store.emotion.action
         : store.emotion.name || "this emotion"
-    } in my ${store.prompt.category || "life"} when `;
+    } in my life when `;
     const response = ref(store.todaysThought.response || placeholder);
 
     watch(response, () => {
-      if (response.value.length != placeholder.length) {
+      if (response.value != placeholder) {
         store.showContinue = true;
         store.todaysThought.response = response.value;
       }

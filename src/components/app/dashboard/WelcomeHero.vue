@@ -8,10 +8,10 @@
         {{
           store.profile.first_name
             ? "Welcome back, " + store.profile.first_name
-            : "Welcome, friend."
-        }}
+            : "Welcome, friend"
+        }}.
       </h1>
-      <p class="text-gray-500 text-xl leading-9">
+      <p class="text-gray-500 text-lg sm:text-xl mt-2">
         {{
           store.profile.first_name
             ? "Are you ready to discover your emotions today?"
@@ -20,36 +20,39 @@
       </p>
     </div>
     <div class="flex px-5 sm:px-8">
-      <div class="inline-flex gap-4">
+      <div class="inline-flex gap-4 w-full">
         <router-link
           :to="store.profile.first_name ? '/thoughts/new' : '/account'"
           class="
             inline-flex
+            space-x-2
             items-center
             justify-center
             px-5
             py-3
-            text-base
-            leading-6
+            w-full
+            sm:w-auto
             font-medium
             text-white
             transition
             duration-500
             ease-in-out
             border border-transparent
-            rounded-md
+            rounded-lg
             focus:outline-none
+            shadow
           "
           :class="
             store.profile.first_name
               ? 'bg-sky-600 hover:bg-sky-500'
               : 'bg-gray-600 hover:bg-gray-500'
           "
-          >{{
-            store.profile.first_name ? "Today's Thought" : "Edit Profile"
-          }}
-          &rarr;</router-link
-        >
+          ><span>{{
+            store.profile.first_name ? "Start a new Thought" : "Edit Profile"
+          }}</span>
+          <AnnotationIcon v-if="store.profile.first_name" class="w-5 h-5" />
+          <AnnotationIcon v-else class="w-5 h-5"
+        /></router-link>
       </div>
     </div>
     <div
@@ -74,8 +77,10 @@
   </div>
 </template>
 <script>
+import { AnnotationIcon, PencilAltIcon } from "@heroicons/vue/solid";
 import { store } from "../../../store";
 export default {
+  components: { AnnotationIcon, PencilAltIcon },
   setup() {
     const options = { year: "2-digit", month: "2-digit", day: "2-digit" };
     const user_since = new Date(store.user.created_at).toLocaleDateString(

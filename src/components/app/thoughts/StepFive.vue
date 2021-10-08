@@ -1,12 +1,12 @@
 <template>
-  <section class="w-full max-w-md text-left z-50 space-y-4 px-0">
+  <section class="w-full z-50 space-y-4">
     <h1 class="text-3xl font-serif">
       Thanks for sharing, {{ store.profile.first_name }}.
     </h1>
     <p class="text-gray-300">
       You learned about
       <span class="lowercase">{{ store.emotion.name }}</span> today. Come back
-      tomorrow to discover more about your emotions.
+      here again to discover more about your emotions.
     </p>
     <router-link
       to="/dashboard"
