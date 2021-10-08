@@ -1,6 +1,14 @@
 <template>
   <div
-    class="bg-white dark:bg-gray-800 sm:rounded-xl shadow-sm space-y-8 py-8"
+    class="
+      bg-white
+      dark:bg-gray-800
+      sm:rounded-xl
+      shadow-sm
+      dark:shadow-none
+      space-y-8
+      py-8
+    "
     :class="store.profile.first_name ? 'pb-0' : ''"
   >
     <div class="px-5 sm:px-8 sm:dark:px-0">
@@ -58,7 +66,7 @@
       v-if="store.profile.first_name"
       class="
         border-t-2 border-gray-100
-        dark:border-2 dark:border-gray-700
+        dark:border-none
         sm:rounded-b-xl
         sm:dark:rounded-xl
         bg-gray-50
