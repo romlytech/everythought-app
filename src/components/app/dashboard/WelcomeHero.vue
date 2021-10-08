@@ -58,11 +58,11 @@
       v-if="store.profile.first_name"
       class="
         border-t-2 border-gray-100
-        dark:border-none
+        dark:border-2 dark:border-gray-700
         sm:rounded-b-xl
         sm:dark:rounded-xl
         bg-gray-50
-        dark:bg-gray-700
+        dark:bg-gray-800
         grid grid-cols-2
         divide-x-2 divide-gray-100
         dark:divide-none
