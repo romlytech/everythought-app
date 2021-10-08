@@ -23,7 +23,7 @@
           focus:ring-sky-500
           bg-gray-700
           text-gray-200
-          rounded-md
+          rounded-xl
         "
         rows="4"
         maxlength="320"

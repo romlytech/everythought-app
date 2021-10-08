@@ -1,31 +1,41 @@
 <template>
   <section class="px-3 sm:px-0 pb-8">
-    <h2 class="text-lg leading-6 font-medium text-gray-900 mb-2">
-      Recent thoughts
-    </h2>
+    <h2 class="text-lg leading-6 font-medium mb-2">Recent thoughts</h2>
     <div v-if="store.thoughts.length" class="flex flex-wrap gap-4">
       <div
         v-for="thought of store.thoughts"
         :key="thought.id"
         class="
           bg-white
-          shadow
+          dark:bg-gray-700
+          shadow-sm
           space-y-3
           p-4
           flex-auto
-          rounded-md
+          rounded-xl
           transition
           duration-500
           ease-in-out
-          hover:bg-gray-100
+          hover:bg-sky-50
+          dark:hover:bg-gray-600
         "
       >
-        <p class="font-medium text-gray-700 font-serif whitespace-pre-wrap">
+        <p
+          class="
+            font-medium
+            tracking-wide
+            text-gray-700
+            dark:text-gray-300
+            font-serif
+            whitespace-pre-wrap
+          "
+        >
           {{ thought.response }}
         </p>
         <p
           class="
             text-xs text-gray-500
+            dark:text-gray-400
             tracking-wider
             leading-6
             inline-flex
@@ -50,15 +60,15 @@
               items-center
               px-2.5
               py-0.5
-              rounded-md
+              rounded-xl
               text-xs
               font-medium
               uppercase
             "
             :class="
               thought.agreement
-                ? 'bg-sky-100 text-sky-800'
-                : 'bg-rose-100 text-rose-800'
+                ? 'bg-sky-100  text-sky-800 dark:bg-sky-200 dark:text-sky-900'
+                : 'bg-rose-100 text-rose-800 dark:bg-rose-200 dark:text-rose-900'
             "
           >
             {{ thought.prompts.emotion.name }}

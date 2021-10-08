@@ -1,11 +1,9 @@
 <template>
   <div class="max-w-2xl mx-auto pb-6 sm:px-6 lg:px-8">
-    <h1
-      class="text-lg leading-6 hidden sm:block font-medium text-gray-900 mb-2"
-    >
+    <h1 class="text-lg leading-6 hidden sm:block font-medium mb-2">
       Account Settings
     </h1>
-    <div class="bg-white sm:rounded-lg shadow p-4 space-y-11">
+    <div class="bg-white dark:bg-gray-700 sm:rounded-xl shadow p-4 space-y-11">
       <InfoCard
         v-if="!store.profile.first_name"
         title="Profile Required"
@@ -16,7 +14,9 @@
         @submit.prevent="updateProfile"
       >
         <div class="col-span-1 lg:col-span-2">
-          <h2 class="text-xl text-gray-700 font-semibold">My Profile</h2>
+          <h2 class="text-xl text-gray-700 dark:text-gray-300 font-semibold">
+            My Profile
+          </h2>
         </div>
         <AvatarUploader
           class="col-span-1 lg:col-span-2"
@@ -26,7 +26,7 @@
         <div>
           <label
             for="first_name"
-            class="block text-sm font-medium text-gray-700"
+            class="block text-sm font-medium text-gray-700 dark:text-gray-300"
             >First Name</label
           >
           <input
@@ -39,7 +39,9 @@
           />
         </div>
         <div>
-          <label for="email" class="block text-sm font-medium text-gray-700"
+          <label
+            for="email"
+            class="block text-sm font-medium text-gray-700 dark:text-gray-300"
             >Email Address</label
           >
           <input
@@ -68,23 +70,31 @@
               px-4
               py-2
               border border-transparent
-              rounded-md
+              rounded-xl
               shadow-sm
               font-medium
               text-white
+              transition
+              duration-500
+              ease-in-out
               bg-gray-700
+              dark:bg-gray-800
+              dark:border-gray-600
               hover:bg-gray-800
+              dark:hover:bg-gray-900
               focus:outline-none
               focus:ring-2 focus:ring-offset-2 focus:ring-gray-500
             "
-            :value="loading ? 'Loading ...' : 'Update Profile'"
-            :disabled="loading"
+            :value="store.loading ? 'Loading ...' : 'Update Profile'"
+            :disabled="store.loading"
           />
         </div>
       </form>
       <div class="col-span-1 lg:col-span-2">
-        <h2 class="text-xl mt-1 text-gray-700 font-semibold">Export Data</h2>
-        <p class="text-sm mt-1 text-gray-500">
+        <h2 class="text-xl mt-1 text-gray-700 dark:text-gray-300 font-semibold">
+          Export Data
+        </h2>
+        <p class="text-sm mt-1 text-gray-500 dark:text-gray-300">
           Any data you input here is yours to keep. You have the ability to
           export all of your <b>Thoughts</b> as a CSV file.
         </p>
@@ -97,10 +107,13 @@
             py-2
             mr-4
             text-sm
-            rounded
+            rounded-xl
             text-center
             font-medium
             mt-4
+            transition
+            duration-500
+            ease-in-out
             text-sky-700
             bg-sky-100
             hover:bg-sky-500
@@ -111,8 +124,10 @@
         </button>
       </div>
       <div class="col-span-1 lg:col-span-2">
-        <h2 class="text-xl mt-1 text-gray-700 font-semibold">Danger Zone</h2>
-        <p class="text-sm mt-1 text-gray-500">
+        <h2 class="text-xl mt-1 text-gray-700 dark:text-gray-300 font-semibold">
+          Danger Zone
+        </h2>
+        <p class="text-sm mt-1 text-gray-500 dark:text-gray-300">
           We take privacy very seriously. You are able to delete your account
           and all data associated with it completely. <b>Note:</b> this change
           is <span class="underline">permanent</span>.
@@ -126,14 +141,17 @@
             px-4
             py-2
             text-sm
-            rounded
+            rounded-xl
             text-center
             font-medium
             mt-4
+            transition
+            duration-500
+            ease-in-out
             text-red-700
-            dark:text-red-100
-            bg-red-100
-            dark:bg-red-600
+            bg-red-200
+            dark:bg-red-500
+            dark:text-white
             hover:bg-red-500
             hover:text-white
           "
@@ -144,8 +162,8 @@
         <form v-if="confirmDelete" @submit.prevent="deleteUser" class="mt-4">
           <label
             for="confirmEmail"
-            class="block text-sm font-medium text-gray-700"
-            >Confirm your email address to delete your account:</label
+            class="block text-sm font-medium text-gray-700 dark:text-gray-300"
+            >Type your email address to delete your account:</label
           >
           <input
             id="confirmEmail"
@@ -167,6 +185,9 @@
               font-medium
               mt-4
               mr-4
+              transition
+              duration-500
+              ease-in-out
               text-red-700
               dark:text-red-100
               bg-red-100
@@ -175,11 +196,11 @@
               hover:text-white
             "
             :value="
-              loading
+              store.loading
                 ? 'Deleting your account ...'
-                : 'I understand, delete my account.'
+                : 'I understand, delete my account forever.'
             "
-            :disabled="loading"
+            :disabled="store.loading"
           />
           <button
             type="button"
@@ -196,8 +217,8 @@
 </template>
 
 <script>
-import { supabase, csvThoughts } from "../../../supabase";
-import { store } from "../../../store";
+import { supabase, csvThoughts, downloadAvatar, getProfile } from "@/supabase";
+import { store } from "@/store";
 import { onMounted, ref } from "vue";
 import AvatarUploader from "../settings/AvatarUploader.vue";
 import { notify } from "notiwind";
@@ -210,45 +231,13 @@ export default {
     InfoCard,
   },
   setup() {
-    const loading = ref(true);
-    const first_name = ref("");
+    store.loading = true;
+    const first_name = ref(store.profile.first_name);
     const confirmDelete = ref(false);
     const confirmEmail = ref("");
     const email = ref(store.user.email);
-    const avatar_name = ref("");
+    const avatar_name = ref(store.profile.avatar_name);
     const router = useRouter();
-
-    async function getProfile() {
-      try {
-        loading.value = true;
-        store.user = supabase.auth.user();
-
-        let { data, error, status } = await supabase
-          .from("profiles")
-          .select()
-          .eq("id", store.user.id)
-          .single();
-
-        if (error && status !== 406) throw error;
-
-        if (data) {
-          first_name.value = data.first_name;
-          avatar_name.value = data.avatar_name;
-        }
-      } catch (error) {
-        notify(
-          {
-            group: "toast",
-            type: "error",
-            title: "Error",
-            text: error.message,
-          },
-          6000
-        );
-      } finally {
-        loading.value = false;
-      }
-    }
 
     async function updateProfile() {
       if (!first_name.value) {
@@ -261,7 +250,7 @@ export default {
         return;
       }
       try {
-        loading.value = true;
+        store.loading = true;
 
         store.user = supabase.auth.user();
 
@@ -278,6 +267,10 @@ export default {
           .single();
         if (data) {
           store.profile = data;
+
+          if (store.profile.avatar_name) {
+            downloadAvatar();
+          }
 
           // update email if required
           if (store.user.email != email.value) {
@@ -323,7 +316,7 @@ export default {
           6000
         );
       } finally {
-        loading.value = false;
+        store.loading = false;
       }
     }
 
@@ -332,7 +325,7 @@ export default {
     }
 
     async function deleteUser() {
-      loading.value = true;
+      store.loading = true;
       try {
         const session = supabase.auth.session();
         let res = await fetch(`/.netlify/functions/delete_user`, {
@@ -367,17 +360,18 @@ export default {
           );
         }
       } finally {
-        loading.value = false;
+        store.loading = false;
       }
     }
 
     onMounted(() => {
-      getProfile();
+      getProfile().then(() => {
+        first_name.value = store.profile.first_name;
+      });
     });
 
     return {
       store,
-      loading,
       downloadCsv,
       confirmDelete,
       confirmEmail,

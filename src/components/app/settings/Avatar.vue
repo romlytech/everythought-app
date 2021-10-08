@@ -1,24 +1,12 @@
 <template>
   <div>
     <img
-      v-if="src"
-      :src="src"
-      class="h-8 w-8 md:h-10 md:w-10 rounded-full"
+      v-if="store.avatar_src"
+      :src="store.avatar_src"
+      class="h-full w-full object-cover rounded-full"
       alt=""
     />
-    <span
-      v-else
-      class="
-        inline-block
-        h-8
-        w-8
-        md:h-10
-        md:w-10
-        rounded-full
-        overflow-hidden
-        bg-gray-100
-      "
-    >
+    <span v-else class="inline-block rounded-full overflow-hidden bg-gray-100">
       <svg
         class="h-full w-full text-gray-300"
         fill="currentColor"
@@ -32,49 +20,12 @@
   </div>
 </template>
 <script>
-import { onMounted, ref } from "vue";
-import { supabase } from "../../../supabase";
+import { store } from "@/store";
 
 export default {
-  props: {
-    avatar_name: String,
-  },
-  setup(props) {
-    const src = ref("");
-
-    // async function downloadImage() {
-    //   if (props.avatar_name) {
-    //     try {
-    //       const { data, error } = await supabase.storage
-    //         .from("avatars")
-    //         .download(props.avatar_name);
-    //       if (error) throw error;
-    //       src.value = URL.createObjectURL(data);
-    //     } catch (error) {
-    //       console.error("Error downloading image: ", error.message);
-    //     }
-    //   }
-    // }
-
-    const downloadImage = async () => {
-      try {
-        const { data, error } = await supabase.storage
-          .from("avatars")
-          .download(`${store.profile.id}/${props.avatar_name}`);
-        if (error) throw error;
-        src.value = URL.createObjectURL(data);
-      } catch (error) {
-        console.error("Error downloading image: ", error.message);
-      }
-    };
-
-    onMounted(() => {
-      downloadImage();
-    });
-
+  setup() {
     return {
-      downloadImage,
-      src,
+      store,
     };
   },
 };

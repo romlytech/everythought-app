@@ -1,53 +1,36 @@
 <template>
   <div class="mb-4">
-    <label for="photo" class="block text-sm font-medium text-gray-700">
+    <label
+      for="photo"
+      class="block text-sm font-medium text-gray-700 dark:text-gray-300"
+    >
       Avatar
     </label>
-    <div class="mt-1 flex items-center">
-      <img
-        v-if="src"
-        :src="src"
-        alt="Avatar"
-        class="h-12 w-12 rounded-full overflow-hidden bg-gray-100"
-        :style="{ height: size, width: size }"
-      />
-
-      <span
-        v-else
-        class="inline-block h-12 w-12 rounded-full overflow-hidden bg-gray-100"
-      >
-        <svg
-          class="h-full w-full text-gray-300"
-          fill="currentColor"
-          viewBox="0 0 24 24"
-        >
-          <path
-            d="M24 20.993V24H0v-2.996A14.977 14.977 0 0112.004 15c4.904 0 9.26 2.354 11.996 5.993zM16.002 8.999a4 4 0 11-8 0 4 4 0 018 0z"
-          />
-        </svg>
-      </span>
-
-      <div>
+    <div class="mt-2 inline-flex items-center space-x-4">
+      <Avatar class="h-16 w-16" />
+      <div class="flex-grow">
         <label
           class="
-            ml-5
             bg-white
             py-2
             px-3
             border border-gray-300
-            rounded-md
+            rounded-xl
             shadow-sm
             text-sm
             leading-4
             font-medium
             text-gray-700
             hover:bg-gray-50
+            dark:bg-gray-400
+            dark:text-gray-900
+            dark:border-gray-500
             focus:outline-none
             focus:ring-2 focus:ring-offset-2 focus:ring-sky-500
           "
           for="single"
         >
-          {{ uploading ? "Uploading ..." : "Upload" }}
+          {{ uploading ? "Uploading ..." : "Upload image" }}
         </label>
         <input
           class="hidden"
@@ -63,34 +46,23 @@
 </template>
 
 <script>
-import { ref, toRefs, watch } from "vue";
+import { ref, toRefs } from "vue";
 import { supabase } from "../../../supabase";
 import { store } from "../../../store";
 import { notify } from "notiwind";
+import Avatar from "./Avatar.vue";
 
 export default {
   props: {
     path: String,
   },
+  components: { Avatar },
   emits: ["upload", "update:path"],
   setup(prop, { emit }) {
     const { path } = toRefs(prop);
     const size = ref("5em");
     const uploading = ref(false);
-    const src = ref("");
     const files = ref();
-
-    const downloadImage = async () => {
-      try {
-        const { data, error } = await supabase.storage
-          .from("avatars")
-          .download(`${store.user.id}/${path.value}`);
-        if (error) throw error;
-        src.value = URL.createObjectURL(data);
-      } catch (error) {
-        console.error("Error downloading image: ", error.message);
-      }
-    };
 
     const uploadAvatar = async (evt) => {
       files.value = evt.target.files;
@@ -135,16 +107,11 @@ export default {
       }
     };
 
-    watch(path, () => {
-      path.value ? downloadImage() : "";
-    });
-
     return {
       path,
       store,
       size,
       uploading,
-      src,
       files,
 
       uploadAvatar,

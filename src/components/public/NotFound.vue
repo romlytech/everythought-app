@@ -26,7 +26,7 @@
         ease-in-out
         bg-gray-600
         border border-transparent
-        rounded-md
+        rounded-xl
         hover:bg-gray-500
         focus:outline-none
       "

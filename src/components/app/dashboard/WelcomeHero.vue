@@ -1,17 +1,17 @@
 <template>
   <div
-    class="bg-white sm:rounded-lg shadow space-y-8 py-8"
+    class="bg-white dark:bg-gray-800 sm:rounded-xl shadow-sm space-y-8 py-8"
     :class="store.profile.first_name ? 'pb-0' : ''"
   >
-    <div class="px-5 sm:px-8">
-      <h1 class="text-3xl font-semibold text-gray-900 sm:text-4xl font-serif">
+    <div class="px-5 sm:px-8 sm:dark:px-0">
+      <h1 class="text-3xl font-semibold sm:text-4xl font-serif">
         {{
           store.profile.first_name
             ? "Welcome back, " + store.profile.first_name
             : "Welcome, friend"
         }}.
       </h1>
-      <p class="text-gray-500 text-lg sm:text-xl mt-2">
+      <p class="text-gray-500 dark:text-gray-200 text-lg sm:text-xl mt-2">
         {{
           store.profile.first_name
             ? "Are you ready to discover your emotions today?"
@@ -19,7 +19,7 @@
         }}
       </p>
     </div>
-    <div class="flex px-5 sm:px-8">
+    <div class="flex px-5 sm:px-8 sm:dark:px-0">
       <div class="inline-flex gap-4 w-full">
         <router-link
           :to="store.profile.first_name ? '/thoughts/new' : '/account'"
@@ -38,14 +38,13 @@
             duration-500
             ease-in-out
             border border-transparent
-            rounded-lg
+            rounded-xl
             focus:outline-none
-            shadow
           "
           :class="
             store.profile.first_name
-              ? 'bg-sky-600 hover:bg-sky-500'
-              : 'bg-gray-600 hover:bg-gray-500'
+              ? 'bg-sky-600 dark:bg-sky-800 hover:bg-sky-500 dark:hover:bg-sky-700'
+              : 'bg-gray-600 dark:bg-gray-800 hover:bg-gray-500 dark:hover:bg-gray-700'
           "
           ><span>{{
             store.profile.first_name ? "Start a new Thought" : "Edit Profile"
@@ -58,20 +57,32 @@
     <div
       v-if="store.profile.first_name"
       class="
-        border-t border-gray-200
-        rounded-b-md
+        border-t-2 border-gray-100
+        dark:border-none
+        sm:rounded-b-xl
+        sm:dark:rounded-xl
         bg-gray-50
+        dark:bg-gray-700
         grid grid-cols-2
-        divide-x divide-gray-200
+        divide-x-2 divide-gray-100
+        dark:divide-none
       "
     >
-      <div class="px-5 py-3 text-sm text-gray-600 text-center">
+      <div
+        class="px-5 py-3 text-sm text-gray-600 dark:text-gray-300 text-center"
+      >
         Total thoughts<br />
-        <span class="text-gray-700 font-medium">{{ store.thoughtCount }}</span>
+        <span class="text-gray-700 dark:text-gray-300 font-medium">{{
+          store.thoughtCount
+        }}</span>
       </div>
-      <div class="px-5 py-3 text-sm text-gray-600 text-center">
+      <div
+        class="px-5 py-3 text-sm text-gray-600 dark:text-gray-300 text-center"
+      >
         User since<br />
-        <span class="text-gray-700 font-medium">{{ user_since }}</span>
+        <span class="text-gray-700 dark:text-gray-300 font-medium">{{
+          user_since
+        }}</span>
       </div>
     </div>
   </div>

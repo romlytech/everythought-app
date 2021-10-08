@@ -7,7 +7,7 @@
       sm:max-w-md
       sm:w-full
       sm:mx-auto
-      sm:rounded-lg
+      sm:rounded-xl
       sm:overflow-hidden
     "
   >
@@ -43,7 +43,7 @@
                 focus:border-sky-500
                 sm:text-sm
                 border-gray-300
-                rounded-md
+                rounded-xl
               "
             />
           </div>
@@ -57,7 +57,7 @@
                 py-2
                 px-4
                 border border-transparent
-                rounded-md
+                rounded-xl
                 text-sm
                 font-medium
                 text-white
@@ -100,7 +100,7 @@
             bg-gray-200
             text-gray-800
             border border-transparent
-            rounded-md
+            rounded-xl
             hover:bg-gray-300
             focus:outline-none
           "
@@ -124,7 +124,7 @@
             ease-in-out
             bg-sky-600
             border border-transparent
-            rounded-md
+            rounded-xl
             hover:bg-sky-500
             focus:outline-none
           "
@@ -148,7 +148,7 @@
             text-sm
             leading-4
             font-medium
-            rounded-md
+            rounded-xl
             focus:outline-none
             focus:ring-2 focus:ring-offset-2 focus:ring-white
           "

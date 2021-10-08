@@ -8,7 +8,7 @@
           class="
             bg-gray-800
             md:shadow-md
-            md:rounded-md
+            md:rounded-xl
             -mx-4
             px-4
             py-16
@@ -65,7 +65,7 @@
                     focus:ring-sky-500
                     bg-gray-700
                     text-gray-200
-                    rounded-md
+                    rounded-xl
                   "
                   required
                 />
@@ -94,7 +94,7 @@
                     focus:outline-none
                     bg-gray-700
                     text-gray-200
-                    rounded-md
+                    rounded-xl
                   "
                 />
               </div>
@@ -122,7 +122,7 @@
                     focus:outline-none
                     bg-gray-700
                     text-gray-200
-                    rounded-md
+                    rounded-xl
                   "
                   required
                 />
@@ -149,7 +149,7 @@
                     focus:outline-none
                     bg-gray-700
                     text-gray-200
-                    rounded-md
+                    rounded-xl
                   "
                   required
                 ></textarea>
@@ -166,7 +166,7 @@
                   px-6
                   py-3
                   border border-transparent
-                  rounded-md
+                  rounded-xl
                   shadow-sm
                   text-base text-white
                   bg-sky-700

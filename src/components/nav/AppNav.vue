@@ -8,7 +8,6 @@
         px-4
         sm:px-6
         lg:px-8
-        border-b border-gray-700
         flex
         items-center
         justify-between
@@ -66,10 +65,11 @@
                   mt-2
                   w-56
                   md:w-96
-                  rounded-md
+                  rounded-xl
                   shadow-lg
                   py-1
                   bg-white
+                  dark:bg-gray-700
                   ring-1 ring-black ring-opacity-5
                   focus:outline-none
                 "
@@ -94,6 +94,7 @@
                     class="
                       p-4
                       text-sm text-gray-700
+                      dark:text-gray-200
                       hover:text-gray-900
                       inline-flex
                     "
@@ -124,33 +125,7 @@
                 "
               >
                 <span class="sr-only">Open user menu</span>
-                <img
-                  v-if="store.avatar_src"
-                  class="h-10 w-10 rounded-full"
-                  :src="store.avatar_src"
-                  alt=""
-                />
-                <span
-                  v-else
-                  class="
-                    inline-block
-                    h-10
-                    w-10
-                    rounded-full
-                    overflow-hidden
-                    bg-gray-100
-                  "
-                >
-                  <svg
-                    class="h-full w-full text-gray-300"
-                    fill="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      d="M24 20.993V24H0v-2.996A14.977 14.977 0 0112.004 15c4.904 0 9.26 2.354 11.996 5.993zM16.002 8.999a4 4 0 11-8 0 4 4 0 018 0z"
-                    />
-                  </svg>
-                </span>
+                <Avatar class="w-10 h-10" />
               </MenuButton>
             </div>
             <transition
@@ -168,16 +143,17 @@
                   right-0
                   mt-2
                   w-56
-                  rounded-md
+                  rounded-xl
                   shadow-lg
                   py-1
                   bg-white
+                  dark:bg-gray-700
                   ring-1 ring-black ring-opacity-5
                   focus:outline-none
                 "
               >
-                <div class="p-4 pb-3 border-b mb-2">
-                  <div class="text-base leading-none text-gray-800 break-all">
+                <div class="p-4 pb-3 border-b dark:border-gray-500 mb-2">
+                  <div class="leading-none font-serif font-medium break-all">
                     Hello,
                     {{
                       store.profile.first_name
@@ -186,7 +162,14 @@
                     }}!
                   </div>
                   <div
-                    class="text-sm font-light leading-6 text-gray-500 break-all"
+                    class="
+                      text-sm
+                      font-light
+                      leading-6
+                      text-gray-500
+                      dark:text-gray-300
+                      break-all
+                    "
                   >
                     {{ store.user.email }}
                   </div>
@@ -200,7 +183,12 @@
                       block
                       items-center
                       text-sm text-gray-700
+                      dark:text-gray-200
                       hover:text-gray-900
+                      dark:hover:text-white
+                      transition
+                      ease-in-out
+                      duration-500
                     "
                     >{{ item.title }}</router-link
                   >
@@ -214,7 +202,12 @@
                       inline-flex
                       items-center
                       text-sm text-gray-700
+                      dark:text-gray-200
                       hover:text-gray-900
+                      dark:hover:text-white
+                      transition
+                      ease-in-out
+                      duration-500
                     "
                   >
                     Sign Out
@@ -232,9 +225,11 @@
 <script>
 import { supabase } from "../../supabase";
 import { store } from "../../store";
-import { onMounted, watch } from "vue";
+import { onMounted } from "vue";
 import { useRouter } from "vue-router";
 import { notify } from "notiwind";
+
+import Avatar from "../app/settings/Avatar.vue";
 
 import { Menu, MenuButton, MenuItem, MenuItems } from "@headlessui/vue";
 
@@ -261,6 +256,7 @@ export default {
     MenuIcon,
     XIcon,
     CheckCircleIcon,
+    Avatar,
   },
   setup() {
     const router = useRouter();
@@ -288,25 +284,8 @@ export default {
           },
           6000
         );
-      } finally {
-        if (store.profile.avatar_name) {
-          downloadImage();
-        }
       }
     }
-
-    // Download avatar
-    const downloadImage = async () => {
-      try {
-        const { data, error } = await supabase.storage
-          .from("avatars")
-          .download(`${store.user.id}/${store.profile.avatar_name}`);
-        if (error) throw error;
-        store.avatar_src = URL.createObjectURL(data);
-      } catch (error) {
-        console.error("Error downloading image: ", error.message);
-      }
-    };
 
     // Sign Out
     async function signOut() {

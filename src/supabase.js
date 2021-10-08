@@ -1,5 +1,6 @@
 import { createClient } from "@supabase/supabase-js";
 import { store } from "./store";
+import { notify } from "notiwind";
 
 const supabaseUrl = import.meta.env.VITE_SUPABASE_URL;
 const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY;
@@ -222,3 +223,49 @@ export async function updateThought() {
     store.loading = false;
   }
 }
+
+export async function getProfile() {
+  try {
+    store.loading = true;
+    store.user = supabase.auth.user();
+
+    let { data, error, status } = await supabase
+      .from("profiles")
+      .select()
+      .eq("id", store.user.id)
+      .single();
+
+    if (error && status !== 406) throw error;
+
+    if (data) {
+      store.profile = data;
+      if (store.profile.avatar_name) {
+        downloadAvatar();
+      }
+    }
+  } catch (error) {
+    notify(
+      {
+        group: "toast",
+        type: "error",
+        title: "Error",
+        text: error.message,
+      },
+      6000
+    );
+  } finally {
+    store.loading = false;
+  }
+}
+
+export const downloadAvatar = async () => {
+  try {
+    const { data, error } = await supabase.storage
+      .from("avatars")
+      .download(`${store.user.id}/${store.profile.avatar_name}`);
+    if (error) throw error;
+    store.avatar_src = URL.createObjectURL(data);
+  } catch (error) {
+    console.error("Error downloading image: ", error.message);
+  }
+};

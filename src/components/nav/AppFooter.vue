@@ -8,17 +8,21 @@
       flex
       justify-between
       text-xs text-gray-500
+      dark:text-gray-400
     "
   >
     <p>&copy; 2021 EveryThought</p>
     <nav class="space-x-2 font-medium inline-flex">
       <router-link
         to="/privacy-policy"
-        class="text-gray-600 hover:text-gray-800"
+        class="text-gray-600 dark:text-gray-400 hover:text-gray-800"
       >
         Privacy
       </router-link>
-      <router-link to="/terms-of-use" class="text-gray-600 hover:text-gray-800">
+      <router-link
+        to="/terms-of-use"
+        class="text-gray-600 dark:text-gray-400 hover:text-gray-800"
+      >
         Terms
       </router-link>
     </nav>

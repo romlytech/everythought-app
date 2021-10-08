@@ -23,7 +23,7 @@
           <button
             type="button"
             :class="[
-              'inline-flex justify-center w-full rounded-md border border-transparent px-4 py-2 font-medium text-sm md:text-base',
+              'inline-flex justify-center w-full rounded-xl border border-transparent px-4 py-2 font-medium text-sm md:text-base',
               response.bool
                 ? 'text-sky-900 bg-sky-200 hover:bg-sky-300'
                 : 'text-rose-900 bg-rose-200 hover:bg-rose-300',

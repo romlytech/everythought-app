@@ -32,9 +32,9 @@
               w-full
               mx-auto
               bg-white
-              dark:bg-gray-800
+              dark:bg-gray-700
               shadow-md
-              rounded-lg
+              rounded-xl
               overflow-hidden
               mt-4
             "
