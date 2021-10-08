@@ -14,6 +14,7 @@
     <router-link
       to="/dashboard"
       class="float-right mt-8 font-medium hover:text-white"
+      style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0)"
     >
       Return to home <span class="animate-pulse">&rarr;</span>
     </router-link>
