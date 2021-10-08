@@ -4,8 +4,8 @@
       Thanks for sharing, {{ store.profile.first_name }}.
     </h1>
     <p class="text-gray-300">
-      Everytime you take moments to identify and process your emotions, you
-      learn more about yourself.
+      Everytime you take moments to identify your emotions, you learn more about
+      yourself.
     </p>
     <p class="text-gray-300">
       Today, you learned about
