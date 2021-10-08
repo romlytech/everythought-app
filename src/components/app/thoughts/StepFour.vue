@@ -27,7 +27,7 @@
           text-gray-200
           rounded-xl
         "
-        rows="4"
+        rows="6"
         maxlength="320"
       ></textarea>
     </div>
