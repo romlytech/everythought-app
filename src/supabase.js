@@ -18,14 +18,14 @@ export async function fetchThoughts() {
       .select("id", {
         count: "exact",
       })
-      .gte("step", 5);
+      .neq("response", null);
 
     if (thoughtCount) {
       store.thoughtCount = thoughtCount.toLocaleString();
       let { data: thoughts, error } = await supabase
         .from("thoughts")
         .select(`date, agreement, response, prompts(id,emotion(name))`)
-        .gte("step", 5)
+        .neq("response", null)
         .filter(
           "date",
           "gte",
@@ -40,7 +40,7 @@ export async function fetchThoughts() {
           .select("id", {
             count: "exact",
           })
-          .gte("step", 5)
+          .neq("response", null)
           .filter(
             "date",
             "lte",
@@ -73,7 +73,7 @@ export async function csvThoughts() {
     let { data: csv, error } = await supabase
       .from("thoughts")
       .select(`updated_at, response`)
-      .gte("step", 5)
+      .neq("response", null)
       .order("updated_at", { ascending: false })
       .csv();
 
@@ -122,7 +122,7 @@ export async function initThought() {
       .from("thoughts")
       .select()
       .eq("date", new Date().toLocaleString().split(",")[0])
-      .lte("step", 4)
+      .eq("response", null)
       .order("id", { ascending: false })
       .limit(1);
 
