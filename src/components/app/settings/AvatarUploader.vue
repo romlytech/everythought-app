@@ -34,6 +34,7 @@
             focus:outline-none
             focus:ring-2 focus:ring-offset-2 focus:ring-sky-500
           "
+          :class="uploading ? 'animate-pulse' : ''"
           for="single"
         >
           <UploadIcon class="h-4 w-4" />

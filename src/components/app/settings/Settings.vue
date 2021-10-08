@@ -204,7 +204,7 @@
             type="button"
             v-if="confirmDelete"
             @click="confirmDelete = false"
-            class="text-gray-600 my-1 text-sm font-medium hover:text-green-600"
+            class="my-1 text-sm font-medium hover:text-green-600"
           >
             Cancel
           </button>

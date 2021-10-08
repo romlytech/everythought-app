@@ -16,7 +16,7 @@
               text-gray-400
             "
           >
-            Choose an image you associate
+            Choose an image you associate<br />
             <span class="font-medium text-gray-300">{{
               store.emotion.name
             }}</span>
@@ -53,9 +53,10 @@
       </RadioGroup>
       <RadioGroup v-else class="space-y-2" v-model="image_agree">
         <RadioGroupLabel class="text-lg md:text-xl font-serif mx-auto"
-          >It looks like you might associate
+          >It looks like you might find
           <span class="font-bold text-gray-300">{{ store.emotion.name }}</span>
-          with
+          in
+          {{ setAction(image_category) }}
           <span class="font-bold text-gray-300">{{ image_category }}</span
           >. Does this seem right to you?
         </RadioGroupLabel>
@@ -142,6 +143,17 @@ export default {
 
       store,
     };
+  },
+  methods: {
+    setAction: function (category) {
+      if (category == "nature") {
+        return "";
+      } else if (category == "activities") {
+        return "doing";
+      } else {
+        return "your";
+      }
+    },
   },
 };
 </script>
