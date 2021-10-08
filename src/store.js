@@ -15,4 +15,5 @@ export const store = reactive({
   alert_msg: null,
   showStepnav: false,
   showContinue: true,
+  prompt_images: [],
 });

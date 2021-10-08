@@ -15,6 +15,7 @@
           focus:ring-0
         "
         style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0)"
+        tabindex="-1"
       >
         <span class="animate-pulse">&larr;</span> Go back
       </button>
@@ -22,7 +23,11 @@
     <div class="flex-auto text-right">
       <transition name="slowfade" appear>
         <button
-          v-show="store.todaysThought.step != 2 && store.showContinue"
+          v-show="
+            store.todaysThought.step != 2 &&
+            store.todaysThought.step != 4 &&
+            store.showContinue
+          "
           @click="updateStep(store.todaysThought.step + 1)"
           class="
             font-medium
@@ -37,7 +42,7 @@
           {{
             store.todaysThought.step == 1
               ? "I'm ready"
-              : store.todaysThought.step == 5
+              : store.todaysThought.step == 6
               ? "Complete"
               : "Continue"
           }}

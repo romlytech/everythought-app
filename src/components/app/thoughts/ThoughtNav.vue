@@ -44,7 +44,14 @@ import { XIcon } from "@heroicons/vue/solid";
 import { store } from "@/store";
 import { updateStep } from "@/supabase";
 
-const steps = [{ id: 1 }, { id: 2 }, { id: 3 }, { id: 4 }, { id: 5 }];
+const steps = [
+  { id: 1 },
+  { id: 2 },
+  { id: 3 },
+  { id: 4 },
+  { id: 5 },
+  { id: 6 },
+];
 
 export default {
   components: { XIcon },

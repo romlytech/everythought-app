@@ -4,7 +4,7 @@
       <label
         for="response"
         class="tracking-wider text-sm md:text-base uppercase text-gray-400"
-        >Describe moments when you feel
+        >Describe a recent moment when you felt
         <span class="font-medium text-gray-300">{{ store.emotion.name }}</span
         >:</label
       >
@@ -49,7 +49,7 @@ import { updateStep } from "@/supabase";
 
 export default {
   setup() {
-    store.showStepnav = false;
+    store.showStepnav = true;
     store.showContinue = false;
 
     const placeholder = `I feel ${
@@ -62,7 +62,9 @@ export default {
     watch(response, () => {
       if (response.value != placeholder) {
         store.showContinue = true;
+        store.showStepnav = true;
         store.todaysThought.response = response.value;
+        store.todaysThought.complete = true;
       }
     });
 

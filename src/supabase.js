@@ -122,7 +122,7 @@ export async function initThought() {
       .from("thoughts")
       .select()
       .eq("date", new Date().toLocaleString().split(",")[0])
-      .eq("response", null)
+      .is("complete", false)
       .order("id", { ascending: false })
       .limit(1);
 
@@ -171,6 +171,8 @@ export async function initThought() {
       }
     }
 
+    getImages();
+
     if (error) throw error;
   } catch (error) {
     notify(
@@ -191,14 +193,17 @@ export async function initThought() {
 export async function updateStep(step) {
   store.showStepnav = false;
   store.todaysThought.step = step;
+  if (store.todaysThought.step >= 6) {
+    store.todaysThought.complete = true;
+  }
   updateThought();
 }
 
 export async function updateThought() {
   try {
     store.loading = true;
-    store.error = null;
     store.showStepnav = false;
+    console.log(store.todaysThought);
 
     // upsert new thought if none
     let { data: thought, error } = await supabase
@@ -229,6 +234,7 @@ export async function updateThought() {
 
     if (error) throw error;
   } catch (error) {
+    console.log(error);
     notify(
       {
         group: "toast",
@@ -288,3 +294,58 @@ export const downloadAvatar = async () => {
     console.error("Error downloading image: ", error.message);
   }
 };
+
+export async function getImages() {
+  try {
+    let { data, error } = await supabase.rpc("get_random_images");
+    console.log(data || error);
+    if (data) {
+      let imgUrls = [];
+
+      for (const row of data) {
+        const { data: src, error } = await supabase.storage
+          .from(row.bucket)
+          .download(row.image);
+        if (src) {
+          console.log(src);
+          imgUrls.push({
+            url: URL.createObjectURL(src),
+            name: row.image,
+            category: row.bucket,
+          });
+        }
+        if (error) throw error;
+      }
+
+      // shuffle the responses
+      function shuffle(array) {
+        let currentIndex = array.length,
+          randomIndex;
+        while (currentIndex != 0) {
+          randomIndex = Math.floor(Math.random() * currentIndex);
+          currentIndex--;
+          [array[currentIndex], array[randomIndex]] = [
+            array[randomIndex],
+            array[currentIndex],
+          ];
+        }
+        return array;
+      }
+      store.prompt_images = shuffle(imgUrls);
+    }
+    if (error) throw error;
+  } catch (error) {
+    notify(
+      {
+        group: "toast",
+        type: "error",
+        title: "Error",
+        text: store.error || error.message,
+      },
+      10000
+    );
+    console.log(error);
+  } finally {
+    store.loading = false;
+  }
+}
