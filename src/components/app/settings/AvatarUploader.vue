@@ -20,17 +20,24 @@
             text-sm
             leading-4
             font-medium
+            inline-flex
+            space-x-1.5
             text-gray-700
             hover:bg-gray-50
-            dark:bg-gray-400
-            dark:text-gray-900
-            dark:border-gray-500
+            dark:bg-gray-700
+            dark:hover:bg-gray-600
+            dark:text-gray-200
+            dark:border-gray-600
+            transition
+            ease-in-out
+            duration-500
             focus:outline-none
             focus:ring-2 focus:ring-offset-2 focus:ring-sky-500
           "
           for="single"
         >
-          {{ uploading ? "Uploading ..." : "Upload image" }}
+          <UploadIcon class="h-4 w-4" />
+          <span>{{ uploading ? "Uploading ..." : "Upload" }}</span>
         </label>
         <input
           class="hidden"
@@ -51,12 +58,13 @@ import { supabase } from "@/supabase";
 import { store } from "@/store";
 import { notify } from "notiwind";
 import Avatar from "./Avatar.vue";
+import { UploadIcon } from "@heroicons/vue/solid";
 
 export default {
   props: {
     path: String,
   },
-  components: { Avatar },
+  components: { Avatar, UploadIcon },
   emits: ["upload", "update:path"],
   setup(prop, { emit }) {
     const { path } = toRefs(prop);

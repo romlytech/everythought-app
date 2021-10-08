@@ -150,8 +150,6 @@
             ease-in-out
             text-red-700
             bg-red-200
-            dark:bg-red-500
-            dark:text-white
             hover:bg-red-500
             hover:text-white
           "

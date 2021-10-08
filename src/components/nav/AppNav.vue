@@ -152,8 +152,16 @@
                   focus:outline-none
                 "
               >
-                <div class="p-4 pb-3 border-b dark:border-gray-500 mb-2">
-                  <div class="leading-none font-serif font-medium break-all">
+                <div class="p-4 pb-3 border-b dark:border-gray-600 mb-2">
+                  <div
+                    class="
+                      leading-none
+                      tracking-tight
+                      mb-1
+                      font-medium
+                      break-all
+                    "
+                  >
                     Hello,
                     {{
                       store.profile.first_name
@@ -164,11 +172,11 @@
                   <div
                     class="
                       text-sm
-                      font-light
                       leading-6
                       text-gray-500
                       dark:text-gray-300
                       break-all
+                      font-serif
                     "
                   >
                     {{ store.user.email }}
@@ -182,6 +190,8 @@
                       py-2
                       block
                       items-center
+                      font-medium
+                      tracking-tight
                       text-sm text-gray-700
                       dark:text-gray-200
                       hover:text-gray-900
@@ -201,6 +211,8 @@
                       py-2
                       inline-flex
                       items-center
+                      font-medium
+                      tracking-tight
                       text-sm text-gray-700
                       dark:text-gray-200
                       hover:text-gray-900

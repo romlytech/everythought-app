@@ -15,13 +15,29 @@
     <nav class="space-x-2 font-medium inline-flex">
       <router-link
         to="/privacy-policy"
-        class="text-gray-600 dark:text-gray-400 hover:text-gray-800"
+        class="
+          text-gray-600
+          dark:text-gray-400
+          hover:text-gray-800
+          dark:hover:text-white
+          transition
+          ease-in-out
+          duration-500
+        "
       >
         Privacy
       </router-link>
       <router-link
         to="/terms-of-use"
-        class="text-gray-600 dark:text-gray-400 hover:text-gray-800"
+        class="
+          text-gray-600
+          dark:text-gray-400
+          hover:text-gray-800
+          dark:hover:text-white
+          transition
+          ease-in-out
+          duration-500
+        "
       >
         Terms
       </router-link>

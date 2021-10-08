@@ -4,7 +4,7 @@
 
 @layer components {
   .etp-input {
-    @apply mt-2 appearance-none block w-full px-3 border border-gray-300 dark:bg-gray-600 dark:text-white dark:border-gray-500 rounded-xl shadow-sm placeholder-gray-400 focus:outline-none focus:ring-sky-500 focus:border-sky-500 sm:text-sm;
+    @apply mt-2 appearance-none block w-full px-3 border border-gray-300 dark:bg-gray-700 dark:text-white dark:border-gray-600 dark:focus:bg-gray-600 rounded-xl shadow-sm placeholder-gray-400 focus:outline-none focus:ring-sky-500 focus:border-sky-500 sm:text-sm;
   }
 }
 
