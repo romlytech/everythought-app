@@ -22,7 +22,7 @@
       <p class="text-gray-500 dark:text-gray-200 text-lg sm:text-xl mt-2">
         {{
           store.profile.first_name
-            ? "Are you ready to discover your emotions today?"
+            ? "Are you ready to dive into your thoughts today?"
             : "Before we get started, let's complete your profile."
         }}
       </p>

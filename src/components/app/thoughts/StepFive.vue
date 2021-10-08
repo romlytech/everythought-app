@@ -4,9 +4,13 @@
       Thanks for sharing, {{ store.profile.first_name }}.
     </h1>
     <p class="text-gray-300">
-      You learned about
-      <span class="lowercase">{{ store.emotion.name }}</span> today. Come back
-      here again to discover more about your emotions.
+      Everytime you take moments to identify and process your emotions, you
+      learn more about yourself.
+    </p>
+    <p class="text-gray-300">
+      Today, you learned about
+      <span class="font-medium">{{ store.emotion.name }}</span
+      >. Come back again whenever you're ready to discover more.
     </p>
     <router-link
       to="/dashboard"

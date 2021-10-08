@@ -24,9 +24,6 @@
     <ThoughtNav />
     <!-- WIP: show errors -->
     <main class="grid items-center w-screen max-w-md">
-      <pre v-if="store.error" class="z-10 m-2 w-full overflow-scroll">{{
-        store.error
-      }}</pre>
       <transition name="slowfade" mode="out-in" appear>
         <StepOne v-if="store.todaysThought.step == 1 && !store.loading" />
         <div

@@ -223,11 +223,10 @@
   </header>
 </template>
 <script>
-import { supabase } from "../../supabase";
-import { store } from "../../store";
+import { getProfile, supabase } from "@/supabase";
+import { store } from "@/store";
 import { onMounted } from "vue";
 import { useRouter } from "vue-router";
-import { notify } from "notiwind";
 
 import Avatar from "../app/settings/Avatar.vue";
 
@@ -261,31 +260,6 @@ export default {
   setup() {
     const router = useRouter();
     store.user = supabase.auth.user();
-
-    // Get user's profile on first load
-    async function getProfile() {
-      try {
-        let { data, error, status } = await supabase
-          .from("profiles")
-          .select("*")
-          .eq("id", store.user.id)
-          .single();
-        if (error && status !== 406) throw error;
-        if (data) {
-          store.profile = data;
-        }
-      } catch (error) {
-        notify(
-          {
-            group: "toast",
-            type: "error",
-            title: "Error",
-            text: error.error_description || error.message,
-          },
-          6000
-        );
-      }
-    }
 
     // Sign Out
     async function signOut() {

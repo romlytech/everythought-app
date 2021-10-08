@@ -1,8 +1,10 @@
 <template>
   <section class="w-full z-50 space-y-4">
     <div>
-      <label for="response" class="tracking-wider uppercase text-gray-400"
-        >Describe when you feel
+      <label
+        for="response"
+        class="tracking-wider text-sm md:text-base uppercase text-gray-400"
+        >Describe moments when you feel
         <span class="font-medium text-gray-300">{{ store.emotion.name }}</span
         >:</label
       >
@@ -34,8 +36,8 @@
       class="text-xs mt-1"
       :class="response.length >= 320 ? 'text-rose-400' : 'text-amber-400'"
     >
-      Try to keep your response brief. {{ 320 - response.length }} characters
-      remaining.
+      Try to keep your response brief. {{ 320 - response.length }}/320
+      characters remaining.
     </p>
   </section>
 </template>

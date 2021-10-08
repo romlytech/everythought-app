@@ -131,7 +131,7 @@ export async function initThought() {
     } else {
       // create a new thought if none
       let { data: prompt, error } = await supabase.rpc("get_random_prompt");
-      if (prompt) {
+      if (prompt.id) {
         // insert new thought
         let { data: thought, error } = await supabase
           .from("thoughts")
@@ -146,6 +146,9 @@ export async function initThought() {
           store.todaysThought = thought;
         }
         if (error) throw error;
+      } else {
+        store.error = "Sorry, there was a problem.";
+        throw error;
       }
       if (error) throw error;
     }
@@ -170,7 +173,15 @@ export async function initThought() {
 
     if (error) throw error;
   } catch (error) {
-    store.error = error;
+    notify(
+      {
+        group: "toast",
+        type: "error",
+        title: "Error",
+        text: store.error || error.message,
+      },
+      10000
+    );
     console.log(error);
   } finally {
     store.loading = false;
@@ -218,7 +229,15 @@ export async function updateThought() {
 
     if (error) throw error;
   } catch (error) {
-    store.error = error;
+    notify(
+      {
+        group: "toast",
+        type: "error",
+        title: "Error",
+        text: error.message || error,
+      },
+      6000
+    );
   } finally {
     store.loading = false;
   }

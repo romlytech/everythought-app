@@ -3,6 +3,7 @@
     <p class="tracking-wider uppercase text-sm text-gray-400 mb-4">
       Ask yourself this question:
     </p>
+
     <RadioGroup
       v-model="agreement_response"
       class="space-y-2"
@@ -12,28 +13,30 @@
         >{{ store.prompt.question }}
       </RadioGroupLabel>
       <div class="pt-4"></div>
-      <transition-group name="fade" appear>
-        <RadioGroupOption
-          v-show="store.showStepnav"
-          v-for="response in responses"
-          :key="response.title"
-          v-slot="{ active, checked }"
-          :value="response.bool"
-        >
-          <button
-            type="button"
-            :class="[
-              'inline-flex justify-center w-full rounded-xl border border-transparent px-4 py-2 font-medium text-sm md:text-base',
-              response.bool
-                ? 'text-sky-900 bg-sky-200 hover:bg-sky-300'
-                : 'text-rose-900 bg-rose-200 hover:bg-rose-300',
-              active || checked ? 'ring-4 ring-white' : '',
-            ]"
+      <div class="h-20 md:h-24 flex-col justify-between flex space-y-2">
+        <transition-group name="fade" appear>
+          <RadioGroupOption
+            v-show="store.showStepnav"
+            v-for="response in responses"
+            :key="response.title"
+            v-slot="{ active, checked }"
+            :value="response.bool"
           >
-            {{ response.title }}
-          </button>
-        </RadioGroupOption>
-      </transition-group>
+            <button
+              type="button"
+              :class="[
+                'inline-flex justify-center w-full rounded-xl border border-transparent px-4 py-2 font-medium text-sm md:text-base',
+                response.bool
+                  ? 'text-sky-900 bg-sky-200 hover:bg-sky-300'
+                  : 'text-rose-900 bg-rose-200 hover:bg-rose-300',
+                active || checked ? 'ring-4 ring-white' : '',
+              ]"
+            >
+              {{ response.title }}
+            </button>
+          </RadioGroupOption>
+        </transition-group>
+      </div>
     </RadioGroup>
   </section>
 </template>

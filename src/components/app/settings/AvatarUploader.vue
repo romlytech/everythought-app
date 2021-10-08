@@ -47,8 +47,8 @@
 
 <script>
 import { ref, toRefs } from "vue";
-import { supabase } from "../../../supabase";
-import { store } from "../../../store";
+import { supabase } from "@/supabase";
+import { store } from "@/store";
 import { notify } from "notiwind";
 import Avatar from "./Avatar.vue";
 

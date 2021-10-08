@@ -32,7 +32,7 @@
               w-full
               mx-auto
               bg-white
-              dark:bg-gray-700
+              dark:bg-gray-900
               shadow-md
               rounded-xl
               overflow-hidden
@@ -43,7 +43,9 @@
           >
             <div
               :class="[
-                notification.type == 'success' ? 'bg-green-600' : 'bg-red-600',
+                notification.type == 'success'
+                  ? 'bg-green-600 dark:bg-opacity-50'
+                  : 'bg-red-600 dark:bg-opacity-50',
                 'flex justify-center items-center w-12',
               ]"
             >
@@ -62,7 +64,7 @@
               <svg
                 v-if="notification.type == 'error'"
                 xmlns="http://www.w3.org/2000/svg"
-                class="h-6 w-6 fill-current text-red-100"
+                class="h-6 w-6 fill-current text-red-100 dark:text-red-300"
                 viewBox="0 0 20 20"
                 fill="currentColor"
               >
@@ -79,8 +81,8 @@
                 <span
                   :class="[
                     notification.type == 'success'
-                      ? 'text-green-600 dark:text-green-300'
-                      : 'text-red-600 dark:text-red-300',
+                      ? 'text-green-600 dark:text-green-400'
+                      : 'text-red-600 dark:text-red-400',
                     'text-sm font-bold',
                   ]"
                   >{{ notification.title }}</span
