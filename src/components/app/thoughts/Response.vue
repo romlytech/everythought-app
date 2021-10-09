@@ -60,11 +60,13 @@ export default {
     const response = ref(store.todaysThought.response || placeholder);
 
     watch(response, () => {
-      if (response.value != placeholder) {
+      if (response.value.length > placeholder.length) {
         store.showContinue = true;
         store.showStepnav = true;
         store.todaysThought.response = response.value;
         store.todaysThought.complete = true;
+      } else {
+        store.showContinue = false;
       }
     });
 
