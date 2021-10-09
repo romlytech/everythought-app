@@ -1,0 +1,46 @@
+<template>
+  <footer
+    class="
+      max-w-2xl
+      mx-auto
+      px-3
+      sm:px-6
+      flex
+      justify-between
+      text-xs text-gray-500
+      dark:text-gray-400
+    "
+  >
+    <p>&copy; 2021 EveryThought</p>
+    <nav class="space-x-2 font-medium inline-flex">
+      <router-link
+        to="/privacy-policy"
+        class="
+          text-gray-600
+          dark:text-gray-400
+          hover:text-gray-800
+          dark:hover:text-white
+          transition
+          ease-in-out
+          duration-500
+        "
+      >
+        Privacy
+      </router-link>
+      <router-link
+        to="/terms-of-use"
+        class="
+          text-gray-600
+          dark:text-gray-400
+          hover:text-gray-800
+          dark:hover:text-white
+          transition
+          ease-in-out
+          duration-500
+        "
+      >
+        Terms
+      </router-link>
+    </nav>
+  </footer>
+</template>

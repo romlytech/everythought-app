@@ -9,12 +9,12 @@
   },
   "dependencies": {
     "@notionhq/client": "^0.4.0",
-    "@sendgrid/mail": "^7.4.6",
-    "@supabase/supabase-js": "^1.22.5",
+    "@sendgrid/mail": "^7.4.7",
+    "@supabase/supabase-js": "^1.24.0",
     "dayjs": "^1.10.7",
     "dotenv": "^10.0.0",
-    "notiwind": "^1.2.2",
-    "vue": "^3.2.20",
+    "notiwind": "^1.2.3",
+    "vue": "^3.2.6",
     "vue-router": "^4.0.11"
   },
   "devDependencies": {
@@ -22,16 +22,16 @@
     "@heroicons/vue": "^1.0.4",
     "@tailwindcss/aspect-ratio": "^0.2.1",
     "@tailwindcss/forms": "^0.3.3",
-    "@tailwindcss/line-clamp": "^0.2.1",
+    "@tailwindcss/line-clamp": "^0.2.2",
     "@tailwindcss/typography": "^0.4.1",
     "@types/tailwindcss": "^2.2.1",
-    "@vitejs/plugin-vue": "^1.6.0",
-    "@vue/compiler-sfc": "^3.2.6",
+    "@vitejs/plugin-vue": "^1.9.3",
+    "@vue/compiler-sfc": "^3.2.20",
     "autoprefixer": "^10.3.4",
-    "netlify-cli": "^2.37.0",
+    "netlify-cli": "^6.10.4",
     "tailwindcss": "^2.2.16",
-    "vite": "^2.5.1",
+    "vite": "^2.6.5",
     "vite-plugin-fonts": "^0.2.2",
-    "vite-plugin-pwa": "^0.11.2"
+    "vite-plugin-pwa": "^0.11.3"
   }
 }

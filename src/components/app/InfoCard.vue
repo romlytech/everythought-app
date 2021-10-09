@@ -1,5 +1,5 @@
 <template>
-  <div class="rounded-md bg-yellow-50 p-4">
+  <div class="rounded-xl bg-yellow-50 p-4">
     <div class="flex">
       <div class="flex-shrink-0">
         <ExclamationIcon
@@ -24,7 +24,7 @@
             inline-flex
             justify-center
             w-full
-            rounded-md
+            rounded-xl
             border border-transparent
             shadow-sm
             px-4

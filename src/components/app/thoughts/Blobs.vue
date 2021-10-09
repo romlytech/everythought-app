@@ -2,7 +2,8 @@
   <div
     class="
       fixed
-      left-4
+      left-0
+      top-20
       w-72
       h-72
       bg-blue-400
@@ -18,7 +19,7 @@
   <div
     class="
       fixed
-      right-4
+      right-0
       w-72
       h-72
       bg-yellow-400

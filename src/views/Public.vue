@@ -1,10 +1,10 @@
 <template>
   <div>
     <!-- Show banner if user is signed in -->
-    <SignedInBanner v-if="store.user" />
+    <AuthorizedBanner v-if="store.user" />
     <div>
       <!-- Main Content -->
-      <main class="shadow-md">
+      <main class="shadow-md bg-white dark:bg-gray-900">
         <!-- Router Child -->
         <router-view v-slot="{ Component }">
           <transition name="fade" mode="out-in">
@@ -22,12 +22,12 @@
 
 <script>
 import { store } from "../store";
-import SignedInBanner from "../components/public/SignedInBanner.vue";
+import AuthorizedBanner from "../components/nav/AuthorizedBanner.vue";
 import PublicFooter from "../components/nav/PublicFooter.vue";
 
 export default {
   components: {
-    SignedInBanner,
+    AuthorizedBanner,
     PublicFooter,
   },
   setup() {

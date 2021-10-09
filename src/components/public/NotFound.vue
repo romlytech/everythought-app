@@ -1,49 +1,46 @@
 <template>
-  <div class="relative py-16 bg-white overflow-hidden">
-    <Dots />
-    <div class="relative px-4 sm:px-6 lg:px-8">
-      <div class="text-lg max-w-prose mx-auto">
-        <LegalHeader />
-        <h1>
-          <span
-            class="
-              block
-              text-sm text-center text-sky-600
-              font-semibold
-              tracking-wide
-              uppercase
-            "
-            >404</span
-          >
-          <span
-            class="
-              mt-2
-              block
-              text-3xl text-center
-              leading-8
-              font-extrabold
-              tracking-tight
-              text-gray-900
-              sm:text-4xl
-            "
-            >Page not found</span
-          >
-        </h1>
-        <p class="mt-8 text-xl text-gray-500 leading-8 text-center">
-          Sorry, we're lost.
-        </p>
-      </div>
-    </div>
+  <div
+    class="
+      sm:mx-auto
+      md:px-4
+      sm:max-w-4xl
+      min-h-screen
+      flex flex-col
+      justify-center
+      overflow-auto
+    "
+  >
+    <PublicHeader subtitle="404" :showTitle="true" />
+    <router-link
+      to="/"
+      class="
+        mx-auto
+        px-4
+        py-2
+        mt-8
+        text-sm
+        leading-6
+        text-white
+        transition
+        duration-150
+        ease-in-out
+        bg-gray-600
+        font-medium
+        border border-transparent
+        rounded-xl
+        hover:bg-gray-500
+        focus:outline-none
+      "
+      >&olarr; Return to home</router-link
+    >
   </div>
 </template>
 <script>
-import Dots from "./Dots.vue";
-import LegalHeader from "../nav/LegalHeader.vue";
+import PublicHeader from "../nav/PublicHeader.vue";
 
 export default {
   components: {
-    Dots,
-    LegalHeader,
+    PublicHeader,
   },
 };
 </script>
