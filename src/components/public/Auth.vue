@@ -43,6 +43,7 @@
                 focus:ring-sky-500
                 focus:border-sky-500
                 sm:text-sm
+                text-gray-900
                 border-gray-300
                 rounded-xl
               "
