@@ -147,6 +147,7 @@ export default {
 
     function updateStep(step) {
       store.showStepnav = false;
+      store.showContinue = false;
       store.todaysThought.step = step;
       store.todaysThought.image_category = image_category.value;
       store.todaysThought.image_agree = image_agree.value;

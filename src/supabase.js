@@ -100,7 +100,7 @@ export async function initThought() {
     store.loading = true;
     store.error = null;
     store.showStepnav = false;
-    store.showContinue = true;
+    store.showContinue = false;
     store.todaysThought = {};
     store.user = supabase.auth.user();
 

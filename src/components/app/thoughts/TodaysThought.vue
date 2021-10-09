@@ -44,9 +44,10 @@
           <StepNav
             v-if="
               store.showStepnav &&
-              store.todaysThought.step != 4 &&
+              !store.loading &&
               store.todaysThought.step != 7 &&
-              !store.loading
+              store.todaysThought.step != 4 &&
+              store.todaysThought.step != 6
             "
           />
         </transition>

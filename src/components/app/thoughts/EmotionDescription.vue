@@ -25,13 +25,13 @@ export default {
 
     setInterval(() => {
       showMisconception.value = true;
-    }, 3000);
+    }, 2100);
 
     setInterval(() => {
       showReality.value = true;
       store.showStepnav = true;
       store.showContinue = true;
-    }, 6000);
+    }, 3210);
 
     return {
       showMisconception,

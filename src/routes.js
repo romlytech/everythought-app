@@ -2,8 +2,8 @@ import Public from "./views/Public.vue";
 
 export const routes = [
   {
-    path: "/",
-    alias: ["/login", "/signup", "/sign-up", "/register", "/auth"],
+    path: "/login",
+    alias: ["/signup", "/sign-up", "/register", "/auth"],
     name: "login",
     component: () => import("./components/public/Login.vue"),
     meta: { title: "Login Page" },
@@ -20,6 +20,12 @@ export const routes = [
     component: Public,
     meta: { title: "Landing Page" },
     children: [
+      {
+        path: "/",
+        name: "landing",
+        meta: { title: "Terms of Use" },
+        component: () => import("./components/public/IndexLanding.vue"),
+      },
       {
         path: "/terms-of-use",
         alias: "/terms",

@@ -49,7 +49,7 @@ import { updateStep } from "@/supabase";
 
 export default {
   setup() {
-    store.showStepnav = true;
+    store.showStepnav = false;
     store.showContinue = false;
 
     const placeholder = `I feel ${
