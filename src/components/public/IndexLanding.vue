@@ -25,9 +25,7 @@
             tracking-wider
             text-gray-500
             dark:text-gray-300
-            sm:text-base
-            lg:text-sm
-            xl:text-base
+            lg:text-base
           "
         >
           Identify your feelings
@@ -59,9 +57,8 @@
           sm:mx-auto
         "
       >
-        Every<span class="font-serif font-bold">Thought</span> is a web
-        application designed to help you identify and recognize your emotions by
-        using daily guided prompts and journaling.
+        EveryThought is a web application designed to help you identify and
+        recognize your emotions by using daily guided prompts and journaling.
       </p>
     </section>
     <!-- end of hero -->

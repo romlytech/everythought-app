@@ -191,8 +191,8 @@
 <script>
 import { ref } from "vue";
 import { useRouter } from "vue-router";
-import { supabase } from "../../supabase";
-import { store } from "../../store";
+import { supabase } from "@/supabase";
+import { store } from "@/store";
 
 export default {
   setup() {

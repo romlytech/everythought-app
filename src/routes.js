@@ -23,7 +23,7 @@ export const routes = [
       {
         path: "/",
         name: "landing",
-        meta: { title: "Terms of Use" },
+        meta: { title: "EveryThought Home" },
         component: () => import("./components/public/IndexLanding.vue"),
       },
       {

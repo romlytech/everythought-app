@@ -42,7 +42,7 @@
                   name="first_name"
                   id="first_name"
                   autocomplete="given-name"
-                  :value="store.profile.first_name"
+                  v-model="first_name"
                   class="
                     py-3
                     px-4
@@ -71,7 +71,6 @@
                   name="last_name"
                   id="last_name"
                   autocomplete="family-name"
-                  :value="store.profile.last_name"
                   class="
                     py-3
                     px-4
@@ -98,8 +97,8 @@
                   id="email"
                   name="email"
                   type="email"
+                  v-model="email"
                   autocomplete="email"
-                  :value="store.user.email"
                   class="
                     py-3
                     px-4
@@ -176,15 +175,26 @@
 </template>
 <script>
 import PublicHeader from "../nav/PublicHeader.vue";
+import { ref } from "vue";
 
-import { store } from "../../store";
+import { store } from "@/store";
 
 export default {
   components: {
     PublicHeader,
   },
   setup() {
-    return { store };
+    const email = ref();
+    const first_name = ref();
+
+    if (store.user) {
+      email.value = store.user.email;
+    }
+
+    if (store.profile) {
+      first_name.value = store.profile.first_name;
+    }
+    return { email, first_name };
   },
 };
 </script>
