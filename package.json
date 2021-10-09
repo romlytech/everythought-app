@@ -30,7 +30,7 @@
     "autoprefixer": "^10.3.4",
     "netlify-cli": "^6.10.4",
     "tailwindcss": "^2.2.16",
-    "vite": "^2.5.1",
+    "vite": "^2.6.5",
     "vite-plugin-fonts": "^0.2.2",
     "vite-plugin-pwa": "^0.11.3"
   }
