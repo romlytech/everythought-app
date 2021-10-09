@@ -1,7 +1,19 @@
 import Public from "./views/Public.vue";
-import LoginLanding from "./components/public/LoginLanding.vue";
 
 export const routes = [
+  {
+    path: "/login",
+    alias: ["/signup", "/sign-up", "/register", "/auth"],
+    name: "login",
+    component: () => import("./components/public/Login.vue"),
+    meta: { title: "Login Page" },
+  },
+  {
+    path: "/:path(.*)",
+    name: "404",
+    meta: { title: "404 - Not Found" },
+    component: () => import("./components/public/NotFound.vue"),
+  },
   {
     path: "/",
     name: "index",
@@ -10,10 +22,9 @@ export const routes = [
     children: [
       {
         path: "/",
-        name: "login",
-        alias: "/login",
-        meta: { title: "Home" },
-        component: LoginLanding,
+        name: "landing",
+        meta: { title: "EveryThought Home" },
+        component: () => import("./components/public/IndexLanding.vue"),
       },
       {
         path: "/terms-of-use",
@@ -36,16 +47,11 @@ export const routes = [
         meta: { title: "Contact Us" },
         component: () => import("./components/public/Contact.vue"),
       },
-      {
-        path: "/:path(.*)",
-        name: "404",
-        meta: { title: "404 - Not Found" },
-        component: () => import("./components/public/NotFound.vue"),
-      },
     ],
   },
   {
-    path: "/thoughts",
+    path: "/thoughts/new",
+    alias: "/thoughts",
     name: "new_thought",
     meta: {
       title: "Today's Thought",
@@ -58,23 +64,24 @@ export const routes = [
     path: "/",
     name: "app",
     redirect: { name: "dashboard" },
-    component: () => import("./views/LoggedIn.vue"),
+    component: () => import("./views/Authorized.vue"),
     children: [
       {
-        path: "/home",
-        name: "home",
+        path: "/dashboard",
+        name: "dashboard",
         meta: {
           title: "Home",
           requiresAuth: true,
           requiresProfile: true,
         },
-        component: () => import("./components/app/Home.vue"),
+        component: () => import("./components/app/dashboard/Dashboard.vue"),
       },
       {
-        path: "/profile",
-        name: "profile",
-        meta: { title: "My Profile", requiresAuth: true },
-        component: () => import("./components/app/profile/Profile.vue"),
+        path: "/account",
+        alias: ["/profile", "/settings"],
+        name: "account",
+        meta: { title: "Account Settings", requiresAuth: true },
+        component: () => import("./components/app/settings/Settings.vue"),
       },
     ],
   },

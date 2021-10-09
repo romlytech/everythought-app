@@ -1,14 +1,13 @@
 <template>
-  <div class="relative py-16 bg-white overflow-hidden">
-    <Dots />
+  <div class="relative py-16 bg-white dark:bg-gray-900 overflow-hidden">
     <div class="relative px-4 sm:px-6 lg:px-8">
-      <LegalHeader />
+      <PublicHeader />
       <div class="mt-12 max-w-prose mx-auto">
         <div
           class="
             bg-gray-800
             md:shadow-md
-            md:rounded-md
+            md:rounded-xl
             -mx-4
             px-4
             py-16
@@ -34,9 +33,7 @@
             <input type="hidden" name="form-name" value="contact-me" />
             <input type="hidden" name="bot-field" />
             <div>
-              <label
-                for="first_name"
-                class="block text-sm font-semibold text-gray-300"
+              <label for="first_name" class="block text-sm text-gray-300"
                 >First name</label
               >
               <div class="mt-1">
@@ -45,7 +42,7 @@
                   name="first_name"
                   id="first_name"
                   autocomplete="given-name"
-                  :value="store.profile.first_name"
+                  v-model="first_name"
                   class="
                     py-3
                     px-4
@@ -58,16 +55,14 @@
                     focus:ring-sky-500
                     bg-gray-700
                     text-gray-200
-                    rounded-md
+                    rounded-xl
                   "
                   required
                 />
               </div>
             </div>
             <div>
-              <label
-                for="last_name"
-                class="block text-sm font-semibold text-gray-300"
+              <label for="last_name" class="block text-sm text-gray-300"
                 >Last name</label
               >
               <div class="mt-1">
@@ -76,7 +71,6 @@
                   name="last_name"
                   id="last_name"
                   autocomplete="family-name"
-                  :value="store.profile.last_name"
                   class="
                     py-3
                     px-4
@@ -89,15 +83,13 @@
                     focus:outline-none
                     bg-gray-700
                     text-gray-200
-                    rounded-md
+                    rounded-xl
                   "
                 />
               </div>
             </div>
             <div class="sm:col-span-2">
-              <label
-                for="email"
-                class="block text-sm font-semibold text-gray-300"
+              <label for="email" class="block text-sm text-gray-300"
                 >Email</label
               >
               <div class="mt-1">
@@ -105,8 +97,8 @@
                   id="email"
                   name="email"
                   type="email"
+                  v-model="email"
                   autocomplete="email"
-                  :value="store.profile.email"
                   class="
                     py-3
                     px-4
@@ -119,16 +111,14 @@
                     focus:outline-none
                     bg-gray-700
                     text-gray-200
-                    rounded-md
+                    rounded-xl
                   "
                   required
                 />
               </div>
             </div>
             <div class="sm:col-span-2">
-              <label
-                for="message"
-                class="block text-sm font-semibold text-gray-300"
+              <label for="message" class="block text-sm text-gray-300"
                 >Message</label
               >
               <div class="mt-1">
@@ -148,7 +138,7 @@
                     focus:outline-none
                     bg-gray-700
                     text-gray-200
-                    rounded-md
+                    rounded-xl
                   "
                   required
                 ></textarea>
@@ -165,11 +155,9 @@
                   px-6
                   py-3
                   border border-transparent
-                  rounded-md
+                  rounded-xl
                   shadow-sm
-                  text-base
-                  font-medium
-                  text-white
+                  text-base text-white
                   bg-sky-700
                   hover:bg-sky-800
                   focus:outline-none
@@ -186,18 +174,27 @@
   </div>
 </template>
 <script>
-import Dots from "./Dots.vue";
-import LegalHeader from "../nav/LegalHeader.vue";
+import PublicHeader from "../nav/PublicHeader.vue";
+import { ref } from "vue";
 
-import { store } from "../../store";
+import { store } from "@/store";
 
 export default {
   components: {
-    Dots,
-    LegalHeader,
+    PublicHeader,
   },
   setup() {
-    return { store };
+    const email = ref();
+    const first_name = ref();
+
+    if (store.user) {
+      email.value = store.user.email;
+    }
+
+    if (store.profile) {
+      first_name.value = store.profile.first_name;
+    }
+    return { email, first_name };
   },
 };
 </script>
