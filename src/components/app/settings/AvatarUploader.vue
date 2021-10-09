@@ -8,47 +8,49 @@
     </label>
     <div class="mt-2 inline-flex items-center space-x-4">
       <Avatar class="h-16 w-16" />
-      <div class="flex-grow">
-        <label
-          class="
-            bg-white
-            py-2
-            px-3
-            border border-gray-300
-            rounded-xl
-            shadow-sm
-            text-sm
-            leading-4
-            font-medium
-            inline-flex
-            space-x-1.5
-            text-gray-700
-            hover:bg-gray-50
-            dark:bg-gray-700
-            dark:hover:bg-gray-600
-            dark:text-gray-200
-            dark:border-gray-600
-            transition
-            ease-in-out
-            duration-500
-            focus:outline-none
-            focus:ring-2 focus:ring-offset-2 focus:ring-sky-500
-          "
-          :class="uploading ? 'animate-pulse' : ''"
-          for="single"
-        >
-          <UploadIcon class="h-4 w-4" />
-          <span>{{ uploading ? "Uploading ..." : "Upload" }}</span>
-        </label>
-        <input
-          class="hidden"
-          type="file"
-          id="single"
-          accept="image/*"
-          @change="uploadAvatar($event)"
-          :disabled="uploading"
-        />
-      </div>
+      <transition name="fade" mode="out-in" appear>
+        <div v-if="!store.loading" class="flex-grow">
+          <label
+            class="
+              bg-white
+              py-2
+              px-3
+              border border-gray-300
+              rounded-xl
+              shadow-sm
+              text-sm
+              leading-4
+              font-medium
+              inline-flex
+              space-x-1.5
+              text-gray-700
+              hover:bg-gray-50
+              dark:bg-gray-700
+              dark:hover:bg-gray-600
+              dark:text-gray-200
+              dark:border-gray-600
+              transition
+              ease-in-out
+              duration-500
+              focus:outline-none
+              focus:ring-2 focus:ring-offset-2 focus:ring-sky-500
+            "
+            :class="uploading ? 'animate-bounce' : ''"
+            for="single"
+          >
+            <UploadIcon class="h-4 w-4" />
+            <span>{{ uploading ? "Uploading ..." : "Upload" }}</span>
+          </label>
+          <input
+            class="hidden"
+            type="file"
+            id="single"
+            accept="image/*"
+            @change="uploadAvatar($event)"
+            :disabled="uploading || store.loading"
+          />
+        </div>
+      </transition>
     </div>
   </div>
 </template>
@@ -75,6 +77,14 @@ export default {
 
     const uploadAvatar = async (evt) => {
       files.value = evt.target.files;
+      notify(
+        {
+          group: "toast",
+          title: "Uploading",
+          text: "uploading image...",
+        },
+        6000
+      );
       try {
         uploading.value = true;
         if (!files.value || files.value.length === 0) {

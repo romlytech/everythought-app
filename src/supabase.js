@@ -193,8 +193,10 @@ export async function initThought() {
 export async function updateStep(step) {
   store.showStepnav = false;
   store.todaysThought.step = step;
-  if (store.todaysThought.step >= 7) {
+  if (store.todaysThought.step >= 7 && store.todaysThought.response) {
     store.todaysThought.complete = true;
+  } else if (!store.todaysThought.response && step >= 6) {
+    store.todaysThought.step = 6;
   }
   updateThought();
 }

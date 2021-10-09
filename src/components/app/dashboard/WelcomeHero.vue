@@ -49,14 +49,18 @@
             rounded-xl
             focus:outline-none
           "
-          :class="
+          :class="[
             store.profile.first_name
               ? 'bg-sky-600 dark:bg-sky-800 hover:bg-sky-500 dark:hover:bg-sky-700'
-              : 'bg-gray-600 dark:bg-gray-800 hover:bg-gray-500 dark:hover:bg-gray-700'
-          "
-          ><span>{{
-            store.profile.first_name ? "Start a new Thought" : "Edit Profile"
-          }}</span>
+              : 'bg-gray-600 dark:bg-gray-800 hover:bg-gray-500 dark:hover:bg-gray-700',
+            store.loading ? 'animate-pulse' : '',
+          ]"
+          ><transition name="fade" mode="out-in"
+            ><span v-if="store.loading">Loading...</span
+            ><span v-else>{{
+              store.profile.first_name ? "Start a new Thought" : "Edit Profile"
+            }}</span></transition
+          >
           <AnnotationIcon v-if="store.profile.first_name" class="w-5 h-5" />
           <AnnotationIcon v-else class="w-5 h-5"
         /></router-link>

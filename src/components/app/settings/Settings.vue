@@ -85,6 +85,7 @@
               focus:outline-none
               focus:ring-2 focus:ring-offset-2 focus:ring-gray-500
             "
+            :class="store.loading ? 'animate-pulse' : ''"
             :value="store.loading ? 'Loading ...' : 'Update Profile'"
             :disabled="store.loading"
           />
