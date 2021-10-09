@@ -11,7 +11,9 @@
     "
   >
     <router-link to="/" class="text-2xl text-sky-600 my-4 mx-auto">
-      Every<span class="text-gray-700 font-serif font-bold">Thought</span>
+      Every<span class="text-gray-700 dark:text-gray-300 font-serif font-bold"
+        >Thought</span
+      >
     </router-link>
     <Auth />
   </div>
