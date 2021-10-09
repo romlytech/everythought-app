@@ -50,7 +50,7 @@
           class="tracking-wider uppercase text-sm text-green-500"
           :class="showAnimate ? 'text-gray-300' : ''"
         >
-          Truth:
+          The truth about {{ store.emotion.name }}:
         </p>
         <p class="whitespace-pre-wrap">
           {{ store.emotion.reality }}
