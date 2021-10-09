@@ -81,7 +81,6 @@
         <RadioGroupLabel class="text-lg md:text-xl font-serif mx-auto"
           >It looks like you might find
           <span class="font-bold text-gray-300">{{ store.emotion.name }}</span>
-          in
           {{ setAction(image_category) }}
           <span class="font-bold text-gray-300">{{ image_category }}</span
           >. Does this seem right to you?
@@ -185,11 +184,11 @@ export default {
   methods: {
     setAction: function (category) {
       if (category == "nature") {
-        return "";
+        return "in";
       } else if (category == "activities") {
-        return "doing";
+        return "when doing";
       } else {
-        return "your";
+        return "in your";
       }
     },
   },
