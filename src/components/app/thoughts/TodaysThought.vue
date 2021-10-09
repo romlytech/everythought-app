@@ -27,14 +27,17 @@
       <transition name="slowfade" mode="out-in" appear>
         <Welcome v-if="store.todaysThought.step == 1 && !store.loading" />
         <Question v-else-if="store.todaysThought.step == 2 && !store.loading" />
-        <EmotionDescription
+        <MisconceptionTruth
           v-else-if="store.todaysThought.step == 3 && !store.loading"
         />
         <ImageStep
           v-else-if="store.todaysThought.step == 4 && !store.loading"
         />
-        <Response v-else-if="store.todaysThought.step == 5 && !store.loading" />
-        <Closing v-else-if="store.todaysThought.step == 6 && !store.loading" />
+        <EmotionDescription
+          v-else-if="store.todaysThought.step == 5 && !store.loading"
+        />
+        <Response v-else-if="store.todaysThought.step == 6 && !store.loading" />
+        <Closing v-else-if="store.todaysThought.step == 7 && !store.loading" />
       </transition>
       <div class="h-12 z-50 w-full max-w-md">
         <transition name="slowfade" mode="out-in" appear>
@@ -42,7 +45,7 @@
             v-if="
               store.showStepnav &&
               store.todaysThought.step != 4 &&
-              store.todaysThought.step != 6 &&
+              store.todaysThought.step != 7 &&
               !store.loading
             "
           />
@@ -57,6 +60,7 @@ import ThoughtNav from "./ThoughtNav.vue";
 import StepNav from "./StepNav.vue";
 import Welcome from "./Welcome.vue";
 import Question from "./Question.vue";
+import MisconceptionTruth from "./MisconceptionTruth.vue";
 import EmotionDescription from "./EmotionDescription.vue";
 import Response from "./Response.vue";
 import Closing from "./Closing.vue";
@@ -73,6 +77,7 @@ export default {
     Welcome,
     Question,
     EmotionDescription,
+    MisconceptionTruth,
     Response,
     Closing,
     ImageStep,

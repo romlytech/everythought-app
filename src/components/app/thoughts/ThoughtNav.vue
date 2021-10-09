@@ -29,9 +29,9 @@
           :key="step.id"
           :class="[
             store.todaysThought.step >= step.id ? 'bg-gray-300' : 'bg-gray-500',
-            'block w-3 h-1 rounded-full',
+            'block w-3 h-1 rounded-full transition-colors ease-in-out duration-700',
           ]"
-          @click="updateStep(step.id)"
+          @click="moveStep(step.id)"
         >
           <span class="sr-only">Step {{ step.id }}</span>
         </li>
@@ -51,15 +51,21 @@ const steps = [
   { id: 4 },
   { id: 5 },
   { id: 6 },
+  { id: 7 },
 ];
 
 export default {
   components: { XIcon },
   setup() {
+    function moveStep(step) {
+      if (store.todaysThought.step >= step) {
+        updateStep(step);
+      } else return;
+    }
     return {
+      moveStep,
       store,
       steps,
-      updateStep,
     };
   },
 };

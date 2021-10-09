@@ -1,7 +1,7 @@
 <template>
   <!-- Router View -->
-  <router-view v-slot="{ Component }">
-    <transition name="fade" mode="out-in">
+  <router-view v-slot="{ Component }" class="dark:bg-gray-800">
+    <transition name="fade" mode="out-in" appear>
       <component :is="Component" />
     </transition>
   </router-view>

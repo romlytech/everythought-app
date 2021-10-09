@@ -49,9 +49,35 @@
               />
             </button>
           </RadioGroupOption>
+          <div class="flex-grow w-full">
+            <button
+              @click="showMore"
+              class="
+                text-left
+                font-medium
+                inline-flex
+                items-center
+                text-gray-300 text-xs
+                hover:text-white
+                bg-transparent
+                border-transparent
+                focus:border-transparent
+                focus:ring-0
+                mx-auto
+              "
+              style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0)"
+              tabindex="-1"
+            >
+              Show more <RefreshIcon class="w-4 h-4 ml-1.5" />
+            </button>
+          </div>
         </div>
       </RadioGroup>
-      <RadioGroup v-else class="space-y-2" v-model="image_agree">
+      <RadioGroup
+        v-else-if="image_category"
+        class="space-y-2"
+        v-model="image_agree"
+      >
         <RadioGroupLabel class="text-lg md:text-xl font-serif mx-auto"
           >It looks like you might find
           <span class="font-bold text-gray-300">{{ store.emotion.name }}</span>
@@ -92,6 +118,7 @@
 import { ref } from "vue";
 
 import { RadioGroup, RadioGroupLabel, RadioGroupOption } from "@headlessui/vue";
+import { RefreshIcon } from "@heroicons/vue/solid";
 
 import { store } from "@/store";
 import { getImages, updateThought } from "@/supabase";
@@ -101,6 +128,7 @@ export default {
     RadioGroup,
     RadioGroupLabel,
     RadioGroupOption,
+    RefreshIcon,
   },
   setup() {
     const responses = [
@@ -126,10 +154,19 @@ export default {
       updateThought();
     }
 
+    async function showMore() {
+      store.prompt_images = [];
+      image_category.value = "";
+      getImages();
+    }
+
     async function respondTo() {
       if (image_agree.value) {
+        store.showStepnav = false;
+        store.todaysThought.image_agree = image_agree.value;
         updateStep(5);
       } else {
+        image_agree.value = "";
         image_category.value = "";
         getImages();
       }
@@ -140,6 +177,7 @@ export default {
       respondTo,
       image_agree,
       image_category,
+      showMore,
 
       store,
     };

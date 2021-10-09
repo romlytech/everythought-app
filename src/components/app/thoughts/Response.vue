@@ -4,7 +4,7 @@
       <label
         for="response"
         class="tracking-wider text-sm md:text-base uppercase text-gray-400"
-        >Describe a recent moment when you felt
+        >Describe a moment when you have felt
         <span class="font-medium text-gray-300">{{ store.emotion.name }}</span
         >:</label
       >

@@ -6,18 +6,22 @@
     <p class="text-gray-300">
       Everytime you identify your emotions, you learn about yourself.
     </p>
-    <p class="text-gray-300">
-      Today, you learned about
-      <span class="font-medium">{{ store.emotion.name }}</span
-      >. Come back again whenever you're ready to discover more.
-    </p>
-    <router-link
-      to="/dashboard"
-      class="float-right mt-8 font-medium hover:text-white"
-      style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0)"
-    >
-      Return to home <span class="animate-pulse">&rarr;</span>
-    </router-link>
+    <transition name="slowfade" mode="out-in" appear>
+      <p class="text-gray-300">
+        Today, you learned about
+        <span class="font-medium">{{ store.emotion.name }}</span
+        >. Come back again whenever you're ready to discover more.
+      </p>
+    </transition>
+    <transition name="slowerfade" mode="out-in" appear>
+      <router-link
+        to="/dashboard"
+        class="float-right mt-8 font-medium hover:text-white"
+        style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0)"
+      >
+        Return to home <span class="animate-pulse">&rarr;</span>
+      </router-link>
+    </transition>
   </section>
 </template>
 <script>
