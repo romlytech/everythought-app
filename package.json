@@ -1,5 +1,5 @@
 {
-  "name": "prayer-connect-app",
+  "name": "everythought-frontend",
   "version": "1.0.0",
   "private": true,
   "scripts": {
@@ -30,7 +30,7 @@
     "autoprefixer": "^10.3.4",
     "netlify-cli": "^2.37.0",
     "tailwindcss": "^2.2.16",
-    "vite": "^2.5.1",
+    "vite": "^2.6.5",
     "vite-plugin-fonts": "^0.2.2",
     "vite-plugin-pwa": "^0.11.2"
   }
