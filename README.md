@@ -2,6 +2,8 @@
 
 # [EveryThought](https://everythought.app) ☁
 
+EveryThought is a web application designed to help you identify and recognize your emotions by using daily guided prompts and journaling.
+
 _**Built with 🏝 in Florida, USA by Mike & Emily Roberts.**_
 
 We are a husband &amp; wife team passionate about mental health &amp; entrepreneurship. [Mike](https://twitter.com/romlytech) is a CTO by day &amp; [Emily](https://instagram.com/teamromly) has a background in psychology and counseling. Let's be friends.

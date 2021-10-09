@@ -300,7 +300,7 @@
       </div>
 
       <img
-        src="/img/localhost_8888_dashboard(iPhone 6_7_8 Plus).png"
+        src="/img/EveryThought_iPhone_Screenshot.png"
         alt="EveryThought App Screenshot"
         class="
           block

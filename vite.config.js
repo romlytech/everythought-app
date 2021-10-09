@@ -13,7 +13,8 @@ export default defineConfig({
         short_name: "EveryThought",
         start_url: "https://EveryThought.app",
         display: "standalone",
-        description: "Anonmous thoughts with others.",
+        description:
+          "EveryThought is a web application designed to help you identify and recognize your emotions by using daily guided prompts and journaling.",
       },
     }),
     ViteFonts({
