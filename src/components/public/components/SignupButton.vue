@@ -9,7 +9,7 @@
       border border-transparent
       text-base
       font-medium
-      rounded-md
+      rounded-xl
       shadow-sm
       focus:outline-none
       focus:ring-2 focus:ring-offset-2 focus:ring-sky-500

@@ -16,7 +16,7 @@
     >
       <div class="flex items-center">
         <div class="flex-shrink-0">
-          <router-link to="/" class="text-lg md:text-2xl text-sky-600">
+          <router-link to="/dashboard" class="text-lg md:text-2xl text-sky-600">
             Every<span class="text-gray-300 font-serif font-medium"
               >Thought</span
             >

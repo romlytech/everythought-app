@@ -1,6 +1,5 @@
 <template>
   <div class="relative py-16 bg-white dark:bg-gray-900 overflow-hidden">
-    <Dots />
     <div class="relative px-4 sm:px-6 lg:px-8">
       <PublicHeader subtitle="Legal Stuff" :showTitle="true" />
       <div
@@ -222,12 +221,10 @@
   </div>
 </template>
 <script>
-import Dots from "./Dots.vue";
 import PublicHeader from "../nav/PublicHeader.vue";
 
 export default {
   components: {
-    Dots,
     PublicHeader,
   },
 };

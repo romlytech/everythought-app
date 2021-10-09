@@ -1,6 +1,5 @@
 <template>
   <div class="relative py-16 bg-white dark:bg-gray-900 overflow-hidden">
-    <Dots />
     <div class="relative px-4 sm:px-6 lg:px-8">
       <PublicHeader />
       <div class="mt-12 max-w-prose mx-auto">
@@ -18,16 +17,7 @@
             md:mb-0
           "
         >
-          <h1
-            class="
-              text-2xl
-              font-semibold
-              tracking-wide
-              font-serif
-              text-white
-              sm:text-4xl
-            "
-          >
+          <h1 class="text-2xl font-bold tracking-tight text-white sm:text-4xl">
             Contact Us
           </h1>
           <p class="text-lg tracking-tight text-gray-300 mb-6">
@@ -185,14 +175,12 @@
   </div>
 </template>
 <script>
-import Dots from "./Dots.vue";
 import PublicHeader from "../nav/PublicHeader.vue";
 
 import { store } from "../../store";
 
 export default {
   components: {
-    Dots,
     PublicHeader,
   },
   setup() {

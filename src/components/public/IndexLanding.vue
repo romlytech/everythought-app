@@ -24,6 +24,7 @@
             uppercase
             tracking-wider
             text-gray-500
+            dark:text-gray-300
             sm:text-base
             lg:text-sm
             xl:text-base
@@ -50,6 +51,7 @@
         class="
           mt-3
           text-base text-gray-500
+          dark:text-gray-300
           sm:text-lg
           md:mt-5
           md:text-xl
@@ -88,6 +90,7 @@
           tracking-tight
           sm:w-auto
           text-gray-700
+          dark:text-gray-300
           flex-auto
         "
       >
@@ -107,6 +110,7 @@
       class="
         relative
         bg-sky-50
+        dark:bg-gray-700
         lg:rounded-xl
         max-w-5xl
         lg:mx-auto
@@ -159,14 +163,22 @@
                 leading-8
                 font-bold
                 tracking-tight
-                text-gray-900
                 sm:text-4xl
               "
             >
               Most people fail to identify and recognize their thoughts and
               emotions
             </h3>
-            <div class="mt-5 prose md:prose-lg prose-sky text-gray-500">
+            <div
+              class="
+                mt-5
+                prose
+                md:prose-lg
+                prose-sky
+                text-gray-500
+                dark:text-gray-300
+              "
+            >
               <p>
                 Human behavior is triggered by emotion. When you ignore your
                 emotions, you prevent yourself from understanding why you do the
@@ -219,14 +231,13 @@
               leading-8
               font-bold
               tracking-tight
-              text-gray-900
               lg:text-5xl
               text-center
             "
           >
             Be your own <span class="text-sky-600">advocate</span>
           </h3>
-          <p class="mt-2 text-lg text-gray-500">
+          <p class="mt-2 text-lg text-gray-500 dark:text-gray-300">
             We know it can feel overwhelming to process your thoughts, so we
             built a framework to guide you through them.
           </p>
@@ -253,6 +264,7 @@
               md:text-lg
               tracking-tight
               text-gray-700
+              dark:text-gray-300
               inline-flex
               justify-start
               items-start
@@ -266,8 +278,11 @@
                 py-1
                 bg-gradient-to-b
                 text-sky-700
+                dark:text-gray-200
                 from-sky-50
                 to-sky-100
+                dark:from-gray-700
+                dark:to-gray-800
                 font-medium
                 inline-flex
                 justify-center

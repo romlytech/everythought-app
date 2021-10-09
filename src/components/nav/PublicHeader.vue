@@ -19,9 +19,9 @@
           block
           text-3xl text-center
           leading-8
-          font-semibold
+          font-medium
+          tracking-tight
           sm:text-4xl
-          font-serif
         "
         >{{ $route.meta.title }}</span
       >

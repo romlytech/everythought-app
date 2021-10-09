@@ -26,11 +26,9 @@ router.beforeEach(async (to, from, next) => {
   } else if (to.hash.includes("message")) {
     store.alert_msg = to.hash.split("#message=")[1].replaceAll("+", " ");
     store.error = false;
-    return next({ path: "/register" });
+    return next({ path: "/login" });
   } else if (to.meta.requiresAuth && !store.user) {
     return next({ path: "/login" });
-  } else if (to.path == "/" && store.user) {
-    return next({ path: "/dashboard" });
   } else if (to.path == "/login" && store.user) {
     return next({ path: "/dashboard" });
   }
