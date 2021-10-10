@@ -344,6 +344,7 @@ export default {
           });
           let { error } = await supabase.auth.signOut();
           store.user = {};
+          router.push("/");
           router.go();
           console.log(error);
         } else {
