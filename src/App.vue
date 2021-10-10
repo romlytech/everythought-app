@@ -101,7 +101,7 @@
 <script>
 import { store } from "@/store";
 import { supabase } from "@/supabase";
-import { useRouter } from "vue";
+import { useRouter } from "vue-router";
 export default {
   setup() {
     store.user = supabase.auth.user();
