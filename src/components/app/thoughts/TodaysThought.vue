@@ -46,6 +46,7 @@
               store.showStepnav &&
               !store.loading &&
               store.todaysThought.step != 7 &&
+              store.todaysThought.step != 2 &&
               store.todaysThought.step != 4 &&
               store.todaysThought.step != 6
             "

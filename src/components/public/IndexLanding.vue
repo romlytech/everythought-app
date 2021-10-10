@@ -25,7 +25,6 @@
             tracking-wider
             text-gray-500
             dark:text-gray-300
-            lg:text-base
           "
         >
           Identify your feelings
@@ -147,9 +146,16 @@
         "
       >
         <article class="md:col-start-2 md:col-span-2 md:pl-8">
-          <div class="text-base mx-auto md:max-w-lg md:mx-auto">
+          <div class="mx-auto md:max-w-lg md:mx-auto">
             <h2
-              class="leading-6 text-sky-500 font-medium tracking-wide uppercase"
+              class="
+                leading-6
+                text-sky-500 text-sm
+                md:text-base
+                font-medium
+                tracking-wide
+                uppercase
+              "
             >
               There is a problem
             </h2>
@@ -216,7 +222,6 @@
               uppercase
               tracking-wider
               text-sky-600
-              lg:text-base
             "
           >
             Start your journey today
@@ -295,12 +300,12 @@
         </dl>
         <SignupButton secondary />
       </div>
-
       <img
         src="/img/EveryThought_iPhone_Screenshot.png"
         alt="EveryThought App Screenshot"
         class="
           block
+          w-5/6
           max-w-xs
           mx-auto
           h-auto
@@ -311,6 +316,7 @@
         "
       />
     </section>
+    <Faq />
     <!-- end of guide/action -->
   </main>
 </template>
@@ -320,6 +326,7 @@ import Auth from "./Auth.vue";
 import { HeartIcon, TrendingUpIcon, UserGroupIcon } from "@heroicons/vue/solid";
 import PublicHeader from "../nav/PublicHeader.vue";
 import SignupButton from "./components/SignupButton.vue";
+import Faq from "./components/Faq.vue";
 
 const actionSteps = [
   {
@@ -355,6 +362,7 @@ export default {
     Auth,
     PublicHeader,
     SignupButton,
+    Faq,
   },
   setup() {
     return {

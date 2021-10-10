@@ -5,7 +5,7 @@
       <div
         class="mt-6 dark:text-gray-300 prose prose-sky text-gray-500 mx-auto"
       >
-        <p>Last updated July 1, 2021</p>
+        <p>Last updated October 9, 2021</p>
         <p>
           Thank you for choosing to be part of our community at Romly Holdings,
           LLC, doing business as EveryThought.app (&quot;EveryThought.app&quot;,
@@ -37,9 +37,9 @@
           Please read this privacy notice carefully as it will help you
           understand what we do with the information that we collect.
         </p>
-        <h4 id="what-information-do-we-collect-">
+        <h3 id="what-information-do-we-collect-">
           What information do we collect?
-        </h4>
+        </h3>
         <h6 id="personal-information-you-disclose-to-us">
           Personal information you disclose to us
         </h6>
@@ -57,9 +57,9 @@
           may include the following:
         </p>
         <p>
-          Personal Information Provided by You. We collect names; phone numbers;
-          email addresses; first_names; contact preferences; contact or
-          authentication data; and other similar information.
+          Personal Information Provided by You. We collect names; email
+          addresses; contact preferences; contact or authentication data; and
+          other similar information.
         </p>
         <p>
           All personal information that you provide to us must be true, complete
@@ -86,46 +86,30 @@
           Like many businesses, we also collect information through cookies and
           similar technologies.
         </h6>
-        <p>The information we collect includes:</p>
-        <ul>
-          <li>
-            Log and Usage Data. Log and usage data is service-related,
-            diagnostic, usage and performance information our servers
-            automatically collect when you access or use our Website and which
-            we record in log files. Depending on how you interact with us, this
-            log data may include your IP address, device information, browser
-            type and settings and information about your activity in the Website
-            (such as the date/time stamps associated with your usage, pages and
-            files viewed, searches and other actions you take such as which
-            features you use), device event information (such as system
-            activity, error reports (sometimes called &#39;crash dumps&#39;) and
-            hardware settings).
-          </li>
-          <li>
-            Device Data. We collect device data such as information about your
-            computer, phone, tablet or other device you use to access the
-            Website. Depending on the device used, this device data may include
-            information such as your IP address (or proxy server), device and
-            application identification numbers, location, browser type, hardware
-            model Internet service provider and/or mobile carrier, operating
-            system and system configuration information.
-          </li>
-          <li>
-            Location Data. We collect location data such as information about
-            your device&#39;s location, which can be either precise or
-            imprecise. How much information we collect depends on the type and
-            settings of the device you use to access the Website. For example,
-            we may use GPS and other technologies to collect geolocation data
-            that tells us your current location (based on your IP address). You
-            can opt out of allowing us to collect this information either by
-            refusing access to the information or by disabling your Location
-            setting on your device. Note however, if you choose to opt out, you
-            may not be able to use certain aspects of the Services.
-          </li>
-        </ul>
-        <h4 id="how-do-we-use-your-information-">
+        <p>
+          We want to process as little personal information as possible when you
+          use our website. That's why we've chosen Fathom Analytics for our
+          website analytics, which doesn't use cookies and complies with the
+          GDPR, ePrivacy (including PECR), COPPA and CCPA. Using this
+          privacy-friendly website analytics software, your IP address is only
+          briefly processed, and we (running this website) have no way of
+          identifying you. As per the CCPA, your personal information is
+          de-identified. You can read more about this on
+          <a href="https://usefathom.com/compliance" rel="noopener noreferrer"
+            >Fathom Analytics' website</a
+          >.
+        </p>
+        <p>
+          The purpose of us using this software is to understand our website
+          traffic in the most privacy-friendly way possible so that we can
+          continually improve our website and business. The lawful basis as per
+          the GDPR is "f); where our legitimate interests are to improve our
+          website and business continually." As per the explanation, no personal
+          data is stored over time.
+        </p>
+        <h3 id="how-do-we-use-your-information-">
           How do we use your information?
-        </h4>
+        </h3>
         <p>
           We use personal information collected via our Website for a variety of
           business purposes described below. We process your personal
@@ -149,7 +133,7 @@
             contain personal information. Prior to posting a testimonial, we
             will obtain your consent to use your name and the content of the
             testimonial. If you wish to update, or delete your testimonial,
-            please contact us at support@EveryThought.app and be sure to include
+            please contact us at support@everythought.app and be sure to include
             your name, testimonial location, and contact information.
           </li>
           <li>
@@ -221,9 +205,9 @@
             identifiable personal information without your consent.
           </li>
         </ul>
-        <h4 id="will-your-information-be-shared-with-anyone-">
+        <h3 id="will-your-information-be-shared-with-anyone-">
           Will your information be shared with anyone?
-        </h4>
+        </h3>
         <p>
           We may process or share your data that we hold based on the following
           legal basis:
@@ -297,9 +281,9 @@
             partners to offer you certain products, services or promotions.
           </li>
         </ul>
-        <h4 id="who-will-your-information-be-shared-with-">
+        <h3 id="who-will-your-information-be-shared-with-">
           Who will your information be shared with?
-        </h4>
+        </h3>
         <p>
           We only share and disclose your information with the following third
           parties. We have categorized each party so that you may be easily
@@ -329,18 +313,18 @@
             </ul>
           </li>
         </ul>
-        <h4 id="do-we-use-cookies-and-other-tracking-technologies-">
+        <h3 id="do-we-use-cookies-and-other-tracking-technologies-">
           Do we use cookies and other tracking technologies?
-        </h4>
+        </h3>
         <p>
           We may use cookies and similar tracking technologies (like web beacons
           and pixels) to access or store information. Specific information about
           how we use such technologies and how you can refuse certain cookies is
           set out in our Cookie Notice.
         </p>
-        <h4 id="how-long-do-we-keep-your-information-">
+        <h3 id="how-long-do-we-keep-your-information-">
           How long do we keep your information?
-        </h4>
+        </h3>
         <p>
           We will only keep your personal information for as long as it is
           necessary for the purposes set out in this privacy notice, unless a
@@ -357,9 +341,9 @@
           securely store your personal information and isolate it from any
           further processing until deletion is possible.
         </p>
-        <h4 id="how-do-we-keep-your-information-safe-">
+        <h3 id="how-do-we-keep-your-information-safe-">
           How do we keep your information safe?
-        </h4>
+        </h3>
         <p>
           We have implemented appropriate technical and organizational security
           measures designed to protect the security of any personal information
@@ -374,9 +358,9 @@
           your own risk. You should only access the Website within a secure
           environment.
         </p>
-        <h4 id="do-we-collect-information-from-minors-">
+        <h3 id="do-we-collect-information-from-minors-">
           Do we collect information from minors?
-        </h4>
+        </h3>
         <p>
           We do not knowingly solicit data from or market to children under 18
           years of age. By using the Website, you represent that you are at
@@ -387,12 +371,12 @@
           to promptly delete such data from our records. If you become aware of
           any data we may have collected from children under age 18, please
           contact us at
-          <a href="mailto: support@EveryThought.app">support@EveryThought.app</a
+          <a href="mailto: support@everythought.app">support@everythought.app</a
           >.
         </p>
-        <h4 id="what-are-your-privacy-rights-">
+        <h3 id="what-are-your-privacy-rights-">
           What are your privacy rights?
-        </h4>
+        </h3>
         <p>
           If you are a resident in the European Economic Area and you believe we
           are unlawfully processing your personal information, you also have the
@@ -413,7 +397,7 @@
         <p>
           If you have questions or comments about your privacy rights, you may
           email us at
-          <a href="mailto: support@EveryThought.app">support@EveryThought.app</a
+          <a href="mailto: support@everythought.app">support@everythought.app</a
           >.
         </p>
         <h6 id="account-information">Account Information</h6>
@@ -451,9 +435,9 @@
           the administration and use of your account, to respond to service
           requests, or for other non-marketing purposes.
         </p>
-        <h4 id="controls-for-do-not-track-features">
+        <h3 id="controls-for-do-not-track-features">
           Controls for do-not-track features
-        </h4>
+        </h3>
         <p>
           Most web browsers and some mobile operating systems and mobile
           applications include a Do-Not-Track (&quot;DNT&quot;) feature or
@@ -467,9 +451,9 @@
           future, we will inform you about that practice in a revised version of
           this privacy notice.
         </p>
-        <h4 id="do-california-residents-have-specific-rights-">
+        <h3 id="do-california-residents-have-specific-rights-">
           Do California residents have specific rights?
-        </h4>
+        </h3>
         <p>
           California Civil Code Section 1798.83, also known as the &quot;Shine
           The Light&quot; law, permits our users who are California residents to
@@ -493,9 +477,9 @@
           please be aware that the data may not be completely or comprehensively
           removed from all our systems (e.g. backups, etc.).
         </p>
-        <h4 id="do-we-make-updates-to-this-notice-">
+        <h3 id="do-we-make-updates-to-this-notice-">
           Do we make updates to this notice?
-        </h4>
+        </h3>
         <p>
           We may update this privacy notice from time to time. The updated
           version will be indicated by an updated &quot;Revised&quot; date and
@@ -506,27 +490,27 @@
           notice frequently to be informed of how we are protecting your
           information.
         </p>
-        <h4 id="how-can-you-contact-us-about-this-notice-">
+        <h3 id="how-can-you-contact-us-about-this-notice-">
           How can you contact us about this notice?
-        </h4>
+        </h3>
         <p>
           If you have questions or comments about this notice, you may email us
           at
-          <a href="mailto: support@EveryThought.app">support@EveryThought.app</a
+          <a href="mailto: support@everythought.app">support@everythought.app</a
           >.
         </p>
-        <h4
+        <h3
           id="how-can-you-review-update-or-delete-the-data-we-collect-from-you-"
         >
           How can you review, update, or delete the data we collect from you?
-        </h4>
+        </h3>
         <p>
           Based on the applicable laws of your country, you may have the right
           to request access to the personal information we collect from you,
           change that information, or delete it in some circumstances. To
           request to review, update, or delete your personal information, please
           contact:
-          <a href="mailto: support@EveryThought.app">support@EveryThought.app</a
+          <a href="mailto: support@everythought.app">support@everythought.app</a
           >. We will respond to your request within 30 days.
         </p>
       </div>

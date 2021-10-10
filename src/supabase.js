@@ -300,7 +300,6 @@ export const downloadAvatar = async () => {
 export async function getImages() {
   try {
     let { data, error } = await supabase.rpc("get_random_images");
-    console.log(data || error);
     if (data) {
       let imgUrls = [];
 
@@ -309,7 +308,6 @@ export async function getImages() {
           .from(row.bucket)
           .download(row.image);
         if (src) {
-          console.log(src);
           imgUrls.push({
             url: URL.createObjectURL(src),
             name: row.image,

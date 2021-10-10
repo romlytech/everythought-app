@@ -3,14 +3,11 @@
     <h1 class="text-3xl font-serif">
       Thanks for sharing, {{ store.profile.first_name }}.
     </h1>
-    <p class="text-gray-300">
-      Everytime you identify your emotions, you learn about yourself.
-    </p>
     <transition name="slowfade" mode="out-in" appear>
       <p class="text-gray-300">
         Today, you learned about
         <span class="font-medium">{{ store.emotion.name }}</span
-        >. Come back again whenever you're ready to discover more.
+        >. Come back again whenever you're ready to discover other emotions.
       </p>
     </transition>
     <transition name="slowerfade" mode="out-in" appear>

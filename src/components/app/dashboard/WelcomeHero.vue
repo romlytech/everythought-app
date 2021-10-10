@@ -11,21 +11,33 @@
     "
     :class="store.profile.first_name ? 'pb-0' : ''"
   >
-    <div class="px-5 sm:px-8 sm:dark:px-0">
-      <h1 class="text-3xl font-semibold sm:text-4xl font-serif">
+    <div class="px-5 sm:px-8 sm:dark:px-0 tracking-tight">
+      <h1 class="text-3xl font-semibold sm:text-4xl md:text-5xl font-serif">
         {{
           store.profile.first_name
             ? "Welcome back, " + store.profile.first_name
             : "Welcome, friend"
         }}.
       </h1>
-      <p class="text-gray-500 dark:text-gray-200 text-lg sm:text-xl mt-2">
+      <p class="text-gray-500 dark:text-gray-200 sm:text-lg mt-2">
         {{
           store.profile.first_name
-            ? "Are you ready to dive into your thoughts today?"
+            ? "Everytime you identify your emotions, you learn about yourself."
             : "Before we get started, let's complete your profile."
         }}
       </p>
+      <transition name="fade" mode="out-in">
+        <p
+          v-show="!store.loading"
+          class="text-gray-500 dark:text-gray-200 sm:text-lg mt-2"
+        >
+          {{
+            store.thoughts.length
+              ? "Whenever you're ready, create another thought to continue your journey:"
+              : "Are you ready to dive in? Get started with a new thought:"
+          }}
+        </p>
+      </transition>
     </div>
     <div class="flex px-5 sm:px-8 sm:dark:px-0">
       <div class="inline-flex gap-4 w-full">
@@ -57,9 +69,14 @@
           ]"
           ><transition name="fade" mode="out-in"
             ><span v-if="store.loading">Loading...</span
-            ><span v-else>{{
-              store.profile.first_name ? "Start a new Thought" : "Edit Profile"
-            }}</span></transition
+            ><span v-else-if="!store.profile.first_name">Edit Profile</span
+            ><span v-else>
+              {{
+                store.thoughts.length
+                  ? "Create a new Thought"
+                  : "Start with your first Thought"
+              }}
+            </span></transition
           >
           <AnnotationIcon v-if="store.profile.first_name" class="w-5 h-5" />
           <AnnotationIcon v-else class="w-5 h-5"
@@ -84,9 +101,9 @@
         class="px-5 py-3 text-sm text-gray-600 dark:text-gray-300 text-center"
       >
         Total thoughts<br />
-        <span class="text-gray-700 dark:text-gray-300 font-medium">{{
-          store.thoughtCount
-        }}</span>
+        <span class="text-gray-700 dark:text-gray-300 font-medium">
+          {{ store.thoughts.length }}
+        </span>
       </div>
       <div
         class="px-5 py-3 text-sm text-gray-600 dark:text-gray-300 text-center"
@@ -102,6 +119,7 @@
 <script>
 import { AnnotationIcon, PencilAltIcon } from "@heroicons/vue/solid";
 import { store } from "../../../store";
+
 export default {
   components: { AnnotationIcon, PencilAltIcon },
   setup() {

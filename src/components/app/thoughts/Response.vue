@@ -39,6 +39,53 @@
       Try to keep your response brief. {{ 320 - response.length }}/320
       characters remaining.
     </p>
+    <nav class="pt-4 justify-between w-full inline-flex z-50">
+      <div class="flex-auto">
+        <button
+          @click="updateStep(store.todaysThought.step - 1)"
+          class="
+            text-left
+            font-medium
+            text-gray-300 text-sm
+            hover:text-white
+            bg-transparent
+            border-transparent
+            focus:border-transparent
+            focus:ring-0
+          "
+          style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0)"
+          tabindex="-1"
+        >
+          <span class="animate-pulse">&larr;</span> Go back
+        </button>
+      </div>
+      <div class="flex-auto text-right">
+        <transition name="slowfade" appear>
+          <button
+            v-show="showContinue"
+            @click="updateStep(store.todaysThought.step + 1)"
+            class="
+              font-medium
+              hover:text-white
+              bg-transparent
+              border-transparent
+              focus:border-transparent
+              focus:ring-0
+            "
+            style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0)"
+          >
+            {{
+              store.todaysThought.step == 1
+                ? "I'm ready"
+                : store.todaysThought.step == 6
+                ? "Complete"
+                : "Continue"
+            }}
+            <span class="animate-pulse">&rarr;</span>
+          </button>
+        </transition>
+      </div>
+    </nav>
   </section>
 </template>
 <script>
@@ -51,6 +98,7 @@ export default {
   setup() {
     store.showStepnav = false;
     store.showContinue = false;
+    const showContinue = ref(false);
 
     const placeholder = `I feel ${
       store.emotion.action
@@ -61,8 +109,7 @@ export default {
 
     watch(response, () => {
       if (response.value.length > placeholder.length) {
-        store.showContinue = true;
-        store.showStepnav = true;
+        showContinue.value = true;
         store.todaysThought.response = response.value;
         store.todaysThought.complete = true;
       } else {
@@ -75,6 +122,7 @@ export default {
     }, 1500);
 
     return {
+      showContinue,
       placeholder,
       response,
       updateStep,

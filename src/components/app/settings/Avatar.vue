@@ -2,7 +2,7 @@
   <div>
     <transition name="fade" mode="out-in" appear>
       <img
-        v-if="store.avatar_src && !store.loading"
+        v-if="store.avatar_src"
         :src="store.avatar_src"
         class="h-full w-full object-cover rounded-full"
         alt=""
