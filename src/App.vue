@@ -108,7 +108,7 @@ export default {
     const router = useRouter();
     supabase.auth.onAuthStateChange((_, session) => {
       store.user = session.user;
-      router.go();
+      router.push("/");
     });
     return { store };
   },
