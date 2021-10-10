@@ -29,8 +29,8 @@ router.beforeEach(async (to, from, next) => {
     return next({ path: "/login" });
   } else if (to.meta.requiresAuth && !store.user) {
     return next({ path: "/login" });
-  } else if (to.path == "/" && store.user) {
-    return next({ path: "/dashboard" });
+    // } else if (to.path == "/" && store.user) {
+    //   return next({ path: "/dashboard" });
   } else if (to.path == "/login" && store.user) {
     return next({ path: "/dashboard" });
   }
