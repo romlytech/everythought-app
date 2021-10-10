@@ -14,7 +14,7 @@
   >
     <PublicHeader />
     <!-- hero -->
-    <section class="sm:text-center md:max-w-2xl md:mx-auto lg:col-span-6">
+    <section class="text-center md:max-w-2xl md:mx-auto lg:col-span-6">
       <h1>
         <span
           class="
@@ -22,6 +22,7 @@
             text-sm
             font-medium
             uppercase
+            lg:text-base
             tracking-wider
             text-gray-500
             dark:text-gray-300
@@ -57,7 +58,7 @@
         "
       >
         EveryThought is a web application designed to help you identify and
-        recognize your emotions by using daily guided prompts and journaling.
+        recognize your emotions through daily guided prompts and journaling.
       </p>
     </section>
     <!-- end of hero -->
@@ -155,6 +156,7 @@
                 font-medium
                 tracking-wide
                 uppercase
+                lg:text-base
               "
             >
               There is a problem
@@ -184,8 +186,8 @@
             >
               <p>
                 Human behavior is triggered by emotion. When you ignore your
-                emotions, you prevent yourself from understanding why you do the
-                things you do.
+                emotions, you prevent yourself from understanding <b>why</b> you
+                do the things you do.
               </p>
               <p>
                 Your feelings should provide healing, not confusion. No one
@@ -204,7 +206,7 @@
         text-center
         max-w-5xl
         grid
-        gap-6
+        gap-3
         items-center
         md:grid-cols-2
         mx-auto
@@ -220,6 +222,7 @@
               text-sm
               font-medium
               uppercase
+              lg:text-base
               tracking-wider
               text-sky-600
             "

@@ -77,23 +77,23 @@ import SignupButton from "./SignupButton.vue";
 const faqs = [
   {
     question: "How does it work?",
-    answer: `<p>Each time you create a new thought, you start a journey through a guided prompt. You'll be asked a thought-provoking question and given an opportunity to respond. As you continue through the thought, you'll learn about the emotion assicated with it.</p><p>Whether you choose to create a new Thought each day, week, or as many times as you desire, that's up to you.</p>`,
+    answer: `<p>Each time you create a new thought, you start a journey through a guided prompt. First, you'll be asked a thought-provoking question and allowed to respond. Then, as you continue through the steps of thought, you'll learn about the associated emotion and how it relates to your life.</p><p>Whether you choose to create a new thought each day, week, or as many times as you desire; that's up to you.</p>`,
   },
   {
     question: "Where do I sign up?",
-    answer: `<p>Visit <a href="/sign">everythought.app/signup</a> to create your account. Our app uses passwordless authentication, so all you'll need to do is enter your email address and you'll be on your way.</p><p>Upon your first signup, and every login thereafter, you will recieve a <em>Magic Link</em> via email to login securely.</p>`,
+    answer: `<p>Visit <a href="/sign">everythought.app/signup</a> to create your account. Our app uses passwordless authentication, so all you'll need to do is enter your email address, and you'll be on your way.</p><p>Upon your first signup and every login after that, you will receive a <em>Magic Link</em> via email to log in securely.</p>`,
   },
   {
     question: "Is my data secure?",
-    answer: `<p>We take privacy very seriously. Inside of the app, any data you input is completely private to your account and can only be seen by you.</p><p>Your data is yours to keep. We do have a data export feature, which allows you to download all of your thoughts as a CSV file at any time.</p><p>If you want to delete your account completely, you can do that, too. Account deletion is permanant and your data is removed from our servers forever.</p>`,
+    answer: `<p>We take privacy very seriously. Inside the app, any data you input is entirely private to your account; you are the only user that can see it.</p><p>Your data is yours to keep. To make the process easy on you, we have a data export feature, which allows you to download all of your thoughts as a CSV file at any time.</p><p>If you want to delete your account completely, you can do that, too. However, account deletion is permanent, and your data is removed from our servers forever.</p>`,
   },
   {
     question: "What is the cost?",
-    answer: `<p>The cost of not processing your emotions? <em>Devastating</em>.</p><p>The cost of this app? <b>Free</b>.</p><p>Seriously though, this is a beta product and is completely free to use.</p>`,
+    answer: `<p>The cost of not processing your emotions? <em>Devastating</em>.</p><p>The cost of this app? <b>Free</b>.</p><p>Seriously though, this is still a beta product and is totally free to use.</p>`,
   },
   {
     question: "When will more features be added?",
-    answer: `<p>As we move through our initial beta launch, we'll continue to gather feedback from our users. We aren't sharing a public roadmap yet, but can assure you what's coming will be worth it.</p><p>In the mean time, we'd love to hear from users like you to help shape the future of EveryThought for your benefit. Use our <a href="/contact-us">contact</a> page to let us know what you're looking for. We read and respond to every message.</p>`,
+    answer: `<p>As we move through our initial beta launch, we'll continue to gather feedback from our users. We aren't sharing a public roadmap yet, but we can assure you what's coming will be worth it.</p><p>In the meantime, we'd love to hear from users like you to help shape the future of EveryThought for your benefit. Use our <a href="/contact">contact page</a> to let us know what you'd like to see. We read and respond to every message.</p>`,
   },
 ];
 

@@ -16,11 +16,11 @@
       v-if="!store.user && !store.alert_msg"
       class="pt-6 px-4 sm:px-10 text-center"
     >
-      <p class="text-xl font-serif font-medium text-white leading-10">
+      <p class="text-xl font-semibold text-white leading-10">
         Sign up <span class="text-gray-400 text-sm px-1.5">or</span> Log in
       </p>
       <div>
-        <p class="text-sm text-gray-200 leading-7">
+        <p class="text-sm font-medium text-gray-200 leading-7">
           Access your account with a magic link:
         </p>
       </div>
@@ -60,11 +60,10 @@
                 px-4
                 border border-transparent
                 rounded-xl
-                text-sm
-                font-medium
-                text-white
+                text-sm text-white
                 bg-sky-600
                 hover:bg-sky-700
+                font-semibold
                 focus:outline-none
                 focus:ring-2 focus:ring-offset-2 focus:ring-sky-500
               "
