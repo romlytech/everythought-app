@@ -101,11 +101,14 @@
 <script>
 import { store } from "@/store";
 import { supabase } from "@/supabase";
+import { useRouter } from "vue";
 export default {
   setup() {
     store.user = supabase.auth.user();
+    const router = useRouter();
     supabase.auth.onAuthStateChange((_, session) => {
       store.user = session.user;
+      router.go();
     });
     return { store };
   },

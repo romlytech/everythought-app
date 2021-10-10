@@ -77,11 +77,11 @@ import SignupButton from "./SignupButton.vue";
 const faqs = [
   {
     question: "How does it work?",
-    answer: `<p>Each time you create a new thought, you start a journey through a guided prompt. First, you'll be asked a thought-provoking question and allowed to respond. Then, as you continue through the steps of thought, you'll learn about the associated emotion and how it relates to your life.</p><p>Whether you choose to create a new thought each day, week, or as many times as you desire; that's up to you.</p>`,
+    answer: `<p>Each time you create a new thought, you start a journey through a guided prompt. First, you'll be asked a thought-provoking question with an opportunity to respond. Then, as you continue through the steps of the thought, you'll learn about the associated emotion and how it relates to your life.</p><p>Whether you choose to create a new thought each day, week, or as many times as you desire; that's up to you.</p>`,
   },
   {
     question: "Where do I sign up?",
-    answer: `<p>Visit <a href="/sign">everythought.app/signup</a> to create your account. Our app uses passwordless authentication, so all you'll need to do is enter your email address, and you'll be on your way.</p><p>Upon your first signup and every login after that, you will receive a <em>Magic Link</em> via email to log in securely.</p>`,
+    answer: `<p>Visit <a href="/signup">everythought.app/signup</a> to create your account. Our app uses passwordless authentication, so all you'll need to do is enter your email address, and you'll be on your way.</p><p>Upon your first signup and every login after that, you will receive a <em>Magic Link</em> via email to log in securely.</p>`,
   },
   {
     question: "Is my data secure?",
