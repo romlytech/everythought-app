@@ -28,7 +28,7 @@
       </p>
       <transition name="fade" mode="out-in">
         <p
-          v-show="!store.loading"
+          v-show="!store.loading && store.profile.first_name"
           class="text-gray-500 dark:text-gray-200 sm:text-lg mt-2"
         >
           {{
