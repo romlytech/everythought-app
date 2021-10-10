@@ -99,9 +99,14 @@
   </notificationGroup>
 </template>
 <script>
-import { store } from "./store";
+import { store } from "@/store";
+import { supabase } from "@/supabase";
 export default {
   setup() {
+    store.user = supabase.auth.user();
+    supabase.auth.onAuthStateChange((_, session) => {
+      store.user = session.user;
+    });
     return { store };
   },
   methods: {
