@@ -4,7 +4,10 @@
     <AuthorizedBanner v-if="store.user" />
     <div>
       <!-- Main Content -->
-      <main class="shadow-md bg-white dark:bg-gray-900">
+      <main
+        class="shadow-md bg-white dark:bg-gray-900"
+        :class="store.user ? 'pt-8' : ''"
+      >
         <!-- Router Child -->
         <router-view v-slot="{ Component }">
           <transition name="fade" mode="out-in">
