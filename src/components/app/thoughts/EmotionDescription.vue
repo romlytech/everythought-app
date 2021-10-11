@@ -9,6 +9,20 @@
     <blockquote class="text-xl sm:text-2xl pb-8 font-serif whitespace-pre-wrap">
       {{ store.emotion.description }}
     </blockquote>
+
+    <transition name="slowfade" mode="out-in" appear>
+      <div v-if="store.emotion.root">
+        <p class="mb-1 tracking-wider uppercase text-sm text-gray-400">
+          Digging deeper:
+        </p>
+        <p class="font-serif text-lg italic tracking-wide">
+          The root of
+          <span class="font-bold">{{ store.emotion.name }}</span> is
+          <span class="font-bold">{{ store.emotion.root }}</span
+          >.
+        </p>
+      </div>
+    </transition>
   </section>
 </template>
 <script>
@@ -20,22 +34,19 @@ export default {
     store.showStepnav = false;
     store.showContinue = false;
 
-    const showMisconception = ref(false);
-    const showReality = ref(false);
+    const showRoot = ref(false);
 
     setInterval(() => {
-      showMisconception.value = true;
+      showRoot.value = true;
     }, 2100);
 
     setInterval(() => {
-      showReality.value = true;
       store.showStepnav = true;
       store.showContinue = true;
     }, 3210);
 
     return {
-      showMisconception,
-      showReality,
+      showRoot,
       store,
     };
   },

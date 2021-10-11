@@ -130,7 +130,15 @@ export async function initThought() {
       store.todaysThought = thought[0];
     } else {
       // create a new thought if none
-      let { data: prompt, error } = await supabase.rpc("get_random_prompt");
+      // let { data: prompt, error } = await supabase.rpc("get_random_prompt");
+      let { data: prompt, error } = await supabase
+        .rpc("get_prompt", {
+          user_id: store.user.id,
+        })
+        .single();
+
+      console.log(prompt || error);
+
       if (prompt.id) {
         // insert new thought
         let { data: thought, error } = await supabase
