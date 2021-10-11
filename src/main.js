@@ -23,16 +23,16 @@ router.beforeEach(async (to, from, next) => {
     store.alert_msg = "Sorry, there was a problem. Please try again.";
     store.error = true;
     return next({ path: "/" });
+  } else if (to.hash.includes("access_code")) {
+    return next({ path: "/dashboard" });
+  } else if (to.fullPath.indexOf("type=recovery") != -1) {
+    next({ path: "/reset" });
   } else if (to.hash.includes("message")) {
     store.alert_msg = to.hash.split("#message=")[1].replaceAll("+", " ");
     store.error = false;
     return next({ path: "/login" });
   } else if (to.meta.requiresAuth && !store.user) {
     return next({ path: "/login" });
-    // } else if (to.path == "/" && store.user) {
-    //   return next({ path: "/dashboard" });
-  } else if (to.fullPath.indexOf("type=recovery") != -1) {
-    next({ path: "/reset" });
   } else if (to.path == "/login" && store.user) {
     return next({ path: "/dashboard" });
   } else if (to.path == "/signup" && store.user) {

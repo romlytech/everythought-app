@@ -126,6 +126,37 @@
       </div>
       <div class="col-span-1 lg:col-span-2">
         <h2 class="text-xl mt-1 text-gray-700 dark:text-gray-300 font-semibold">
+          Reset Password
+        </h2>
+        <p class="text-sm mt-1 text-gray-500 dark:text-gray-300">
+          Update your password used for signing in to a new one.
+        </p>
+        <router-link
+          to="/reset"
+          class="
+            inline-flex
+            px-4
+            py-2
+            mr-4
+            text-sm
+            rounded-xl
+            text-center
+            font-medium
+            mt-4
+            transition
+            duration-500
+            ease-in-out
+            text-amber-700
+            bg-amber-100
+            hover:bg-amber-500
+            hover:text-white
+          "
+        >
+          Reset Password
+        </router-link>
+      </div>
+      <div class="col-span-1 lg:col-span-2">
+        <h2 class="text-xl mt-1 text-gray-700 dark:text-gray-300 font-semibold">
           Danger Zone
         </h2>
         <p class="text-sm mt-1 text-gray-500 dark:text-gray-300">
