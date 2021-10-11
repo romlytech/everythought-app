@@ -289,7 +289,7 @@
     </transition>
     <div
       v-if="!store.alert_msg && authType.name != 'reset' && !store.user"
-      class="px-4 py-6 bg-gray-700 sm:px-10"
+      class="px-4 py-6 bg-gray-700 sm:px-10 dark:pt-0"
     >
       <p class="text-sm text-center font-medium text-gray-200">
         <router-link
