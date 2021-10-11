@@ -396,6 +396,10 @@ export default {
             email: email.value,
             password: password.value,
           });
+          console.log(error);
+          if (error.status == 400) {
+            return router.push("/login");
+          }
           if (error) throw error;
           if (!error) {
             store.alert_msg = "Check your email for login instructions!";
