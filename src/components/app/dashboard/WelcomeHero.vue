@@ -64,7 +64,7 @@
           :class="[
             store.profile.first_name
               ? 'bg-sky-600 dark:bg-sky-800 hover:bg-sky-500 dark:hover:bg-sky-700'
-              : 'bg-gray-600 dark:bg-gray-800 hover:bg-gray-500 dark:hover:bg-gray-700',
+              : 'bg-gray-600 dark:bg-gray-700 hover:bg-gray-500 dark:hover:bg-gray-600',
             store.loading ? 'animate-pulse' : '',
           ]"
           ><transition name="fade" mode="out-in"
