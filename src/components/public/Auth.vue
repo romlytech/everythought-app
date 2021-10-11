@@ -225,7 +225,7 @@
                 <XCircleIcon class="w-5 h-5 text-red-400" />
               </div>
               <div class="ml-3">
-                <h3 class="text-red-700 dark:text-red-100 text-sm font-medium">
+                <h3 class="text-red-700 text-sm font-medium">
                   {{ error_msg }}
                 </h3>
               </div>
