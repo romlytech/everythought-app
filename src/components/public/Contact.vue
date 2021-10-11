@@ -26,6 +26,7 @@
           <form
             name="contact-me"
             method="POST"
+            onsubmit="fathom.trackGoal('KXTFIJAB', 0);"
             class="grid grid-cols-1 gap-y-6 sm:grid-cols-2 sm:gap-x-8"
             data-netlify="true"
             data-netlify-honeypot="bot-field"

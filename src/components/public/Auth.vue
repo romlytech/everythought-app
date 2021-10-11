@@ -402,6 +402,8 @@ export default {
           }
           if (error) throw error;
           if (!error) {
+            // fathom event
+            fathom.trackGoal("WVGISH3Q", 0);
             store.alert_msg = "Check your email for login instructions!";
           }
         }
