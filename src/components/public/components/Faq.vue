@@ -81,7 +81,7 @@ const faqs = [
   },
   {
     question: "Where do I sign up?",
-    answer: `<p>Visit <a href="/signup">everythought.app/signup</a> to create your account. Our app uses passwordless authentication, so all you'll need to do is enter your email address, and you'll be on your way.</p><p>Upon your first signup and every login after that, you will receive a <em>Magic Link</em> via email to log in securely.</p>`,
+    answer: `<p>Visit <a href="/signup">everythought.app/signup</a> to create your account.</p>`,
   },
   {
     question: "Is my data secure?",
