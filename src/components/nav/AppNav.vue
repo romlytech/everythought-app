@@ -271,10 +271,10 @@ export default {
   },
   setup() {
     const router = useRouter();
-    store.user = supabase.auth.user();
 
     // Sign Out
     async function signOut() {
+      store.user = supabase.auth.user();
       try {
         let { error } = await supabase.auth.signOut();
         if (error) throw error;

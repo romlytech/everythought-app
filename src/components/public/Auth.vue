@@ -13,74 +13,14 @@
     "
   >
     <div
-      v-if="!store.user && !store.alert_msg"
-      class="pt-6 px-4 sm:px-10 text-center"
-    >
-      <p class="text-xl font-semibold text-white leading-10">
-        Sign up <span class="text-gray-400 text-sm px-1.5">or</span> Log in
-      </p>
-      <div>
-        <p class="text-sm font-medium text-gray-200 leading-7">
-          Access your account with a magic link:
-        </p>
-      </div>
-
-      <div class="my-6">
-        <form @submit.prevent="emailLogin" class="space-y-6">
-          <div>
-            <label for="mobile-or-email" class="sr-only"
-              >Enter your email address</label
-            >
-            <input
-              type="email"
-              v-model="email"
-              autocomplete="email"
-              placeholder="Enter your email address"
-              required
-              class="
-                block
-                w-full
-                focus:ring-sky-500
-                focus:border-sky-500
-                sm:text-sm
-                text-gray-900
-                border-gray-300
-                rounded-xl
-              "
-            />
-          </div>
-          <div>
-            <input
-              type="submit"
-              class="
-                w-full
-                flex
-                justify-center
-                py-2
-                px-4
-                border border-transparent
-                rounded-xl
-                text-sm text-white
-                bg-sky-600
-                hover:bg-sky-700
-                font-semibold
-                focus:outline-none
-                focus:ring-2 focus:ring-offset-2 focus:ring-sky-500
-              "
-              :class="loading ? 'animate-pulse' : ''"
-              :value="loading ? 'Loading...' : 'Continue &rarr;'"
-              :disabled="loading"
-            />
-          </div>
-        </form>
-      </div>
-    </div>
-    <div
-      v-if="store.user && !store.alert_msg"
+      v-if="store.user && !store.alert_msg && $route.path == '/'"
       class="p-10 text-center space-y-4"
     >
       <h2 class="text-xl font-serif text-white">
-        {{ loading ? "Signing out of your account..." : "You are logged in as"
+        {{
+          store.loading
+            ? "Signing out of your account..."
+            : "You are logged in as"
         }}<br />
         <span class="text-gray-300">{{ store.user.email }}</span>
       </h2>
@@ -106,9 +46,9 @@
             hover:bg-gray-300
             focus:outline-none
           "
-          :class="loading ? 'animate-pulse' : ''"
+          :class="store.loading ? 'animate-pulse' : ''"
         >
-          {{ loading ? "Goodbye..." : "Sign out" }}
+          {{ store.loading ? "Goodbye..." : "Sign out" }}
         </button>
         <router-link
           to="/dashboard"
@@ -134,6 +74,188 @@
           >Go to App &rarr;</router-link
         >
       </div>
+    </div>
+    <div v-else-if="!store.alert_msg" class="px-4 sm:px-10 space-y-4 py-6">
+      <h2 class="text-xl font-semibold text-center text-white">
+        {{ authType.heading }}
+      </h2>
+      <form @submit.prevent="handleAuth()" class="space-y-4">
+        <div v-if="authType.name != 'reset'">
+          <label for="email" class="text-sm font-medium text-gray-200"
+            >Email address</label
+          >
+          <input
+            type="email"
+            v-model="email"
+            autocomplete="email"
+            placeholder="your@email.com"
+            required
+            class="
+              mt-1
+              block
+              w-full
+              focus:ring-sky-500
+              focus:border-sky-500
+              sm:text-sm
+              text-gray-900
+              border-gray-300
+              rounded-xl
+            "
+          />
+        </div>
+        <transition name="fade" mode="out-in" appear>
+          <div v-if="showPassword">
+            <div class="flex items-center justify-between">
+              <label for="password" class="text-sm font-medium text-gray-200">{{
+                authType.name == "reset" ? "New password" : "Password"
+              }}</label>
+              <router-link
+                v-if="authType.name == 'login'"
+                to="/forgot"
+                class="
+                  text-sm
+                  font-medium
+                  text-gray-200
+                  hover:underline
+                  hover:text-white
+                "
+                tabindex="-1"
+              >
+                Forgot your password?
+              </router-link>
+            </div>
+            <input
+              type="password"
+              v-model="password"
+              required
+              class="
+                mt-1
+                block
+                w-full
+                focus:ring-sky-500
+                focus:border-sky-500
+                sm:text-sm
+                text-gray-900
+                border-gray-300
+                rounded-xl
+              "
+            />
+          </div>
+        </transition>
+        <transition name="fade" mode="out-in" appear>
+          <div v-if="password && authType.name == 'reset'">
+            <label
+              for="passwordConfirm"
+              class="text-sm font-medium text-gray-200"
+              >Re-enter new password</label
+            >
+            <div class="relative">
+              <input
+                type="password"
+                v-model="passwordConfirm"
+                required
+                class="
+                  mt-1
+                  block
+                  w-full
+                  focus:ring-sky-500
+                  focus:border-sky-500
+                  sm:text-sm
+                  text-gray-900
+                  border-gray-300
+                  rounded-xl
+                "
+              />
+              <div
+                class="
+                  absolute
+                  inset-y-0
+                  right-0
+                  pr-3
+                  flex
+                  items-center
+                  pointer-events-none
+                "
+              >
+                <CheckCircleIcon
+                  v-if="password == passwordConfirm"
+                  class="h-5 w-5 text-green-400"
+                  aria-hidden="true"
+                />
+                <XCircleIcon
+                  v-else
+                  class="h-5 w-5 text-red-400"
+                  aria-hidden="true"
+                />
+              </div>
+            </div>
+          </div>
+        </transition>
+
+        <div>
+          <input
+            type="submit"
+            class="
+              w-full
+              flex
+              justify-center
+              py-2
+              px-4
+              border border-transparent
+              rounded-xl
+              text-sm text-white
+              bg-sky-600
+              hover:bg-sky-700
+              font-semibold
+              focus:outline-none
+              focus:ring-2 focus:ring-offset-2 focus:ring-sky-500
+              transition-colors
+              ease-in-out
+              duration-500
+            "
+            :class="store.loading ? 'animate-pulse' : ''"
+            :value="store.loading ? 'Loading...' : authType.action + ' &rarr;'"
+            :disabled="store.loading"
+          />
+        </div>
+        <transition name="fade" mode="out-in" appear>
+          <div v-if="error_msg" class="bg-red-50 rounded-md p-4 mt-4">
+            <div class="flex">
+              <div class="flex-shrink-0">
+                <XCircleIcon class="w-5 h-5 text-red-400" />
+              </div>
+              <div class="ml-3">
+                <h3 class="text-red-700 dark:text-red-100 text-sm font-medium">
+                  {{ error_msg }}
+                </h3>
+              </div>
+            </div>
+          </div>
+        </transition>
+        <transition name="fade" mode="out-in" appear>
+          <p
+            v-if="email && authType.name != 'forgot' && !error_msg"
+            class="text-xs text-center text-gray-300"
+          >
+            {{
+              authType.name == "signup"
+                ? "By signing up"
+                : "Each time you sign in"
+            }}, you agree to our
+            <router-link
+              to="/terms-of-use"
+              class="font-medium text-gray-200 hover:underline hover:text-white"
+              >Terms</router-link
+            >
+            and
+            <router-link
+              to="privacy-policy"
+              class="font-medium text-gray-200 hover:underline hover:text-white"
+              >Privacy Policy</router-link
+            >.
+          </p>
+        </transition>
+      </form>
     </div>
     <transition name="fade" appear>
       <div v-if="store.alert_msg" class="p-10 text-center space-y-6">
@@ -166,58 +288,181 @@
       </div>
     </transition>
     <div
-      v-if="!store.user && !store.alert_msg"
+      v-if="!store.alert_msg && authType.name != 'reset' && !store.user"
       class="px-4 py-6 bg-gray-700 sm:px-10"
     >
-      <p class="text-xs font-light leading-5 text-center text-gray-300">
-        By signing up, you agree to our
+      <p class="text-sm text-center font-medium text-gray-200">
         <router-link
-          to="/terms-of-use"
-          class="font-medium text-gray-200 hover:underline"
-          >Terms</router-link
+          :to="authType.navigateTo"
+          class="hover:text-white hover:underline block"
         >
-        and
-        <router-link
-          to="privacy-policy"
-          class="font-medium text-gray-200 hover:underline"
-          >Privacy Policy</router-link
-        >.
+          {{ authType.navigateTitle }} &rarr;
+        </router-link>
       </p>
     </div>
   </div>
 </template>
 
 <script>
-import { ref } from "vue";
-import { useRouter } from "vue-router";
+import { onMounted, ref, reactive, watch } from "vue";
+import { useRouter, useRoute } from "vue-router";
+import { notify } from "notiwind";
 import { supabase } from "@/supabase";
 import { store } from "@/store";
 
+import { CheckCircleIcon, XCircleIcon } from "@heroicons/vue/solid";
+
 export default {
+  components: { CheckCircleIcon, XCircleIcon },
   setup() {
     const router = useRouter();
-    const loading = ref(false);
+    const route = useRoute();
+    const error_msg = ref("");
     const email = ref("");
+    const password = ref("");
+    const passwordConfirm = ref("");
+    const showPassword = ref(false);
+    const authType = reactive({
+      name: "signup",
+      heading: "Get started today",
+      action: "Create my account",
+      navigateTo: "/login",
+      navigateTitle: "Already have an account? Sign in",
+    });
 
-    const emailLogin = async () => {
+    function setForm() {
+      if (route.path == "/login") {
+        authType.name = "login";
+        authType.heading = "Sign in to your account";
+        authType.action = "Sign in";
+        authType.navigateTo = "/signup";
+        authType.navigateTitle = "Don't have an account? Sign up";
+        showPassword.value = true;
+      } else if (route.path == "/signup") {
+        authType.name = "signup";
+        authType.heading = "Create your account";
+        authType.action = "Sign up";
+        authType.navigateTo = "/login";
+        authType.navigateTitle = "Already have an account? Sign in";
+        email.value = "";
+        password.value = "";
+        showPassword.value = false;
+      } else if (route.path == "/forgot") {
+        authType.name = "forgot";
+        authType.heading = "Reset your password";
+        authType.action = "Send reset password instructions";
+        authType.navigateTo = "/login";
+        authType.navigateTitle = "Return to sign in";
+        email.value = "";
+        password.value = "";
+        showPassword.value = false;
+      } else if (route.path == "/reset") {
+        authType.name = "reset";
+        authType.heading = "Update your password";
+        authType.action = "Update";
+        authType.navigateTo = "/login";
+        authType.navigateTitle = "Return to sign in";
+        email.value = "";
+        password.value = "";
+        showPassword.value = true;
+      }
+    }
+
+    onMounted(() => {
+      setForm();
+    });
+
+    watch(route, () => {
+      setForm();
+      store.alert_msg = null;
+      error_msg.value = null;
+    });
+
+    watch(email, () => {
+      if (authType.name != "forgot") {
+        showPassword.value = true;
+      }
+    });
+
+    async function handleAuth() {
       try {
-        loading.value = true;
-        const { error } = await supabase.auth.signIn({ email: email.value });
-        if (error) throw error;
-        if (!error) {
-          store.alert_msg = "Check your email for the login link!";
+        store.error = false;
+        store.loading = true;
+        error_msg.value = "";
+        store.alert_msg = null;
+
+        if (authType.name == "signup") {
+          const { error } = await supabase.auth.signUp({
+            email: email.value,
+            password: password.value,
+          });
+          if (error) throw error;
+          if (!error) {
+            store.alert_msg = "Check your email for login instructions!";
+          }
+        }
+
+        if (authType.name == "login") {
+          const { error } = await supabase.auth.signIn({
+            email: email.value,
+            password: password.value,
+          });
+          if (error) throw error;
+          if (!error) {
+            notify({
+              group: "toast",
+              type: "success",
+              title: "Success!",
+              text: "You're signed in.",
+            });
+            router.push("/dashboard");
+          }
+        }
+
+        if (authType.name == "forgot") {
+          const { error } = supabase.auth.api.resetPasswordForEmail(
+            email.value
+          );
+          if (error) throw error;
+          if (!error) {
+            store.alert_msg = "Check your email for the reset instructions.";
+          }
+        }
+
+        if (authType.name == "reset") {
+          if (password.value != passwordConfirm.value) {
+            passwordConfirm.value = "";
+            throw { message: "Passwords do not match, please try again." };
+          }
+          const { user, error } = await supabase.auth.update({
+            password: password.value,
+          });
+          if (error) throw error;
+          if (user) {
+            notify(
+              {
+                group: "toast",
+                type: "success",
+                title: "Success!",
+                text: "Password updated successfully.",
+              },
+              7777
+            );
+            router.push("/dashboard");
+          }
         }
       } catch (error) {
+        console.log(error);
         store.error = true;
-        store.alert_msg = error.error_description || error.message;
+        error_msg.value = error.error_description || error.message;
       } finally {
-        loading.value = false;
+        store.loading = false;
       }
-    };
+    }
 
     // Sign Out
     async function signOut() {
-      loading.value = true;
+      store.loading = true;
       try {
         let { error } = await supabase.auth.signOut();
         if (error) throw error;
@@ -232,10 +477,14 @@ export default {
 
     return {
       store,
-      loading,
       signOut,
+      error_msg,
       email,
-      emailLogin,
+      password,
+      passwordConfirm,
+      showPassword,
+      authType,
+      handleAuth,
     };
   },
 };

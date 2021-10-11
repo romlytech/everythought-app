@@ -29,9 +29,15 @@ router.beforeEach(async (to, from, next) => {
     return next({ path: "/login" });
   } else if (to.meta.requiresAuth && !store.user) {
     return next({ path: "/login" });
-  } else if (to.path == "/" && store.user) {
-    return next({ path: "/dashboard" });
+    // } else if (to.path == "/" && store.user) {
+    //   return next({ path: "/dashboard" });
+  } else if (to.fullPath.indexOf("type=recovery") != -1) {
+    next({ path: "/reset" });
   } else if (to.path == "/login" && store.user) {
+    return next({ path: "/dashboard" });
+  } else if (to.path == "/signup" && store.user) {
+    return next({ path: "/dashboard" });
+  } else if (to.path == "/forgot" && store.user) {
     return next({ path: "/dashboard" });
   }
   next();

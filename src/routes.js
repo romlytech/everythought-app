@@ -2,11 +2,28 @@ import Public from "./views/Public.vue";
 
 export const routes = [
   {
+    path: "/signup",
+    name: "signup",
+    component: () => import("./components/public/Login.vue"),
+    meta: { title: "Sign up with a new account" },
+  },
+  {
+    path: "/forgot",
+    name: "forgot",
+    component: () => import("./components/public/Login.vue"),
+    meta: { title: "Forgot password" },
+  },
+  {
+    path: "/reset",
+    name: "reset",
+    component: () => import("./components/public/Login.vue"),
+    meta: { title: "Reset your password" },
+  },
+  {
     path: "/login",
-    alias: ["/signup", "/sign-up", "/register", "/auth"],
     name: "login",
     component: () => import("./components/public/Login.vue"),
-    meta: { title: "Login Page" },
+    meta: { title: "Log in to your account" },
   },
   {
     path: "/:path(.*)",
@@ -63,7 +80,6 @@ export const routes = [
   {
     path: "/",
     name: "app",
-    redirect: { name: "dashboard" },
     component: () => import("./views/Authorized.vue"),
     children: [
       {

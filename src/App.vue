@@ -101,14 +101,17 @@
 <script>
 import { store } from "@/store";
 import { supabase } from "@/supabase";
-import { useRouter } from "vue-router";
+import { useRouter, useRoute } from "vue-router";
 export default {
   setup() {
     store.user = supabase.auth.user();
     const router = useRouter();
+    const route = useRoute();
     supabase.auth.onAuthStateChange((_, session) => {
       store.user = session.user;
-      router.push("/");
+      if (route.meta.requiresAuth && !store.user) {
+        router.push("/");
+      }
     });
     return { store };
   },
