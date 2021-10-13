@@ -117,8 +117,8 @@
   </div>
 </template>
 <script>
+import { store } from "@/store";
 import { AnnotationIcon, PencilAltIcon } from "@heroicons/vue/solid";
-import { store } from "../../../store";
 
 export default {
   components: { AnnotationIcon, PencilAltIcon },

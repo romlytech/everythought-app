@@ -6,14 +6,7 @@
 </template>
 <script>
 import { store } from "@/store";
-import WelcomeHero from "./WelcomeHero.vue";
-import ThoughtCards from "./ThoughtCards.vue";
-
 export default {
-  components: {
-    WelcomeHero,
-    ThoughtCards,
-  },
   setup() {
     return { store };
   },

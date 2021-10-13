@@ -57,17 +57,16 @@
 
 <script>
 import { ref, toRefs } from "vue";
-import { supabase } from "@/supabase";
 import { store } from "@/store";
+import { supabase } from "@/supabase";
 import { notify } from "notiwind";
-import Avatar from "./Avatar.vue";
 import { UploadIcon } from "@heroicons/vue/solid";
 
 export default {
   props: {
     path: String,
   },
-  components: { Avatar, UploadIcon },
+  components: { UploadIcon },
   emits: ["upload", "update:path"],
   setup(prop, { emit }) {
     const { path } = toRefs(prop);

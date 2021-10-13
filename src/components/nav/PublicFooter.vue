@@ -68,9 +68,7 @@ const footerNavigation = {
 
 export default {
   setup() {
-    return {
-      footerNavigation,
-    };
+    return { footerNavigation };
   },
 };
 </script>

@@ -115,20 +115,13 @@
 </template>
 <script>
 import { ref } from "vue";
-
-import { RadioGroup, RadioGroupLabel, RadioGroupOption } from "@headlessui/vue";
-import { RefreshIcon } from "@heroicons/vue/solid";
-
 import { store } from "@/store";
 import { getImages, updateThought } from "@/supabase";
 
+import { RefreshIcon } from "@heroicons/vue/solid";
+
 export default {
-  components: {
-    RadioGroup,
-    RadioGroupLabel,
-    RadioGroupOption,
-    RefreshIcon,
-  },
+  components: { RefreshIcon },
   setup() {
     const responses = [
       {

@@ -15,19 +15,10 @@
   </div>
 </template>
 <script>
-import { store } from "../store";
-import AppNav from "../components/nav/AppNav.vue";
-import AppFooter from "@/components/nav/AppFooter.vue";
-
+import { store } from "@/store";
 export default {
-  components: {
-    AppNav,
-    AppFooter,
-  },
   setup() {
-    return {
-      store,
-    };
+    return { store };
   },
 };
 </script>

@@ -27,12 +27,9 @@
 </template>
 <script>
 import { store } from "@/store";
-
 export default {
   setup() {
-    return {
-      store,
-    };
+    return { store };
   },
 };
 </script>

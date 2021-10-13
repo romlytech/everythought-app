@@ -40,9 +40,9 @@
   </div>
 </template>
 <script>
-import { XIcon } from "@heroicons/vue/solid";
 import { store } from "@/store";
 import { updateStep } from "@/supabase";
+import { XIcon } from "@heroicons/vue/solid";
 
 const steps = [
   { id: 1 },

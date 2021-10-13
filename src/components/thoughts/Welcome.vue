@@ -15,7 +15,6 @@ export default {
   setup() {
     store.showStepnav = false;
     store.showContinue = true;
-
     const currentHour = new Date().getHours();
     const greeting = ref("");
 
@@ -29,10 +28,7 @@ export default {
     setInterval(() => {
       store.showStepnav = true;
     }, 3000);
-    return {
-      store,
-      greeting,
-    };
+    return { store, greeting };
   },
 };
 </script>

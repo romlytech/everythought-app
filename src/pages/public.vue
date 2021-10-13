@@ -24,19 +24,10 @@
 </template>
 
 <script>
-import { store } from "../store";
-import AuthorizedBanner from "../components/nav/AuthorizedBanner.vue";
-import PublicFooter from "../components/nav/PublicFooter.vue";
-
+import { store } from "@/store";
 export default {
-  components: {
-    AuthorizedBanner,
-    PublicFooter,
-  },
   setup() {
-    return {
-      store,
-    };
+    return { store };
   },
 };
 </script>

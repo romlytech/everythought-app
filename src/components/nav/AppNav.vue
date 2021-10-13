@@ -235,14 +235,10 @@
   </header>
 </template>
 <script>
-import { getProfile, supabase } from "@/supabase";
-import { store } from "@/store";
 import { onMounted } from "vue";
+import { store } from "@/store";
 import { useRouter } from "vue-router";
-
-import Avatar from "../app/settings/Avatar.vue";
-
-import { Menu, MenuButton, MenuItem, MenuItems } from "@headlessui/vue";
+import { getProfile, supabase } from "@/supabase";
 
 import {
   MenuIcon,
@@ -258,16 +254,11 @@ const notifications = [];
 
 export default {
   components: {
-    Menu,
-    MenuButton,
-    MenuItem,
-    MenuItems,
     LogoutIcon,
     BellIcon,
     MenuIcon,
     XIcon,
     CheckCircleIcon,
-    Avatar,
   },
   setup() {
     const router = useRouter();

@@ -247,19 +247,13 @@
 </template>
 
 <script>
-import { supabase, csvThoughts, downloadAvatar, getProfile } from "@/supabase";
-import { store } from "@/store";
 import { onMounted, ref } from "vue";
-import AvatarUploader from "../settings/AvatarUploader.vue";
-import { notify } from "notiwind";
-import InfoCard from "../InfoCard.vue";
 import { useRouter } from "vue-router";
+import { store } from "@/store";
+import { supabase, csvThoughts, downloadAvatar, getProfile } from "@/supabase";
+import { notify } from "notiwind";
 
 export default {
-  components: {
-    AvatarUploader,
-    InfoCard,
-  },
   setup() {
     store.loading = true;
     const first_name = ref(store.profile.first_name);

@@ -325,11 +325,7 @@
 </template>
 
 <script>
-import Auth from "./Auth.vue";
 import { HeartIcon, TrendingUpIcon, UserGroupIcon } from "@heroicons/vue/solid";
-import PublicHeader from "../nav/PublicHeader.vue";
-import SignupButton from "./components/SignupButton.vue";
-import Faq from "./components/Faq.vue";
 
 const actionSteps = [
   {
@@ -362,10 +358,9 @@ const results = [
 
 export default {
   components: {
-    Auth,
-    PublicHeader,
-    SignupButton,
-    Faq,
+    HeartIcon,
+    TrendingUpIcon,
+    UserGroupIcon,
   },
   setup() {
     return {

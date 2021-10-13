@@ -33,7 +33,6 @@ export default {
   setup() {
     store.showStepnav = false;
     store.showContinue = false;
-
     const showRoot = ref(false);
 
     setInterval(() => {
@@ -45,10 +44,7 @@ export default {
       store.showContinue = true;
     }, 3210);
 
-    return {
-      showRoot,
-      store,
-    };
+    return { showRoot, store };
   },
 };
 </script>

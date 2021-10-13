@@ -90,7 +90,6 @@
 </template>
 <script>
 import { ref, watch } from "vue";
-
 import { store } from "@/store";
 import { updateStep } from "@/supabase";
 
