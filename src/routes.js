@@ -2,25 +2,25 @@ export const routes = [
   {
     path: "/signup",
     name: "signup",
-    component: () => import("./pages/auth.vue"),
+    component: () => import("./pages/signin.vue"),
     meta: { title: "Sign up with a new account" },
   },
   {
     path: "/forgot",
     name: "forgot",
-    component: () => import("./pages/auth.vue"),
+    component: () => import("./pages/signin.vue"),
     meta: { title: "Forgot password" },
   },
   {
     path: "/reset",
     name: "reset",
-    component: () => import("./pages/auth.vue"),
+    component: () => import("./pages/signin.vue"),
     meta: { title: "Reset your password" },
   },
   {
     path: "/login",
     name: "login",
-    component: () => import("./pages/auth.vue"),
+    component: () => import("./pages/signin.vue"),
     meta: { title: "Log in to your account" },
   },
   {
