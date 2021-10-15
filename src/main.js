@@ -1,10 +1,10 @@
 import { createApp } from "vue";
-import "./tailwind.css";
-import App from "./App.vue";
-import { routes } from "./routes.js";
+import App from "@/App.vue";
 import { createRouter, createWebHistory } from "vue-router";
-import { store } from "./store";
-import { supabase } from "./supabase";
+import { routes } from "@/routes.js";
+import { store } from "@/store";
+import { supabase } from "@/supabase";
+import "@/tailwind.css";
 import Notifications from "notiwind";
 
 const app = createApp(App);

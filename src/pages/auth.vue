@@ -18,12 +18,3 @@
     <Auth />
   </div>
 </template>
-<script>
-import Auth from "./Auth.vue";
-
-export default {
-  components: {
-    Auth,
-  },
-};
-</script>

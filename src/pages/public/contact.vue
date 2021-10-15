@@ -175,15 +175,10 @@
   </div>
 </template>
 <script>
-import PublicHeader from "../nav/PublicHeader.vue";
 import { ref } from "vue";
-
 import { store } from "@/store";
 
 export default {
-  components: {
-    PublicHeader,
-  },
   setup() {
     const email = ref();
     const first_name = ref();

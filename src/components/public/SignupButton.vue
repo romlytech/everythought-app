@@ -1,6 +1,6 @@
 <template>
   <router-link
-    to="/register"
+    to="/signup"
     class="
       inline-flex
       items-center

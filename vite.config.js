@@ -3,10 +3,21 @@ import { VitePWA } from "vite-plugin-pwa";
 import vue from "@vitejs/plugin-vue";
 import path from "path";
 import ViteFonts from "vite-plugin-fonts";
+// import Pages from "vite-plugin-pages";
+import Components from "unplugin-vue-components/vite";
+import { HeadlessUiResolver } from "unplugin-vue-components/resolvers";
 
 export default defineConfig({
   plugins: [
     vue(),
+    // Pages({
+    //   pagesDir: [
+    //     { dir: "src/pages", baseRoute: "" },
+    //     { dir: "src/pages/public/", baseRoute: "" },
+    //     { dir: "src/pages/auth/", baseRoute: "" },
+    //   ],
+    // }),
+    Components({ resolvers: [HeadlessUiResolver()] }),
     VitePWA({
       manifest: {
         name: "EveryThought.app",

@@ -31,9 +31,7 @@ export default {
   setup() {
     store.showStepnav = false;
     store.showContinue = true;
-    return {
-      store,
-    };
+    return { store };
   },
 };
 </script>

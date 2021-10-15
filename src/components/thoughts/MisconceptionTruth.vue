@@ -75,10 +75,7 @@ export default {
       store.showContinue = true;
     }, 3210);
 
-    return {
-      showAnimate,
-      store,
-    };
+    return { showAnimate, store };
   },
 };
 </script>

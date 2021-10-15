@@ -42,18 +42,10 @@
 </template>
 <script>
 import { ref } from "vue";
-
-import { RadioGroup, RadioGroupLabel, RadioGroupOption } from "@headlessui/vue";
-
 import { store } from "@/store";
 import { updateThought } from "@/supabase";
 
 export default {
-  components: {
-    RadioGroup,
-    RadioGroupLabel,
-    RadioGroupOption,
-  },
   setup() {
     const responses = [
       {

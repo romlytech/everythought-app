@@ -57,41 +57,13 @@
   </div>
 </template>
 <script>
-import Blobs from "./Blobs.vue";
-import ThoughtNav from "./ThoughtNav.vue";
-import StepNav from "./StepNav.vue";
-import Welcome from "./Welcome.vue";
-import Question from "./Question.vue";
-import MisconceptionTruth from "./MisconceptionTruth.vue";
-import EmotionDescription from "./EmotionDescription.vue";
-import Response from "./Response.vue";
-import Closing from "./Closing.vue";
-
 import { store } from "@/store";
 import { initThought } from "@/supabase";
-import ImageStep from "./ImageStep.vue";
 
 export default {
-  components: {
-    Blobs,
-    StepNav,
-    ThoughtNav,
-    Welcome,
-    Question,
-    EmotionDescription,
-    MisconceptionTruth,
-    Response,
-    Closing,
-    ImageStep,
-  },
   setup() {
     initThought();
-    store.showContinue = true;
-    store.showStepnav = false;
-
-    return {
-      store,
-    };
+    return { store };
   },
 };
 </script>

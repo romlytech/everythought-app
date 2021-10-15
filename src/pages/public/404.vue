@@ -35,12 +35,3 @@
     >
   </div>
 </template>
-<script>
-import PublicHeader from "../nav/PublicHeader.vue";
-
-export default {
-  components: {
-    PublicHeader,
-  },
-};
-</script>
