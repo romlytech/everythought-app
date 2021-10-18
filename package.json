@@ -12,7 +12,7 @@
     "dotenv": "^10.0.0",
     "notiwind": "^1.2.3",
     "vue": "^3.2.20",
-    "vue-router": "^4.0.11"
+    "vue-router": "^4.0.12"
   },
   "devDependencies": {
     "@headlessui/vue": "^1.4.1",
