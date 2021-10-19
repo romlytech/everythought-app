@@ -22,8 +22,16 @@
     <Blobs />
     <!-- Top nav -->
     <ThoughtNav />
-    <!-- WIP: show errors -->
-    <main class="grid items-center w-screen max-w-md">
+    <main
+      class="
+        grid
+        items-center
+        w-screen
+        max-w-md
+        h-full
+        overflow-y-auto overflow-x-hidden
+      "
+    >
       <transition name="slowfade" mode="out-in" appear>
         <Welcome v-if="store.todaysThought.step == 1 && !store.loading" />
         <Question v-else-if="store.todaysThought.step == 2 && !store.loading" />
@@ -39,27 +47,12 @@
         <Response v-else-if="store.todaysThought.step == 6 && !store.loading" />
         <Closing v-else-if="store.todaysThought.step == 7 && !store.loading" />
       </transition>
-      <div class="h-12 z-50 w-full max-w-md">
-        <transition name="slowfade" mode="out-in" appear>
-          <StepNav
-            v-if="
-              store.showStepnav &&
-              !store.loading &&
-              store.todaysThought.step != 7 &&
-              store.todaysThought.step != 2 &&
-              store.todaysThought.step != 4 &&
-              store.todaysThought.step != 6
-            "
-          />
-        </transition>
-      </div>
     </main>
   </div>
 </template>
 <script>
 import { store } from "@/store";
 import { initThought } from "@/supabase";
-
 export default {
   setup() {
     initThought();

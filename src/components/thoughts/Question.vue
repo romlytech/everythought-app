@@ -16,7 +16,6 @@
       <div class="h-20 md:h-24 flex-col justify-between flex space-y-2">
         <transition-group name="fade" appear>
           <RadioGroupOption
-            v-show="store.showStepnav"
             v-for="response in responses"
             :key="response.title"
             v-slot="{ active, checked }"
@@ -57,21 +56,13 @@ export default {
         bool: false,
       },
     ];
-    store.showStepnav = false;
-    store.showContinue = true;
-
     const agreement_response = ref(store.todaysThought.agreement || null);
 
     function updateStep(step) {
-      store.showStepnav = false;
       store.todaysThought.step = step;
       store.todaysThought.agreement = agreement_response.value;
       updateThought();
     }
-
-    setInterval(() => {
-      store.showStepnav = true;
-    }, 3000);
 
     return {
       agreement_response,

@@ -6,6 +6,11 @@
     <p class="text-gray-300">
       Take a moment to clear yourself of any distractions.
     </p>
+    <div class="h-12 z-50 w-full max-w-md">
+      <transition name="slowfade" mode="out-in" appear>
+        <StepNav v-if="showStepnav" :showBack="false" :showContinue="true" />
+      </transition>
+    </div>
   </section>
 </template>
 <script>
@@ -13,8 +18,7 @@ import { ref } from "vue";
 import { store } from "@/store";
 export default {
   setup() {
-    store.showStepnav = false;
-    store.showContinue = true;
+    const showStepnav = ref(false);
     const currentHour = new Date().getHours();
     const greeting = ref("");
 
@@ -26,9 +30,9 @@ export default {
     else greeting.value = "Welcome";
 
     setInterval(() => {
-      store.showStepnav = true;
+      showStepnav.value = true;
     }, 3000);
-    return { store, greeting };
+    return { store, greeting, showStepnav };
   },
 };
 </script>

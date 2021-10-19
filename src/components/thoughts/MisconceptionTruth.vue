@@ -1,14 +1,6 @@
 <template>
   <section
-    class="
-      w-full
-      min-h-full
-      z-50
-      space-y-11
-      py-11
-      flex flex-col
-      justify-between
-    "
+    class="w-full h-full z-50 space-y-11 py-11 flex flex-col justify-between"
   >
     <p class="tracking-wider uppercase text-sm text-gray-400 mx-auto">
       {{
@@ -57,6 +49,11 @@
         </p>
       </div>
     </transition>
+    <div class="h-12 z-50 w-full max-w-md">
+      <transition name="slowfade" mode="out-in" appear>
+        <StepNav v-show="showStepnav" :showBack="true" :showContinue="true" />
+      </transition>
+    </div>
   </section>
 </template>
 <script>
@@ -65,17 +62,15 @@ import { store } from "@/store";
 
 export default {
   setup() {
-    store.showStepnav = false;
-    store.showContinue = false;
+    const showStepnav = ref(false);
     const showAnimate = ref(false);
 
     setInterval(() => {
       showAnimate.value = true;
-      store.showStepnav = true;
-      store.showContinue = true;
+      showStepnav.value = true;
     }, 3210);
 
-    return { showAnimate, store };
+    return { showAnimate, store, showStepnav };
   },
 };
 </script>

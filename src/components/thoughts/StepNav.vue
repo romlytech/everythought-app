@@ -2,7 +2,7 @@
   <nav class="pt-4 justify-between w-full inline-flex z-50">
     <div class="flex-auto">
       <button
-        v-if="store.todaysThought.step > 1"
+        v-if="showBack"
         @click="updateStep(store.todaysThought.step - 1)"
         class="
           text-left
@@ -23,11 +23,7 @@
     <div class="flex-auto text-right">
       <transition name="slowfade" appear>
         <button
-          v-show="
-            store.todaysThought.step != 2 &&
-            store.todaysThought.step != 4 &&
-            store.showContinue
-          "
+          v-if="showContinue"
           @click="updateStep(store.todaysThought.step + 1)"
           class="
             font-medium
@@ -39,13 +35,7 @@
           "
           style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0)"
         >
-          {{
-            store.todaysThought.step == 1
-              ? "I'm ready"
-              : store.todaysThought.step == 6
-              ? "Complete"
-              : "Continue"
-          }}
+          {{ continueText ? continueText : "Continue" }}
           <span class="animate-pulse">&rarr;</span>
         </button>
       </transition>
@@ -56,6 +46,11 @@
 import { updateStep } from "@/supabase";
 import { store } from "@/store";
 export default {
+  props: {
+    showBack: Boolean,
+    showContinue: Boolean,
+    continueText: String,
+  },
   setup() {
     return { updateStep, store };
   },

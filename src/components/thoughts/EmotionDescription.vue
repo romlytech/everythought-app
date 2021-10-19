@@ -1,6 +1,6 @@
 <template>
   <section
-    class="w-full min-h-full z-50 space-y-4 py-11 flex flex-col justify-between"
+    class="w-full h-full z-50 space-y-4 py-11 flex flex-col justify-between"
   >
     <p class="tracking-wider uppercase text-sm text-gray-400">
       So what does it really mean?
@@ -23,6 +23,11 @@
         </p>
       </div>
     </transition>
+    <div class="h-12 z-50 w-full max-w-md">
+      <transition name="slowfade" mode="out-in" appear>
+        <StepNav v-if="showStepnav" :showBack="true" :showContinue="true" />
+      </transition>
+    </div>
   </section>
 </template>
 <script>
@@ -31,8 +36,7 @@ import { store } from "@/store";
 
 export default {
   setup() {
-    store.showStepnav = false;
-    store.showContinue = false;
+    const showStepnav = ref(false);
     const showRoot = ref(false);
 
     setInterval(() => {
@@ -40,11 +44,10 @@ export default {
     }, 2100);
 
     setInterval(() => {
-      store.showStepnav = true;
-      store.showContinue = true;
+      showStepnav.value = true;
     }, 3210);
 
-    return { showRoot, store };
+    return { showRoot, store, showStepnav };
   },
 };
 </script>
