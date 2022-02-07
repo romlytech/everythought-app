@@ -25,7 +25,7 @@
     "@vitejs/plugin-vue": "^1.9.3",
     "@vue/compiler-sfc": "^3.2.6",
     "autoprefixer": "^10.3.7",
-    "netlify-cli": "^6.10.4",
+    "netlify-cli": "^8.16.1",
     "tailwindcss": "^2.2.16",
     "unplugin-icons": "^0.12.14",
     "unplugin-vue-components": "^0.15.6",
