@@ -28,7 +28,7 @@
     "netlify-cli": "^6.10.4",
     "tailwindcss": "^2.2.16",
     "unplugin-icons": "^0.12.14",
-    "unplugin-vue-components": "^0.15.6",
+    "unplugin-vue-components": "^0.20.1",
     "vite": "^2.6.5",
     "vite-plugin-fonts": "^0.2.2",
     "vite-plugin-pwa": "^0.11.3"
