@@ -27,7 +27,7 @@
     "autoprefixer": "^10.3.7",
     "netlify-cli": "^6.10.4",
     "tailwindcss": "^2.2.16",
-    "unplugin-icons": "^0.12.14",
+    "unplugin-icons": "^0.14.15",
     "unplugin-vue-components": "^0.15.6",
     "vite": "^2.6.5",
     "vite-plugin-fonts": "^0.2.2",
